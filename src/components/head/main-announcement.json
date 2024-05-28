@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_head_main_announcements",
+  "info": {
+    "displayName": "Main Announcement",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

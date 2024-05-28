@@ -362,38 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiCountdownTimerCountdownTimer extends Schema.SingleType {
-  collectionName: 'countdown_timers';
-  info: {
-    singularName: 'countdown-timer';
-    pluralName: 'countdown-timers';
-    displayName: 'Countdown Timer';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    countDown: Attribute.DateTime;
-    title: Attribute.String;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::countdown-timer.countdown-timer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::countdown-timer.countdown-timer',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -820,6 +788,101 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAnnouncementBarAnnouncementBar extends Schema.SingleType {
+  collectionName: 'announcement_bars';
+  info: {
+    singularName: 'announcement-bar';
+    pluralName: 'announcement-bars';
+    displayName: 'Announcement Bar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    leftAnnouncement: Attribute.String;
+    rightAnnouncement: Attribute.String;
+    countDownTimer: Attribute.Component<'head.countdown-timer'>;
+    mainAnnouncement: Attribute.Component<'head.main-announcement', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::announcement-bar.announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::announcement-bar.announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
+  info: {
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    heroSection: Attribute.Component<'home.hero-section'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::home-page.home-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavbarMenuNavbarMenu extends Schema.SingleType {
+  collectionName: 'navbar_menus';
+  info: {
+    singularName: 'navbar-menu';
+    pluralName: 'navbar-menus';
+    displayName: 'Navbar Menu';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    menuItems: Attribute.Component<'head.menu-items', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navbar-menu.navbar-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navbar-menu.navbar-menu',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -830,7 +893,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::countdown-timer.countdown-timer': ApiCountdownTimerCountdownTimer;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -839,6 +901,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
+      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::navbar-menu.navbar-menu': ApiNavbarMenuNavbarMenu;
     }
   }
 }

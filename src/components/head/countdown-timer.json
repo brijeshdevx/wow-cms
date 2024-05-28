@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_head_countdown_timers",
+  "info": {
+    "displayName": "Countdown Timer",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "timer": {
+      "type": "datetime"
+    }
+  }
+}
