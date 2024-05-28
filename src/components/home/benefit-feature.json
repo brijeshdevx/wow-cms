@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_benefit_features",
+  "info": {
+    "displayName": "Benefit Feature",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "imageCaption": {
+      "type": "string",
+      "required": false
+    },
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

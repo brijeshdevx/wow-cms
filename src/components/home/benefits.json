@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_home_benefits",
+  "info": {
+    "displayName": "Benefits",
+    "icon": "seed",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "benefitFeature": {
+      "displayName": "Benefit Feature",
+      "type": "component",
+      "repeatable": true,
+      "component": "home.benefit-feature",
+      "required": true
+    }
+  }
+}

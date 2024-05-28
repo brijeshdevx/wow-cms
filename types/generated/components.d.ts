@@ -50,6 +50,32 @@ export interface HeadMenuItems extends Schema.Component {
   };
 }
 
+export interface HomeBenefitFeature extends Schema.Component {
+  collectionName: 'components_home_benefit_features';
+  info: {
+    displayName: 'Benefit Feature';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    imageCaption: Attribute.String;
+    image: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface HomeBenefits extends Schema.Component {
+  collectionName: 'components_home_benefits';
+  info: {
+    displayName: 'Benefits';
+    icon: 'seed';
+    description: '';
+  };
+  attributes: {
+    benefitFeature: Attribute.Component<'home.benefit-feature', true> &
+      Attribute.Required;
+  };
+}
+
 export interface HomeHeroSection extends Schema.Component {
   collectionName: 'components_home_hero_sections';
   info: {
@@ -63,6 +89,20 @@ export interface HomeHeroSection extends Schema.Component {
   };
 }
 
+export interface HomeMiniBanners extends Schema.Component {
+  collectionName: 'components_home_mini_banners';
+  info: {
+    displayName: 'Mini Banners';
+    icon: 'picture';
+    description: '';
+  };
+  attributes: {
+    webBannerImage: Attribute.Media & Attribute.Required;
+    mWebBannerImage: Attribute.Media & Attribute.Required;
+    bannerLink: Attribute.String & Attribute.Required;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -70,7 +110,10 @@ declare module '@strapi/types' {
       'head.countdown-timer': HeadCountdownTimer;
       'head.main-announcement': HeadMainAnnouncement;
       'head.menu-items': HeadMenuItems;
+      'home.benefit-feature': HomeBenefitFeature;
+      'home.benefits': HomeBenefits;
       'home.hero-section': HomeHeroSection;
+      'home.mini-banners': HomeMiniBanners;
     }
   }
 }

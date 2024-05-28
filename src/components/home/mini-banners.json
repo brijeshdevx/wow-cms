@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_home_mini_banners",
+  "info": {
+    "displayName": "Mini Banners",
+    "icon": "picture",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "webBannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "mWebBannerImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "videos"
+      ]
+    },
+    "bannerLink": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -828,12 +828,14 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     singularName: 'home-page';
     pluralName: 'home-pages';
     displayName: 'Home Page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     heroSection: Attribute.Component<'home.hero-section'>;
+    blocks: Attribute.DynamicZone<['home.benefits', 'home.mini-banners']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

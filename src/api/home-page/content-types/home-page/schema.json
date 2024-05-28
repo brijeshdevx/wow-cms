@@ -4,7 +4,8 @@
   "info": {
     "singularName": "home-page",
     "pluralName": "home-pages",
-    "displayName": "Home Page"
+    "displayName": "Home Page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,6 +17,13 @@
       "type": "component",
       "repeatable": false,
       "component": "home.hero-section"
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "home.benefits",
+        "home.mini-banners"
+      ]
     }
   }
 }
