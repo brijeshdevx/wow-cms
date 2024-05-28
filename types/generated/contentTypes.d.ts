@@ -835,7 +835,9 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
   attributes: {
     heroSection: Attribute.Component<'home.hero-section'>;
-    blocks: Attribute.DynamicZone<['home.benefits', 'home.mini-banners']>;
+    blocks: Attribute.DynamicZone<
+      ['home.benefits', 'home.mini-banners', 'home.testimonials']
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

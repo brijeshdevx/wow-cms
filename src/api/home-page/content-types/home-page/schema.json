@@ -22,7 +22,8 @@
       "type": "dynamiczone",
       "components": [
         "home.benefits",
-        "home.mini-banners"
+        "home.mini-banners",
+        "home.testimonials"
       ]
     }
   }

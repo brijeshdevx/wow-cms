@@ -103,6 +103,23 @@ export interface HomeMiniBanners extends Schema.Component {
   };
 }
 
+export interface HomeTestimonials extends Schema.Component {
+  collectionName: 'components_home_testimonials';
+  info: {
+    displayName: 'Testimonial Component';
+    icon: 'user';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    testimonials: Attribute.Relation<
+      'home.testimonials',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -114,6 +131,7 @@ declare module '@strapi/types' {
       'home.benefits': HomeBenefits;
       'home.hero-section': HomeHeroSection;
       'home.mini-banners': HomeMiniBanners;
+      'home.testimonials': HomeTestimonials;
     }
   }
 }
