@@ -885,6 +885,46 @@ export interface ApiNavbarMenuNavbarMenu extends Schema.SingleType {
   };
 }
 
+export interface ApiTestimonialTestimonial extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'Testimonial';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    featuredImage: Attribute.Media & Attribute.Required;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+    concern: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -906,6 +946,7 @@ declare module '@strapi/types' {
       'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::navbar-menu.navbar-menu': ApiNavbarMenuNavbarMenu;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
 }
