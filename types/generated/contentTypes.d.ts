@@ -907,6 +907,7 @@ export interface ApiTestimonialTestimonial extends Schema.CollectionType {
         }
       >;
     concern: Attribute.String;
+    productSlug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
