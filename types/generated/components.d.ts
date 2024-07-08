@@ -37,6 +37,31 @@ export interface CommonBenefit extends Schema.Component {
   };
 }
 
+export interface CommonMenu extends Schema.Component {
+  collectionName: 'components_common_menus';
+  info: {
+    displayName: 'Menu';
+    icon: 'bulletList';
+    description: '';
+  };
+  attributes: {
+    menuTitle: Attribute.String & Attribute.Required;
+    menuLink: Attribute.String;
+    subMenuTitle: Attribute.Component<'common.sub-menu', true>;
+  };
+}
+
+export interface CommonSubMenu extends Schema.Component {
+  collectionName: 'components_common_sub_menus';
+  info: {
+    displayName: 'Sub Menu';
+  };
+  attributes: {
+    subMenuTitle: Attribute.String & Attribute.Required;
+    subMenuLink: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface CommonWowBenefits extends Schema.Component {
   collectionName: 'components_common_wow_benefits';
   info: {
@@ -104,6 +129,8 @@ declare module '@strapi/types' {
       'carousel.banner': CarouselBanner;
       'carousel.hero-section': CarouselHeroSection;
       'common.benefit': CommonBenefit;
+      'common.menu': CommonMenu;
+      'common.sub-menu': CommonSubMenu;
       'common.wow-benefits': CommonWowBenefits;
       'head.accordion': HeadAccordion;
       'head.countdown-timer': HeadCountdownTimer;
