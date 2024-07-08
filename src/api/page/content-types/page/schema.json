@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages",
+  "info": {
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Pages",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pageType": {
+      "type": "enumeration",
+      "enum": [
+        "Landing",
+        "Collection",
+        "Product"
+      ]
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "carousel.hero-section",
+        "common.wow-benefits"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

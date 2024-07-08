@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_carousel_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "icon": "play"
+  },
+  "options": {},
+  "attributes": {
+    "banner": {
+      "displayName": "Banner",
+      "type": "component",
+      "repeatable": true,
+      "component": "carousel.banner"
+    }
+  }
+}

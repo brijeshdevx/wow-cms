@@ -788,67 +788,61 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiAnnouncementBarAnnouncementBar extends Schema.SingleType {
-  collectionName: 'announcement_bars';
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
   info: {
-    singularName: 'announcement-bar';
-    pluralName: 'announcement-bars';
-    displayName: 'Announcement Bar';
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Pages';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    leftAnnouncement: Attribute.String;
-    rightAnnouncement: Attribute.String;
-    countDownTimer: Attribute.Component<'head.countdown-timer'>;
-    mainAnnouncement: Attribute.Component<'head.main-announcement', true>;
+    pageType: Attribute.Enumeration<['Landing', 'Collection', 'Product']>;
+    blocks: Attribute.DynamicZone<
+      ['carousel.hero-section', 'common.wow-benefits']
+    >;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::announcement-bar.announcement-bar',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::announcement-bar.announcement-bar',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.SingleType {
-  collectionName: 'home_pages';
+export interface ApiProductProduct extends Schema.CollectionType {
+  collectionName: 'products';
   info: {
-    singularName: 'home-page';
-    pluralName: 'home-pages';
-    displayName: 'Home Page';
-    description: '';
+    singularName: 'product';
+    pluralName: 'products';
+    displayName: 'Products';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    heroSection: Attribute.Component<'home.hero-section'>;
-    blocks: Attribute.DynamicZone<
-      ['home.benefits', 'home.mini-banners', 'home.testimonials']
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    tags: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::tag.tag'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::home-page.home-page',
+      'api::product.product',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::home-page.home-page',
+      'api::product.product',
       'oneToOne',
       'admin::user'
     > &
@@ -856,33 +850,30 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
   };
 }
 
-export interface ApiNavbarMenuNavbarMenu extends Schema.SingleType {
-  collectionName: 'navbar_menus';
+export interface ApiTagTag extends Schema.CollectionType {
+  collectionName: 'tags';
   info: {
-    singularName: 'navbar-menu';
-    pluralName: 'navbar-menus';
-    displayName: 'Navbar Menu';
+    singularName: 'tag';
+    pluralName: 'tags';
+    displayName: 'Tags';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    menuItems: Attribute.Component<'head.menu-items', true>;
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    products: Attribute.Relation<
+      'api::tag.tag',
+      'manyToMany',
+      'api::product.product'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::navbar-menu.navbar-menu',
-      'oneToOne',
-      'admin::user'
-    > &
+    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::navbar-menu.navbar-menu',
-      'oneToOne',
-      'admin::user'
-    > &
+    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -946,9 +937,9 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
-      'api::home-page.home-page': ApiHomePageHomePage;
-      'api::navbar-menu.navbar-menu': ApiNavbarMenuNavbarMenu;
+      'api::page.page': ApiPagePage;
+      'api::product.product': ApiProductProduct;
+      'api::tag.tag': ApiTagTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }

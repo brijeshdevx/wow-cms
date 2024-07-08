@@ -1,5 +1,53 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface CarouselBanner extends Schema.Component {
+  collectionName: 'components_carousel_banners';
+  info: {
+    displayName: 'Banner';
+    description: '';
+  };
+  attributes: {
+    webImage: Attribute.Media & Attribute.Required;
+    cta: Attribute.String;
+    mWebImage: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface CarouselHeroSection extends Schema.Component {
+  collectionName: 'components_carousel_hero_sections';
+  info: {
+    displayName: 'Hero Section';
+    icon: 'play';
+  };
+  attributes: {
+    banner: Attribute.Component<'carousel.banner', true>;
+  };
+}
+
+export interface CommonBenefit extends Schema.Component {
+  collectionName: 'components_common_benefits';
+  info: {
+    displayName: 'Benefit';
+    icon: 'feather';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    caption: Attribute.String;
+  };
+}
+
+export interface CommonWowBenefits extends Schema.Component {
+  collectionName: 'components_common_wow_benefits';
+  info: {
+    displayName: 'Wow Benefits';
+    icon: 'television';
+  };
+  attributes: {
+    benefit: Attribute.Component<'common.benefit', true> & Attribute.Required;
+  };
+}
+
 export interface HeadAccordion extends Schema.Component {
   collectionName: 'components_head_accordions';
   info: {
@@ -50,88 +98,17 @@ export interface HeadMenuItems extends Schema.Component {
   };
 }
 
-export interface HomeBenefitFeature extends Schema.Component {
-  collectionName: 'components_home_benefit_features';
-  info: {
-    displayName: 'Benefit Feature';
-    icon: 'picture';
-    description: '';
-  };
-  attributes: {
-    imageCaption: Attribute.String;
-    image: Attribute.Media & Attribute.Required;
-  };
-}
-
-export interface HomeBenefits extends Schema.Component {
-  collectionName: 'components_home_benefits';
-  info: {
-    displayName: 'Benefits';
-    icon: 'seed';
-    description: '';
-  };
-  attributes: {
-    benefitFeature: Attribute.Component<'home.benefit-feature', true> &
-      Attribute.Required;
-  };
-}
-
-export interface HomeHeroSection extends Schema.Component {
-  collectionName: 'components_home_hero_sections';
-  info: {
-    displayName: 'Hero Section';
-    icon: 'cloud';
-  };
-  attributes: {
-    webBannerImage: Attribute.Media & Attribute.Required;
-    mWebBannerImage: Attribute.Media & Attribute.Required;
-    bannerLink: Attribute.String;
-  };
-}
-
-export interface HomeMiniBanners extends Schema.Component {
-  collectionName: 'components_home_mini_banners';
-  info: {
-    displayName: 'Mini Banners';
-    icon: 'picture';
-    description: '';
-  };
-  attributes: {
-    webBannerImage: Attribute.Media & Attribute.Required;
-    mWebBannerImage: Attribute.Media & Attribute.Required;
-    bannerLink: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface HomeTestimonials extends Schema.Component {
-  collectionName: 'components_home_testimonials';
-  info: {
-    displayName: 'Testimonial Component';
-    icon: 'user';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    testimonials: Attribute.Relation<
-      'home.testimonials',
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'carousel.banner': CarouselBanner;
+      'carousel.hero-section': CarouselHeroSection;
+      'common.benefit': CommonBenefit;
+      'common.wow-benefits': CommonWowBenefits;
       'head.accordion': HeadAccordion;
       'head.countdown-timer': HeadCountdownTimer;
       'head.main-announcement': HeadMainAnnouncement;
       'head.menu-items': HeadMenuItems;
-      'home.benefit-feature': HomeBenefitFeature;
-      'home.benefits': HomeBenefits;
-      'home.hero-section': HomeHeroSection;
-      'home.mini-banners': HomeMiniBanners;
-      'home.testimonials': HomeTestimonials;
     }
   }
 }
