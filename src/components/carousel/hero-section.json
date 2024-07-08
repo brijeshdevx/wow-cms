@@ -10,7 +10,7 @@
       "displayName": "Banner",
       "type": "component",
       "repeatable": true,
-      "component": "carousel.banner"
+      "component": "common.banner"
     }
   }
 }

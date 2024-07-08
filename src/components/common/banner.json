@@ -2,7 +2,8 @@
   "collectionName": "components_carousel_banners",
   "info": {
     "displayName": "Banner",
-    "description": ""
+    "description": "",
+    "icon": "landscape"
   },
   "options": {},
   "attributes": {
@@ -18,12 +19,12 @@
       "type": "string"
     },
     "mWebImage": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
     }
   }
 }
