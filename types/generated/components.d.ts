@@ -1,18 +1,5 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface CarouselBanner extends Schema.Component {
-  collectionName: 'components_carousel_banners';
-  info: {
-    displayName: 'Banner';
-    description: '';
-  };
-  attributes: {
-    webImage: Attribute.Media & Attribute.Required;
-    cta: Attribute.String;
-    mWebImage: Attribute.Media & Attribute.Required;
-  };
-}
-
 export interface CarouselHeroSection extends Schema.Component {
   collectionName: 'components_carousel_hero_sections';
   info: {
@@ -20,7 +7,21 @@ export interface CarouselHeroSection extends Schema.Component {
     icon: 'play';
   };
   attributes: {
-    banner: Attribute.Component<'carousel.banner', true>;
+    banner: Attribute.Component<'common.banner', true>;
+  };
+}
+
+export interface CommonBanner extends Schema.Component {
+  collectionName: 'components_carousel_banners';
+  info: {
+    displayName: 'Banner';
+    description: '';
+    icon: 'landscape';
+  };
+  attributes: {
+    webImage: Attribute.Media & Attribute.Required;
+    cta: Attribute.String;
+    mWebImage: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -37,6 +38,43 @@ export interface CommonBenefit extends Schema.Component {
   };
 }
 
+export interface CommonFeaturedProducts extends Schema.Component {
+  collectionName: 'components_common_featured_products';
+  info: {
+    displayName: 'Featured Products';
+    icon: 'apps';
+    description: '';
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'common.featured-products',
+      'oneToMany',
+      'api::product.product'
+    >;
+    title: Attribute.String;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
+export interface CommonProductsByTags extends Schema.Component {
+  collectionName: 'components_common_products_by_tags';
+  info: {
+    displayName: 'Products By Tags';
+    icon: 'manyToMany';
+    description: '';
+  };
+  attributes: {
+    tags: Attribute.Relation<
+      'common.products-by-tags',
+      'oneToMany',
+      'api::tag.tag'
+    >;
+    title: Attribute.String;
+    button: Attribute.Component<'elements.button'>;
+  };
+}
+
 export interface CommonWowBenefits extends Schema.Component {
   collectionName: 'components_common_wow_benefits';
   info: {
@@ -45,6 +83,19 @@ export interface CommonWowBenefits extends Schema.Component {
   };
   attributes: {
     benefit: Attribute.Component<'common.benefit', true> & Attribute.Required;
+  };
+}
+
+export interface ElementsButton extends Schema.Component {
+  collectionName: 'components_elements_buttons';
+  info: {
+    displayName: 'Button';
+    icon: 'gift';
+    description: '';
+  };
+  attributes: {
+    label: Attribute.String & Attribute.Required;
+    cta: Attribute.String & Attribute.Required;
   };
 }
 
@@ -101,10 +152,13 @@ export interface HeadMenuItems extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'carousel.banner': CarouselBanner;
       'carousel.hero-section': CarouselHeroSection;
+      'common.banner': CommonBanner;
       'common.benefit': CommonBenefit;
+      'common.featured-products': CommonFeaturedProducts;
+      'common.products-by-tags': CommonProductsByTags;
       'common.wow-benefits': CommonWowBenefits;
+      'elements.button': ElementsButton;
       'head.accordion': HeadAccordion;
       'head.countdown-timer': HeadCountdownTimer;
       'head.main-announcement': HeadMainAnnouncement;

@@ -24,7 +24,10 @@
       "type": "dynamiczone",
       "components": [
         "carousel.hero-section",
-        "common.wow-benefits"
+        "common.wow-benefits",
+        "common.featured-products",
+        "common.products-by-tags",
+        "common.banner"
       ]
     },
     "slug": {

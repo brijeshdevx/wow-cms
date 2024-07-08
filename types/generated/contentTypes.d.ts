@@ -802,7 +802,13 @@ export interface ApiPagePage extends Schema.CollectionType {
   attributes: {
     pageType: Attribute.Enumeration<['Landing', 'Collection', 'Product']>;
     blocks: Attribute.DynamicZone<
-      ['carousel.hero-section', 'common.wow-benefits']
+      [
+        'carousel.hero-section',
+        'common.wow-benefits',
+        'common.featured-products',
+        'common.products-by-tags',
+        'common.banner'
+      ]
     >;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
