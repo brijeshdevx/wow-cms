@@ -923,7 +923,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'common.products-by-tags',
         'common.banner',
         'common.collection-list',
-        'common.main-announcement'
+        'common.main-announcement',
+        'carousel.mini-banners',
+        'testimonials.testimonial-list',
       ]
     >;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
@@ -1050,13 +1052,13 @@ export interface ApiTestimonialTestimonial
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::testimonial.testimonial',
+      'api::tag.tag',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::testimonial.testimonial',
+      'api::tag.tag',
       'oneToOne',
       'admin::user'
     > &
@@ -1087,7 +1089,6 @@ declare module '@strapi/types' {
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
       'api::tag.tag': ApiTagTag;
-      'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
 }

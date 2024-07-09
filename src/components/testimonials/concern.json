@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_common_concerns",
+  "info": {
+    "displayName": "concern",
+    "icon": "lightbulb",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
