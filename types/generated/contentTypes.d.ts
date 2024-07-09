@@ -925,7 +925,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'common.collection-list',
         'common.main-announcement',
         'carousel.mini-banners',
-        'testimonials.testimonial-list',
+        'testimonials.testimonial-list'
       ]
     >;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
@@ -1006,48 +1006,6 @@ export interface ApiTagTag extends Schema.CollectionType {
       'manyToMany',
       'api::product.product'
     >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::tag.tag',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::tag.tag',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTestimonialTestimonial
-  extends Schema.CollectionType {
-  collectionName: 'testimonials';
-  info: {
-    singularName: 'testimonial';
-    pluralName: 'testimonials';
-    displayName: 'Testimonial';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    featuredImage: Attribute.Media & Attribute.Required;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
-    concern: Attribute.String;
-    productSlug: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

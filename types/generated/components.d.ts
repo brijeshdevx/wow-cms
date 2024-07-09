@@ -246,7 +246,8 @@ export interface TestimonialsConcern extends Schema.Component {
   };
 }
 
-export interface TestimonialsTestimonialList extends Schema.Component {
+export interface TestimonialsTestimonialList
+  extends Schema.Component {
   collectionName: 'components_testimonials_testimonial_lists';
   info: {
     displayName: 'Testimonial List';
@@ -255,7 +256,10 @@ export interface TestimonialsTestimonialList extends Schema.Component {
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    testimonialItem: Attribute.Component<'testimonials.testimonial', true>;
+    testimonialItem: Attribute.Component<
+      'testimonials.testimonial',
+      true
+    >;
   };
 }
 
