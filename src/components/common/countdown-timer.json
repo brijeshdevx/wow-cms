@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_head_countdown_timers",
+  "info": {
+    "displayName": "Countdown Timer",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "TimerType": {
+      "type": "enumeration",
+      "enum": [
+        "Daily",
+        "Custom"
+      ],
+      "default": "Custom",
+      "required": true
+    },
+    "startTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "endTime": {
+      "type": "datetime",
+      "required": true
+    },
+    "title": {
+      "type": "blocks"
+    },
+    "titleColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    }
+  }
+}

@@ -845,7 +845,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'common.wow-benefits',
         'common.featured-products',
         'common.products-by-tags',
-        'common.banner'
+        'common.banner',
+        'common.collection-list',
+        'common.main-announcement'
       ]
     >;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;

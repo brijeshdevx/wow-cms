@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_common_collection_lists",
+  "info": {
+    "displayName": "Collection List",
+    "icon": "stack"
+  },
+  "options": {},
+  "attributes": {
+    "CollectionItem": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.collection-item"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "CollectionType": {
+      "type": "enumeration",
+      "enum": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "required": true
+    }
+  }
+}

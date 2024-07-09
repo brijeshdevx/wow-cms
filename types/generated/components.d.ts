@@ -38,6 +38,56 @@ export interface CommonBenefit extends Schema.Component {
   };
 }
 
+export interface CommonCollectionItem extends Schema.Component {
+  collectionName: 'components_common_collection_items';
+  info: {
+    displayName: 'Collection Item';
+    icon: 'server';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    image: Attribute.Media;
+    bgColor: Attribute.String;
+  };
+}
+
+export interface CommonCollectionList extends Schema.Component {
+  collectionName: 'components_common_collection_lists';
+  info: {
+    displayName: 'Collection List';
+    icon: 'stack';
+  };
+  attributes: {
+    CollectionItem: Attribute.Component<'common.collection-item', true>;
+    title: Attribute.String & Attribute.Required;
+    CollectionType: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+      Attribute.Required;
+  };
+}
+
+export interface CommonCountdownTimer extends Schema.Component {
+  collectionName: 'components_head_countdown_timers';
+  info: {
+    displayName: 'Countdown Timer';
+    icon: 'clock';
+    description: '';
+  };
+  attributes: {
+    TimerType: Attribute.Enumeration<['Daily', 'Custom']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Custom'>;
+    startTime: Attribute.DateTime & Attribute.Required;
+    endTime: Attribute.DateTime & Attribute.Required;
+    title: Attribute.Blocks;
+    titleColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
 export interface CommonFeaturedProducts extends Schema.Component {
   collectionName: 'components_common_featured_products';
   info: {
@@ -54,6 +104,21 @@ export interface CommonFeaturedProducts extends Schema.Component {
     title: Attribute.String;
     bgColor: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
+export interface CommonMainAnnouncement extends Schema.Component {
+  collectionName: 'components_head_main_announcements';
+  info: {
+    displayName: 'Announcement';
+    icon: 'television';
+    description: '';
+  };
+  attributes: {
+    leftTitle: Attribute.String;
+    RightTitle: Attribute.String;
+    middleTitle: Attribute.String;
+    timer: Attribute.Component<'common.countdown-timer'>;
   };
 }
 
@@ -112,29 +177,6 @@ export interface HeadAccordion extends Schema.Component {
   };
 }
 
-export interface HeadCountdownTimer extends Schema.Component {
-  collectionName: 'components_head_countdown_timers';
-  info: {
-    displayName: 'Countdown Timer';
-    icon: 'bulletList';
-  };
-  attributes: {
-    title: Attribute.String;
-    timer: Attribute.DateTime;
-  };
-}
-
-export interface HeadMainAnnouncement extends Schema.Component {
-  collectionName: 'components_head_main_announcements';
-  info: {
-    displayName: 'Main Announcement';
-    icon: 'bulletList';
-  };
-  attributes: {
-    title: Attribute.String;
-  };
-}
-
 export interface HeadMenuItems extends Schema.Component {
   collectionName: 'components_head_menu_items';
   info: {
@@ -155,13 +197,15 @@ declare module '@strapi/types' {
       'carousel.hero-section': CarouselHeroSection;
       'common.banner': CommonBanner;
       'common.benefit': CommonBenefit;
+      'common.collection-item': CommonCollectionItem;
+      'common.collection-list': CommonCollectionList;
+      'common.countdown-timer': CommonCountdownTimer;
       'common.featured-products': CommonFeaturedProducts;
+      'common.main-announcement': CommonMainAnnouncement;
       'common.products-by-tags': CommonProductsByTags;
       'common.wow-benefits': CommonWowBenefits;
       'elements.button': ElementsButton;
       'head.accordion': HeadAccordion;
-      'head.countdown-timer': HeadCountdownTimer;
-      'head.main-announcement': HeadMainAnnouncement;
       'head.menu-items': HeadMenuItems;
     }
   }
