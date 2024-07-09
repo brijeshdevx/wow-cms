@@ -11,6 +11,17 @@ export interface CarouselHeroSection extends Schema.Component {
   };
 }
 
+export interface CarouselMiniBanners extends Schema.Component {
+  collectionName: 'components_carousel_mini_banners';
+  info: {
+    displayName: 'Mini Banners';
+    icon: 'discuss';
+  };
+  attributes: {
+    banner: Attribute.Component<'common.banner', true>;
+  };
+}
+
 export interface CommonBanner extends Schema.Component {
   collectionName: 'components_carousel_banners';
   info: {
@@ -191,10 +202,57 @@ export interface HeadMenuItems extends Schema.Component {
   };
 }
 
+export interface TestimonialsConcern extends Schema.Component {
+  collectionName: 'components_common_concerns';
+  info: {
+    displayName: 'concern';
+    icon: 'lightbulb';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface TestimonialsTestimonialList extends Schema.Component {
+  collectionName: 'components_testimonials_testimonial_lists';
+  info: {
+    displayName: 'Testimonial List';
+    icon: 'stack';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    testimonialItem: Attribute.Component<'testimonials.testimonial', true>;
+  };
+}
+
+export interface TestimonialsTestimonial extends Schema.Component {
+  collectionName: 'components_testimonials_testimonials';
+  info: {
+    displayName: 'Testimonial';
+    icon: 'emotionHappy';
+    description: '';
+  };
+  attributes: {
+    featuredImage: Attribute.Media & Attribute.Required;
+    name: Attribute.String & Attribute.Required;
+    age: Attribute.Integer;
+    description: Attribute.Text;
+    concern: Attribute.Component<'testimonials.concern', true>;
+    products: Attribute.Relation<
+      'testimonials.testimonial',
+      'oneToMany',
+      'api::product.product'
+    >;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'carousel.hero-section': CarouselHeroSection;
+      'carousel.mini-banners': CarouselMiniBanners;
       'common.banner': CommonBanner;
       'common.benefit': CommonBenefit;
       'common.collection-item': CommonCollectionItem;
@@ -207,6 +265,9 @@ declare module '@strapi/types' {
       'elements.button': ElementsButton;
       'head.accordion': HeadAccordion;
       'head.menu-items': HeadMenuItems;
+      'testimonials.concern': TestimonialsConcern;
+      'testimonials.testimonial-list': TestimonialsTestimonialList;
+      'testimonials.testimonial': TestimonialsTestimonial;
     }
   }
 }

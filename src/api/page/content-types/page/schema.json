@@ -29,7 +29,9 @@
         "common.products-by-tags",
         "common.banner",
         "common.collection-list",
-        "common.main-announcement"
+        "common.main-announcement",
+        "carousel.mini-banners",
+        "testimonials.testimonial-list"
       ]
     },
     "slug": {

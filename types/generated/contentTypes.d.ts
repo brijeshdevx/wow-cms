@@ -847,7 +847,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'common.products-by-tags',
         'common.banner',
         'common.collection-list',
-        'common.main-announcement'
+        'common.main-announcement',
+        'carousel.mini-banners',
+        'testimonials.testimonial-list'
       ]
     >;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
@@ -930,47 +932,6 @@ export interface ApiTagTag extends Schema.CollectionType {
   };
 }
 
-export interface ApiTestimonialTestimonial extends Schema.CollectionType {
-  collectionName: 'testimonials';
-  info: {
-    singularName: 'testimonial';
-    pluralName: 'testimonials';
-    displayName: 'Testimonial';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    featuredImage: Attribute.Media & Attribute.Required;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
-    concern: Attribute.String;
-    productSlug: Attribute.String & Attribute.Required;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::testimonial.testimonial',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::testimonial.testimonial',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -993,7 +954,6 @@ declare module '@strapi/types' {
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
       'api::tag.tag': ApiTagTag;
-      'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
 }

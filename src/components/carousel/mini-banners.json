@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_carousel_mini_banners",
+  "info": {
+    "displayName": "Mini Banners",
+    "icon": "discuss"
+  },
+  "options": {},
+  "attributes": {
+    "banner": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.banner"
+    }
+  }
+}
