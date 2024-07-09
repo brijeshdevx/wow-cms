@@ -788,6 +788,44 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiIngredientIngredient extends Schema.CollectionType {
+  collectionName: 'ingredients';
+  info: {
+    singularName: 'ingredient';
+    pluralName: 'ingredients';
+    displayName: 'Ingredients';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'api::ingredient.ingredient',
+      'manyToMany',
+      'api::product.product'
+    >;
+    title: Attribute.String & Attribute.Unique;
+    description: Attribute.String;
+    image: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ingredient.ingredient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ingredient.ingredient',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -807,7 +845,9 @@ export interface ApiPagePage extends Schema.CollectionType {
         'common.wow-benefits',
         'common.featured-products',
         'common.products-by-tags',
-        'common.banner'
+        'common.banner',
+        'common.collection-list',
+        'common.main-announcement'
       ]
     >;
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
@@ -827,6 +867,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Products';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -837,6 +878,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'manyToMany',
       'api::tag.tag'
+    >;
+    ingredients: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::ingredient.ingredient'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -943,6 +989,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::ingredient.ingredient': ApiIngredientIngredient;
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
       'api::tag.tag': ApiTagTag;

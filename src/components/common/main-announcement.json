@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_head_main_announcements",
+  "info": {
+    "displayName": "Announcement",
+    "icon": "television",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "leftTitle": {
+      "type": "string"
+    },
+    "RightTitle": {
+      "type": "string"
+    },
+    "middleTitle": {
+      "type": "string"
+    },
+    "timer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.countdown-timer"
+    }
+  }
+}
