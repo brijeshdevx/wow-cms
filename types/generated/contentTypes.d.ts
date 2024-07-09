@@ -30,7 +30,11 @@ export interface AdminPermission extends Schema.CollectionType {
       }>;
     properties: Attribute.JSON & Attribute.DefaultTo<{}>;
     conditions: Attribute.JSON & Attribute.DefaultTo<[]>;
-    role: Attribute.Relation<'admin::permission', 'manyToOne', 'admin::role'>;
+    role: Attribute.Relation<
+      'admin::permission',
+      'manyToOne',
+      'admin::role'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -92,15 +96,29 @@ export interface AdminUser extends Schema.CollectionType {
     isActive: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    roles: Attribute.Relation<'admin::user', 'manyToMany', 'admin::role'> &
+    roles: Attribute.Relation<
+      'admin::user',
+      'manyToMany',
+      'admin::role'
+    > &
       Attribute.Private;
-    blocked: Attribute.Boolean & Attribute.Private & Attribute.DefaultTo<false>;
+    blocked: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
     preferedLanguage: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'admin::user',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'admin::user',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -136,7 +154,11 @@ export interface AdminRole extends Schema.CollectionType {
         minLength: 1;
       }>;
     description: Attribute.String;
-    users: Attribute.Relation<'admin::role', 'manyToMany', 'admin::user'>;
+    users: Attribute.Relation<
+      'admin::role',
+      'manyToMany',
+      'admin::user'
+    >;
     permissions: Attribute.Relation<
       'admin::role',
       'oneToMany',
@@ -144,9 +166,17 @@ export interface AdminRole extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'admin::role', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'admin::role',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'admin::role', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'admin::role',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -180,7 +210,9 @@ export interface AdminApiToken extends Schema.CollectionType {
         minLength: 1;
       }> &
       Attribute.DefaultTo<''>;
-    type: Attribute.Enumeration<['read-only', 'full-access', 'custom']> &
+    type: Attribute.Enumeration<
+      ['read-only', 'full-access', 'custom']
+    > &
       Attribute.Required &
       Attribute.DefaultTo<'read-only'>;
     accessKey: Attribute.String &
@@ -213,7 +245,8 @@ export interface AdminApiToken extends Schema.CollectionType {
   };
 }
 
-export interface AdminApiTokenPermission extends Schema.CollectionType {
+export interface AdminApiTokenPermission
+  extends Schema.CollectionType {
   collectionName: 'strapi_api_token_permissions';
   info: {
     name: 'API Token Permission';
@@ -317,7 +350,8 @@ export interface AdminTransferToken extends Schema.CollectionType {
   };
 }
 
-export interface AdminTransferTokenPermission extends Schema.CollectionType {
+export interface AdminTransferTokenPermission
+  extends Schema.CollectionType {
   collectionName: 'strapi_transfer_token_permissions';
   info: {
     name: 'Transfer Token Permission';
@@ -491,7 +525,8 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
 }
 
-export interface PluginContentReleasesRelease extends Schema.CollectionType {
+export interface PluginContentReleasesRelease
+  extends Schema.CollectionType {
   collectionName: 'strapi_releases';
   info: {
     singularName: 'release';
@@ -560,7 +595,8 @@ export interface PluginContentReleasesReleaseAction
     };
   };
   attributes: {
-    type: Attribute.Enumeration<['publish', 'unpublish']> & Attribute.Required;
+    type: Attribute.Enumeration<['publish', 'unpublish']> &
+      Attribute.Required;
     entry: Attribute.Relation<
       'plugin::content-releases.release-action',
       'morphToOne'
@@ -679,7 +715,8 @@ export interface PluginUsersPermissionsPermission
   };
 }
 
-export interface PluginUsersPermissionsRole extends Schema.CollectionType {
+export interface PluginUsersPermissionsRole
+  extends Schema.CollectionType {
   collectionName: 'up_roles';
   info: {
     name: 'role';
@@ -731,7 +768,8 @@ export interface PluginUsersPermissionsRole extends Schema.CollectionType {
   };
 }
 
-export interface PluginUsersPermissionsUser extends Schema.CollectionType {
+export interface PluginUsersPermissionsUser
+  extends Schema.CollectionType {
   collectionName: 'up_users';
   info: {
     name: 'user';
@@ -788,7 +826,8 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface ApiIngredientIngredient extends Schema.CollectionType {
+export interface ApiIngredientIngredient
+  extends Schema.CollectionType {
   collectionName: 'ingredients';
   info: {
     singularName: 'ingredient';
@@ -826,6 +865,41 @@ export interface ApiIngredientIngredient extends Schema.CollectionType {
   };
 }
 
+export interface ApiNavbarNavbar extends Schema.SingleType {
+  collectionName: 'navbars';
+  info: {
+    singularName: 'navbar';
+    pluralName: 'navbars';
+    displayName: 'Navbar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    menu: Attribute.Component<'common.menu', true> &
+      Attribute.Required;
+    logo: Attribute.Media & Attribute.Required;
+    VIPMembershipLogo: Attribute.Media;
+    mWebMenuLogo: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navbar.navbar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navbar.navbar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -838,7 +912,9 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageType: Attribute.Enumeration<['Landing', 'Collection', 'Product']>;
+    pageType: Attribute.Enumeration<
+      ['Landing', 'Collection', 'Product']
+    >;
     blocks: Attribute.DynamicZone<
       [
         'carousel.hero-section',
@@ -854,9 +930,17 @@ export interface ApiPagePage extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -923,14 +1007,23 @@ export interface ApiTagTag extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::tag.tag',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::tag.tag',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
 
-export interface ApiTestimonialTestimonial extends Schema.CollectionType {
+export interface ApiTestimonialTestimonial
+  extends Schema.CollectionType {
   collectionName: 'testimonials';
   info: {
     singularName: 'testimonial';
@@ -990,6 +1083,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::ingredient.ingredient': ApiIngredientIngredient;
+      'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
       'api::tag.tag': ApiTagTag;

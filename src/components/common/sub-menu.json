@@ -1,15 +1,16 @@
 {
   "collectionName": "components_common_sub_menus",
   "info": {
-    "displayName": "Sub Menu"
+    "displayName": "Sub Menu",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "subMenuTitle": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "subMenuLink": {
+    "slug": {
       "type": "string",
       "required": true
     }

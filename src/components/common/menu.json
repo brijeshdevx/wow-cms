@@ -7,14 +7,14 @@
   },
   "options": {},
   "attributes": {
-    "menuTitle": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "menuLink": {
+    "slug": {
       "type": "string"
     },
-    "subMenuTitle": {
+    "subMenu": {
       "displayName": "Sub Menu",
       "type": "component",
       "repeatable": true,

@@ -18,7 +18,7 @@
     },
     "startTime": {
       "type": "datetime",
-      "required": true
+      "required": false
     },
     "endTime": {
       "type": "datetime",
