@@ -826,6 +826,49 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media & Attribute.Required;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    copyrightText: Attribute.String;
+    collectionMenus: Attribute.Component<'common.menu', true>;
+    socialLinks: Attribute.Component<'elements.image-link', true>;
+    otherLinks: Attribute.Component<'common.menu', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiIngredientIngredient
   extends Schema.CollectionType {
   collectionName: 'ingredients';
@@ -877,11 +920,12 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    menu: Attribute.Component<'common.menu', true> &
+    collectionMenus: Attribute.Component<'common.menu', true> &
       Attribute.Required;
     logo: Attribute.Media & Attribute.Required;
     VIPMembershipLogo: Attribute.Media;
     mWebMenuLogo: Attribute.Media & Attribute.Required;
+    otherLinks: Attribute.Component<'common.menu', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1042,6 +1086,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::footer.footer': ApiFooterFooter;
       'api::ingredient.ingredient': ApiIngredientIngredient;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;

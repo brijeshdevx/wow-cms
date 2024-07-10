@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_text_links",
+  "info": {
+    "displayName": "Text Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

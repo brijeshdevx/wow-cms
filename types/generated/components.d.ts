@@ -207,30 +207,53 @@ export interface ElementsButton extends Schema.Component {
   };
 }
 
-export interface HeadAccordion extends Schema.Component {
-  collectionName: 'components_head_accordions';
+export interface ElementsImageLink extends Schema.Component {
+  collectionName: 'components_elements_image_links';
   info: {
-    displayName: 'Accordion';
-    icon: 'plus';
+    displayName: 'Image Link';
     description: '';
   };
   attributes: {
-    subMenuTitle: Attribute.String & Attribute.Required;
-    subMenuLink: Attribute.String & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    title: Attribute.String;
   };
 }
 
-export interface HeadMenuItems extends Schema.Component {
-  collectionName: 'components_head_menu_items';
+export interface ElementsImageSlug extends Schema.Component {
+  collectionName: 'components_elements_image_slugs';
   info: {
-    displayName: 'Menu Items';
-    icon: 'bulletList';
+    displayName: 'Image Slug';
     description: '';
   };
   attributes: {
-    menuTitle: Attribute.String & Attribute.Required;
-    menuLink: Attribute.String & Attribute.Required;
-    subMenu: Attribute.Component<'head.accordion', true>;
+    slug: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    title: Attribute.String;
+  };
+}
+
+export interface ElementsTextLink extends Schema.Component {
+  collectionName: 'components_elements_text_links';
+  info: {
+    displayName: 'Text Link';
+    description: '';
+  };
+  attributes: {
+    link: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsTextSlug extends Schema.Component {
+  collectionName: 'components_elements_text_slugs';
+  info: {
+    displayName: 'Text Slug';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.String & Attribute.Required;
   };
 }
 
@@ -301,8 +324,10 @@ declare module '@strapi/types' {
       'common.sub-menu': CommonSubMenu;
       'common.wow-benefits': CommonWowBenefits;
       'elements.button': ElementsButton;
-      'head.accordion': HeadAccordion;
-      'head.menu-items': HeadMenuItems;
+      'elements.image-link': ElementsImageLink;
+      'elements.image-slug': ElementsImageSlug;
+      'elements.text-link': ElementsTextLink;
+      'elements.text-slug': ElementsTextSlug;
       'testimonials.concern': TestimonialsConcern;
       'testimonials.testimonial-list': TestimonialsTestimonialList;
       'testimonials.testimonial': TestimonialsTestimonial;

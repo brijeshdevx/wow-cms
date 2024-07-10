@@ -1,17 +1,16 @@
 {
-  "collectionName": "components_head_accordions",
+  "collectionName": "components_elements_text_slugs",
   "info": {
-    "displayName": "Accordion",
-    "icon": "plus",
+    "displayName": "Text Slug",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "subMenuTitle": {
+    "title": {
       "type": "string",
       "required": true
     },
-    "subMenuLink": {
+    "slug": {
       "type": "string",
       "required": true
     }

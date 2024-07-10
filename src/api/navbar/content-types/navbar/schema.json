@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "menu": {
+    "collectionMenus": {
       "type": "component",
       "repeatable": true,
       "component": "common.menu",
@@ -41,6 +41,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "otherLinks": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.menu"
     }
   }
 }
