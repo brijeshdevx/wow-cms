@@ -1,38 +1,102 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
-export interface CarouselHeroSection extends Schema.Component {
-  collectionName: 'components_carousel_hero_sections';
+export interface BannerBanners extends Schema.Component {
+  collectionName: 'components_banner_banners';
   info: {
-    displayName: 'Hero Section';
-    icon: 'play';
+    displayName: 'Banners';
   };
   attributes: {
-    banner: Attribute.Component<'common.banner', true>;
+    banners: Attribute.Component<
+      'elements.responsive-image-link',
+      true
+    >;
   };
 }
 
-export interface CarouselMiniBanners extends Schema.Component {
-  collectionName: 'components_carousel_mini_banners';
+export interface BannerCarousal extends Schema.Component {
+  collectionName: 'components_banner_carousals';
   info: {
-    displayName: 'Mini Banners';
-    icon: 'discuss';
-  };
-  attributes: {
-    banner: Attribute.Component<'common.banner', true>;
-  };
-}
-
-export interface CommonBanner extends Schema.Component {
-  collectionName: 'components_carousel_banners';
-  info: {
-    displayName: 'Banner';
+    displayName: 'Carousal';
     description: '';
-    icon: 'landscape';
   };
   attributes: {
-    webImage: Attribute.Media & Attribute.Required;
-    cta: Attribute.String;
-    mWebImage: Attribute.Media & Attribute.Required;
+    carousalBanners: Attribute.Component<
+      'elements.responsive-image-link',
+      true
+    > &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 2;
+        },
+        number
+      >;
+    autoPlay: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    autoPlayInterval: Attribute.Integer &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<2000>;
+    stopOnInteraction: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+  };
+}
+
+export interface CategoriesCategoriesByIngredients
+  extends Schema.Component {
+  collectionName: 'components_common_categories_by_ingredients';
+  info: {
+    displayName: 'Categories By Ingredients';
+    icon: 'layer';
+    description: '';
+  };
+  attributes: {
+    ingredientCategoryItems: Attribute.Component<
+      'elements.image-slug',
+      true
+    >;
+    title: Attribute.String;
+  };
+}
+
+export interface CategoriesFeaturedCategories
+  extends Schema.Component {
+  collectionName: 'components_categories_featured_categories';
+  info: {
+    displayName: 'Featured Categories';
+    description: '';
+  };
+  attributes: {
+    categoryTitle: Attribute.String & Attribute.Required;
+    featureCategoryType: Attribute.Enumeration<
+      ['Small', 'Medium', 'Large']
+    >;
+    featureCategoryItems: Attribute.Component<
+      'elements.image-slug',
+      true
+    >;
+  };
+}
+
+export interface CategoriesTrendingCategories
+  extends Schema.Component {
+  collectionName: 'components_categories_trending_categories';
+  info: {
+    displayName: 'Trending Categories';
+    icon: 'database';
+    description: '';
+  };
+  attributes: {
+    trendingCategoryItems: Attribute.Component<
+      'elements.image-slug',
+      true
+    >;
   };
 }
 
@@ -46,40 +110,6 @@ export interface CommonBenefit extends Schema.Component {
   attributes: {
     image: Attribute.Media & Attribute.Required;
     caption: Attribute.String;
-  };
-}
-
-export interface CommonCollectionItem extends Schema.Component {
-  collectionName: 'components_common_collection_items';
-  info: {
-    displayName: 'Collection Item';
-    icon: 'server';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    image: Attribute.Media;
-    bgColor: Attribute.String;
-  };
-}
-
-export interface CommonCollectionList extends Schema.Component {
-  collectionName: 'components_common_collection_lists';
-  info: {
-    displayName: 'Collection List';
-    icon: 'stack';
-  };
-  attributes: {
-    CollectionItem: Attribute.Component<
-      'common.collection-item',
-      true
-    >;
-    title: Attribute.String & Attribute.Required;
-    CollectionType: Attribute.Enumeration<
-      ['Small', 'Medium', 'Large']
-    > &
-      Attribute.Required;
   };
 }
 
@@ -148,7 +178,7 @@ export interface CommonMenu extends Schema.Component {
   attributes: {
     title: Attribute.String & Attribute.Required;
     slug: Attribute.String;
-    subMenu: Attribute.Component<'common.sub-menu', true>;
+    subMenu: Attribute.Component<'elements.text-slug', true>;
   };
 }
 
@@ -167,18 +197,6 @@ export interface CommonProductsByTags extends Schema.Component {
     >;
     title: Attribute.String;
     button: Attribute.Component<'elements.button'>;
-  };
-}
-
-export interface CommonSubMenu extends Schema.Component {
-  collectionName: 'components_common_sub_menus';
-  info: {
-    displayName: 'Sub Menu';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    slug: Attribute.String & Attribute.Required;
   };
 }
 
@@ -229,6 +247,23 @@ export interface ElementsImageSlug extends Schema.Component {
   attributes: {
     slug: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
+    title: Attribute.String;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
+export interface ElementsResponsiveImageLink
+  extends Schema.Component {
+  collectionName: 'components_elements_responsive_image_links';
+  info: {
+    displayName: 'Responsive Image Link';
+    description: '';
+  };
+  attributes: {
+    webImage: Attribute.Media & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    mWebImage: Attribute.Media & Attribute.Required;
     title: Attribute.String;
   };
 }
@@ -310,22 +345,22 @@ export interface TestimonialsTestimonial extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
-      'carousel.hero-section': CarouselHeroSection;
-      'carousel.mini-banners': CarouselMiniBanners;
-      'common.banner': CommonBanner;
+      'banner.banners': BannerBanners;
+      'banner.carousal': BannerCarousal;
+      'categories.categories-by-ingredients': CategoriesCategoriesByIngredients;
+      'categories.featured-categories': CategoriesFeaturedCategories;
+      'categories.trending-categories': CategoriesTrendingCategories;
       'common.benefit': CommonBenefit;
-      'common.collection-item': CommonCollectionItem;
-      'common.collection-list': CommonCollectionList;
       'common.countdown-timer': CommonCountdownTimer;
       'common.featured-products': CommonFeaturedProducts;
       'common.main-announcement': CommonMainAnnouncement;
       'common.menu': CommonMenu;
       'common.products-by-tags': CommonProductsByTags;
-      'common.sub-menu': CommonSubMenu;
       'common.wow-benefits': CommonWowBenefits;
       'elements.button': ElementsButton;
       'elements.image-link': ElementsImageLink;
       'elements.image-slug': ElementsImageSlug;
+      'elements.responsive-image-link': ElementsResponsiveImageLink;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;
       'testimonials.concern': TestimonialsConcern;

@@ -1,9 +1,8 @@
 {
-  "collectionName": "components_carousel_banners",
+  "collectionName": "components_elements_responsive_image_links",
   "info": {
-    "displayName": "Banner",
-    "description": "",
-    "icon": "landscape"
+    "displayName": "Responsive Image Link",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,8 +14,10 @@
         "images"
       ]
     },
-    "cta": {
-      "type": "string"
+    "link": {
+      "type": "string",
+      "required": true,
+      "regex": "^https?:\\/\\/.*$"
     },
     "mWebImage": {
       "type": "media",
@@ -25,6 +26,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

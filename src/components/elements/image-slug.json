@@ -8,7 +8,8 @@
   "attributes": {
     "slug": {
       "type": "string",
-      "required": true
+      "required": true,
+      "regex": "^[\\w\\s#-]+$"
     },
     "image": {
       "type": "media",
@@ -20,6 +21,11 @@
     },
     "title": {
       "type": "string"
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
     }
   }
 }

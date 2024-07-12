@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "collectionMenus": {
+    "menus": {
       "type": "component",
       "repeatable": true,
       "component": "common.menu",
@@ -45,7 +45,7 @@
     "otherLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "common.menu"
+      "component": "elements.text-link"
     }
   }
 }

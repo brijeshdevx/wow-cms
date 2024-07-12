@@ -848,7 +848,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
         }
       >;
     copyrightText: Attribute.String;
-    collectionMenus: Attribute.Component<'common.menu', true>;
+    menus: Attribute.Component<'common.menu', true>;
     socialLinks: Attribute.Component<'elements.image-link', true>;
     otherLinks: Attribute.Component<'common.menu', true>;
     createdAt: Attribute.DateTime;
@@ -908,6 +908,47 @@ export interface ApiIngredientIngredient
   };
 }
 
+export interface ApiLandingPageLandingPage extends Schema.SingleType {
+  collectionName: 'landing_pages';
+  info: {
+    singularName: 'landing-page';
+    pluralName: 'landing-pages';
+    displayName: 'Landing Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    blocks: Attribute.DynamicZone<
+      [
+        'banner.banners',
+        'banner.carousal',
+        'common.wow-benefits',
+        'categories.categories-by-ingredients',
+        'categories.featured-categories',
+        'categories.trending-categories'
+      ]
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::landing-page.landing-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavbarNavbar extends Schema.SingleType {
   collectionName: 'navbars';
   info: {
@@ -920,12 +961,12 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    collectionMenus: Attribute.Component<'common.menu', true> &
+    menus: Attribute.Component<'common.menu', true> &
       Attribute.Required;
     logo: Attribute.Media & Attribute.Required;
     VIPMembershipLogo: Attribute.Media;
     mWebMenuLogo: Attribute.Media & Attribute.Required;
-    otherLinks: Attribute.Component<'common.menu', true>;
+    otherLinks: Attribute.Component<'elements.text-link', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -937,53 +978,6 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::navbar.navbar',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiPagePage extends Schema.CollectionType {
-  collectionName: 'pages';
-  info: {
-    singularName: 'page';
-    pluralName: 'pages';
-    displayName: 'Pages';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    pageType: Attribute.Enumeration<
-      ['Landing', 'Collection', 'Product']
-    >;
-    blocks: Attribute.DynamicZone<
-      [
-        'carousel.hero-section',
-        'common.wow-benefits',
-        'common.featured-products',
-        'common.products-by-tags',
-        'common.banner',
-        'common.collection-list',
-        'common.main-announcement',
-        'carousel.mini-banners',
-        'testimonials.testimonial-list'
-      ]
-    >;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::page.page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::page.page',
       'oneToOne',
       'admin::user'
     > &
@@ -1014,6 +1008,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'manyToMany',
       'api::ingredient.ingredient'
     >;
+    product_benefits: Attribute.Relation<
+      'api::product.product',
+      'manyToMany',
+      'api::product-benefit.product-benefit'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1025,6 +1024,42 @@ export interface ApiProductProduct extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::product.product',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiProductBenefitProductBenefit
+  extends Schema.CollectionType {
+  collectionName: 'product_benefits';
+  info: {
+    singularName: 'product-benefit';
+    pluralName: 'product-benefits';
+    displayName: 'Product Benefits';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    products: Attribute.Relation<
+      'api::product-benefit.product-benefit',
+      'manyToMany',
+      'api::product.product'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::product-benefit.product-benefit',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::product-benefit.product-benefit',
       'oneToOne',
       'admin::user'
     > &
@@ -1088,9 +1123,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::footer.footer': ApiFooterFooter;
       'api::ingredient.ingredient': ApiIngredientIngredient;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::navbar.navbar': ApiNavbarNavbar;
-      'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
+      'api::product-benefit.product-benefit': ApiProductBenefitProductBenefit;
       'api::tag.tag': ApiTagTag;
     }
   }

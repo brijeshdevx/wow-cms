@@ -28,6 +28,12 @@
       "relation": "manyToMany",
       "target": "api::ingredient.ingredient",
       "inversedBy": "products"
+    },
+    "product_benefits": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::product-benefit.product-benefit",
+      "inversedBy": "products"
     }
   }
 }

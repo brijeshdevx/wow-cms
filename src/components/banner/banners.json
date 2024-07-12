@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_banner_banners",
+  "info": {
+    "displayName": "Banners"
+  },
+  "options": {},
+  "attributes": {
+    "banners": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.responsive-image-link"
+    }
+  }
+}

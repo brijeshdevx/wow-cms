@@ -12,13 +12,13 @@
       "required": true
     },
     "slug": {
-      "type": "string"
+      "type": "string",
+      "regex": "^[\\w\\s#-]+$"
     },
     "subMenu": {
-      "displayName": "Sub Menu",
       "type": "component",
       "repeatable": true,
-      "component": "common.sub-menu"
+      "component": "elements.text-slug"
     }
   }
 }

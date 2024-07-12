@@ -12,7 +12,8 @@
     },
     "slug": {
       "type": "string",
-      "required": true
+      "required": true,
+      "regex": "^[\\w\\s#-]+$"
     }
   }
 }
