@@ -1,15 +1,15 @@
 {
-  "collectionName": "components_banner_banners",
+  "collectionName": "components_blocks_wow_benefits",
   "info": {
-    "displayName": "Banners",
+    "displayName": "WOW Benefits",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "banners": {
+    "benefits": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.responsive-image-link",
+      "component": "elements.image-text",
       "required": true
     }
   }

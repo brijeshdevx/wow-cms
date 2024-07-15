@@ -4,12 +4,14 @@ export interface BannerBanners extends Schema.Component {
   collectionName: 'components_banner_banners';
   info: {
     displayName: 'Banners';
+    description: '';
   };
   attributes: {
     banners: Attribute.Component<
       'elements.responsive-image-link',
       true
-    >;
+    > &
+      Attribute.Required;
   };
 }
 
@@ -48,6 +50,18 @@ export interface BannerCarousal extends Schema.Component {
   };
 }
 
+export interface BlocksWowBenefits extends Schema.Component {
+  collectionName: 'components_blocks_wow_benefits';
+  info: {
+    displayName: 'WOW Benefits';
+    description: '';
+  };
+  attributes: {
+    benefits: Attribute.Component<'elements.image-text', true> &
+      Attribute.Required;
+  };
+}
+
 export interface CategoriesCategoriesByIngredients
   extends Schema.Component {
   collectionName: 'components_common_categories_by_ingredients';
@@ -61,7 +75,7 @@ export interface CategoriesCategoriesByIngredients
       'elements.image-slug',
       true
     >;
-    title: Attribute.String;
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -97,19 +111,6 @@ export interface CategoriesTrendingCategories
       'elements.image-slug',
       true
     >;
-  };
-}
-
-export interface CommonBenefit extends Schema.Component {
-  collectionName: 'components_common_benefits';
-  info: {
-    displayName: 'Benefit';
-    icon: 'feather';
-    description: '';
-  };
-  attributes: {
-    image: Attribute.Media & Attribute.Required;
-    caption: Attribute.String;
   };
 }
 
@@ -200,18 +201,6 @@ export interface CommonProductsByTags extends Schema.Component {
   };
 }
 
-export interface CommonWowBenefits extends Schema.Component {
-  collectionName: 'components_common_wow_benefits';
-  info: {
-    displayName: 'Wow Benefits';
-    icon: 'television';
-  };
-  attributes: {
-    benefit: Attribute.Component<'common.benefit', true> &
-      Attribute.Required;
-  };
-}
-
 export interface ElementsButton extends Schema.Component {
   collectionName: 'components_elements_buttons';
   info: {
@@ -248,8 +237,33 @@ export interface ElementsImageSlug extends Schema.Component {
     slug: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
     title: Attribute.String;
-    bgColor: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
+  };
+}
+
+export interface ElementsImageText extends Schema.Component {
+  collectionName: 'components_elements_image_texts';
+  info: {
+    displayName: 'Image Text';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    text: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    subText: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
   };
 }
 
@@ -347,19 +361,19 @@ declare module '@strapi/types' {
     export interface Components {
       'banner.banners': BannerBanners;
       'banner.carousal': BannerCarousal;
+      'blocks.wow-benefits': BlocksWowBenefits;
       'categories.categories-by-ingredients': CategoriesCategoriesByIngredients;
       'categories.featured-categories': CategoriesFeaturedCategories;
       'categories.trending-categories': CategoriesTrendingCategories;
-      'common.benefit': CommonBenefit;
       'common.countdown-timer': CommonCountdownTimer;
       'common.featured-products': CommonFeaturedProducts;
       'common.main-announcement': CommonMainAnnouncement;
       'common.menu': CommonMenu;
       'common.products-by-tags': CommonProductsByTags;
-      'common.wow-benefits': CommonWowBenefits;
       'elements.button': ElementsButton;
       'elements.image-link': ElementsImageLink;
       'elements.image-slug': ElementsImageSlug;
+      'elements.image-text': ElementsImageText;
       'elements.responsive-image-link': ElementsResponsiveImageLink;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;

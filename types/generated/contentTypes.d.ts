@@ -882,11 +882,6 @@ export interface ApiIngredientIngredient
     draftAndPublish: true;
   };
   attributes: {
-    products: Attribute.Relation<
-      'api::ingredient.ingredient',
-      'manyToMany',
-      'api::product.product'
-    >;
     title: Attribute.String & Attribute.Unique;
     description: Attribute.String;
     image: Attribute.Media;
@@ -924,10 +919,10 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
       [
         'banner.banners',
         'banner.carousal',
-        'common.wow-benefits',
         'categories.categories-by-ingredients',
         'categories.featured-categories',
-        'categories.trending-categories'
+        'categories.trending-categories',
+        'blocks.wow-benefits'
       ]
     > &
       Attribute.Required;
@@ -998,21 +993,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    tags: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::tag.tag'
-    >;
-    ingredients: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::ingredient.ingredient'
-    >;
-    product_benefits: Attribute.Relation<
-      'api::product.product',
-      'manyToMany',
-      'api::product-benefit.product-benefit'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1044,11 +1024,6 @@ export interface ApiProductBenefitProductBenefit
   };
   attributes: {
     title: Attribute.String;
-    products: Attribute.Relation<
-      'api::product-benefit.product-benefit',
-      'manyToMany',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1080,11 +1055,6 @@ export interface ApiTagTag extends Schema.CollectionType {
   };
   attributes: {
     title: Attribute.String & Attribute.Required & Attribute.Unique;
-    products: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::product.product'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

@@ -13,7 +13,8 @@
       "component": "elements.image-slug"
     },
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

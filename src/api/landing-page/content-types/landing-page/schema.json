@@ -17,10 +17,10 @@
       "components": [
         "banner.banners",
         "banner.carousal",
-        "common.wow-benefits",
         "categories.categories-by-ingredients",
         "categories.featured-categories",
-        "categories.trending-categories"
+        "categories.trending-categories",
+        "blocks.wow-benefits"
       ],
       "required": true
     }

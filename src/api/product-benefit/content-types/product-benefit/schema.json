@@ -13,12 +13,6 @@
   "attributes": {
     "title": {
       "type": "string"
-    },
-    "products": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::product.product",
-      "mappedBy": "product_benefits"
     }
   }
 }
