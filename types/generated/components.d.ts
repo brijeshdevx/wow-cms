@@ -50,6 +50,21 @@ export interface BannerCarousal extends Schema.Component {
   };
 }
 
+export interface BlocksProductRoutine extends Schema.Component {
+  collectionName: 'components_blocks_product_routines';
+  info: {
+    displayName: 'Product Routine';
+  };
+  attributes: {
+    title: Attribute.String;
+    productRoutineCard: Attribute.Component<
+      'cards.extended-product-card',
+      true
+    > &
+      Attribute.Required;
+  };
+}
+
 export interface BlocksWowBenefits extends Schema.Component {
   collectionName: 'components_blocks_wow_benefits';
   info: {
@@ -59,23 +74,39 @@ export interface BlocksWowBenefits extends Schema.Component {
   attributes: {
     benefits: Attribute.Component<'elements.image-text', true> &
       Attribute.Required;
+    isWebHorizontal: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
-export interface CategoriesCategoriesByIngredients
-  extends Schema.Component {
-  collectionName: 'components_common_categories_by_ingredients';
+export interface CardsExtendedProductCard extends Schema.Component {
+  collectionName: 'components_cards_extended_product_cards';
   info: {
-    displayName: 'Categories By Ingredients';
-    icon: 'layer';
-    description: '';
+    displayName: 'Extended Product Card';
   };
   attributes: {
-    ingredientCategoryItems: Attribute.Component<
-      'elements.image-slug',
-      true
+    slug: Attribute.Relation<
+      'cards.extended-product-card',
+      'oneToOne',
+      'api::product.product'
     >;
-    title: Attribute.String & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.String;
+  };
+}
+
+export interface CardsProductCard extends Schema.Component {
+  collectionName: 'components_cards_product_cards';
+  info: {
+    displayName: 'Product Card';
+  };
+  attributes: {
+    slug: Attribute.Relation<
+      'cards.product-card',
+      'oneToOne',
+      'api::product.product'
+    >;
   };
 }
 
@@ -87,14 +118,30 @@ export interface CategoriesFeaturedCategories
     description: '';
   };
   attributes: {
-    categoryTitle: Attribute.String & Attribute.Required;
-    featureCategoryType: Attribute.Enumeration<
-      ['Small', 'Medium', 'Large']
-    >;
-    featureCategoryItems: Attribute.Component<
+    title: Attribute.String;
+    type: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+      Attribute.Required;
+    featuredCategoryItems: Attribute.Component<
       'elements.image-slug',
       true
-    >;
+    > &
+      Attribute.Required;
+  };
+}
+
+export interface CategoriesIngredientCategories
+  extends Schema.Component {
+  collectionName: 'components_categories_ingredient_categories';
+  info: {
+    displayName: 'Ingredient Categories';
+  };
+  attributes: {
+    title: Attribute.String;
+    ingredientCategoryItems: Attribute.Component<
+      'elements.image-slug',
+      true
+    > &
+      Attribute.Required;
   };
 }
 
@@ -103,14 +150,13 @@ export interface CategoriesTrendingCategories
   collectionName: 'components_categories_trending_categories';
   info: {
     displayName: 'Trending Categories';
-    icon: 'database';
-    description: '';
   };
   attributes: {
     trendingCategoryItems: Attribute.Component<
       'elements.image-slug',
       true
-    >;
+    > &
+      Attribute.Required;
   };
 }
 
@@ -356,9 +402,12 @@ declare module '@strapi/types' {
     export interface Components {
       'banner.banners': BannerBanners;
       'banner.carousal': BannerCarousal;
+      'blocks.product-routine': BlocksProductRoutine;
       'blocks.wow-benefits': BlocksWowBenefits;
-      'categories.categories-by-ingredients': CategoriesCategoriesByIngredients;
+      'cards.extended-product-card': CardsExtendedProductCard;
+      'cards.product-card': CardsProductCard;
       'categories.featured-categories': CategoriesFeaturedCategories;
+      'categories.ingredient-categories': CategoriesIngredientCategories;
       'categories.trending-categories': CategoriesTrendingCategories;
       'common.countdown-timer': CommonCountdownTimer;
       'common.featured-products': CommonFeaturedProducts;

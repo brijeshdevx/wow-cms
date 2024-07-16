@@ -6,22 +6,23 @@
   },
   "options": {},
   "attributes": {
-    "categoryTitle": {
-      "type": "string",
-      "required": true
+    "title": {
+      "type": "string"
     },
-    "featureCategoryType": {
+    "type": {
       "type": "enumeration",
       "enum": [
         "Small",
         "Medium",
         "Large"
-      ]
+      ],
+      "required": true
     },
-    "featureCategoryItems": {
+    "featuredCategoryItems": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.image-slug"
+      "component": "elements.image-slug",
+      "required": true
     }
   }
 }

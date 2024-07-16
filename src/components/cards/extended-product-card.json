@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_cards_extended_product_cards",
+  "info": {
+    "displayName": "Extended Product Card"
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "subText": {
+      "type": "string"
+    }
+  }
+}

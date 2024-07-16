@@ -1,16 +1,15 @@
 {
   "collectionName": "components_categories_trending_categories",
   "info": {
-    "displayName": "Trending Categories",
-    "icon": "database",
-    "description": ""
+    "displayName": "Trending Categories"
   },
   "options": {},
   "attributes": {
     "trendingCategoryItems": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.image-slug"
+      "component": "elements.image-slug",
+      "required": true
     }
   }
 }

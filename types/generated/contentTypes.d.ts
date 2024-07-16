@@ -885,10 +885,10 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
       [
         'banner.banners',
         'banner.carousal',
-        'categories.categories-by-ingredients',
+        'blocks.wow-benefits',
         'categories.featured-categories',
-        'categories.trending-categories',
-        'blocks.wow-benefits'
+        'categories.ingredient-categories',
+        'categories.trending-categories'
       ]
     > &
       Attribute.Required;

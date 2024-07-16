@@ -11,6 +11,11 @@
       "repeatable": true,
       "component": "elements.image-text",
       "required": true
+    },
+    "isWebHorizontal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }
