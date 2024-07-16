@@ -1,5 +1,73 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface AccordionDescriptionSection
+  extends Schema.Component {
+  collectionName: 'components_accordion_description_sections';
+  info: {
+    displayName: 'Description Section';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    description: Attribute.Text & Attribute.Required;
+  };
+}
+
+export interface AccordionFaQsSection extends Schema.Component {
+  collectionName: 'components_accordion_fa_qs_sections';
+  info: {
+    displayName: 'FAQs Section';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    FAQs: Attribute.Component<'accordion.faq', true>;
+  };
+}
+
+export interface AccordionFaq extends Schema.Component {
+  collectionName: 'components_accordion_faqs';
+  info: {
+    displayName: 'FAQ';
+  };
+  attributes: {
+    question: Attribute.String & Attribute.Required;
+    answer: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface AccordionIngredientsSection
+  extends Schema.Component {
+  collectionName: 'components_accordion_ingredients_sections';
+  info: {
+    displayName: 'Ingredients Section';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    ingredientItems: Attribute.Relation<
+      'accordion.ingredients-section',
+      'oneToMany',
+      'api::ingredient-type.ingredient-type'
+    >;
+  };
+}
+
+export interface AccordionUsageInstructionsSection
+  extends Schema.Component {
+  collectionName: 'components_accordion_usage_instructions_sections';
+  info: {
+    displayName: 'Usage Instructions Section';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media;
+    instructions: Attribute.Component<'elements.text', true>;
+  };
+}
+
 export interface BannerBanners extends Schema.Component {
   collectionName: 'components_banner_banners';
   info: {
@@ -47,6 +115,28 @@ export interface BannerCarousal extends Schema.Component {
     stopOnInteraction: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
+  };
+}
+
+export interface BlocksContentOverview extends Schema.Component {
+  collectionName: 'components_blocks_content_overviews';
+  info: {
+    displayName: 'Content Overview';
+  };
+  attributes: {
+    descriptionSection: Attribute.Component<
+      'accordion.description-section',
+      true
+    >;
+    ingredientsSection: Attribute.Component<
+      'accordion.ingredients-section',
+      true
+    >;
+    usageInstructionsSection: Attribute.Component<
+      'accordion.usage-instructions-section',
+      true
+    >;
+    faqsSection: Attribute.Component<'accordion.fa-qs-section', true>;
   };
 }
 
@@ -347,6 +437,18 @@ export interface ElementsTextSlug extends Schema.Component {
   };
 }
 
+export interface ElementsText extends Schema.Component {
+  collectionName: 'components_elements_texts';
+  info: {
+    displayName: 'Text';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.String;
+  };
+}
+
 export interface TestimonialsConcern extends Schema.Component {
   collectionName: 'components_common_concerns';
   info: {
@@ -400,8 +502,14 @@ export interface TestimonialsTestimonial extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'accordion.description-section': AccordionDescriptionSection;
+      'accordion.fa-qs-section': AccordionFaQsSection;
+      'accordion.faq': AccordionFaq;
+      'accordion.ingredients-section': AccordionIngredientsSection;
+      'accordion.usage-instructions-section': AccordionUsageInstructionsSection;
       'banner.banners': BannerBanners;
       'banner.carousal': BannerCarousal;
+      'blocks.content-overview': BlocksContentOverview;
       'blocks.product-routine': BlocksProductRoutine;
       'blocks.wow-benefits': BlocksWowBenefits;
       'cards.extended-product-card': CardsExtendedProductCard;
@@ -421,6 +529,7 @@ declare module '@strapi/types' {
       'elements.responsive-image-link': ElementsResponsiveImageLink;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;
+      'elements.text': ElementsText;
       'testimonials.concern': TestimonialsConcern;
       'testimonials.testimonial-list': TestimonialsTestimonialList;
       'testimonials.testimonial': TestimonialsTestimonial;

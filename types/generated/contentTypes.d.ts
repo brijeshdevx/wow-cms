@@ -869,6 +869,39 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
+export interface ApiIngredientTypeIngredientType
+  extends Schema.CollectionType {
+  collectionName: 'ingredient_types';
+  info: {
+    singularName: 'ingredient-type';
+    pluralName: 'ingredient-types';
+    displayName: 'Ingredient Types';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ingredient-type.ingredient-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ingredient-type.ingredient-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLandingPageLandingPage extends Schema.SingleType {
   collectionName: 'landing_pages';
   info: {
@@ -1068,6 +1101,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::footer.footer': ApiFooterFooter;
+      'api::ingredient-type.ingredient-type': ApiIngredientTypeIngredientType;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::product.product': ApiProductProduct;
