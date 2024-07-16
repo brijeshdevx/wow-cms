@@ -7,11 +7,6 @@
   },
   "options": {},
   "attributes": {
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
     "title": {
       "type": "string"
     },

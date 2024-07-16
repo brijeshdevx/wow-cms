@@ -16,6 +16,16 @@
       "type": "string",
       "required": true,
       "unique": true
+    },
+    "promotionTag": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::promotion-tag.promotion-tag"
+    },
+    "productBenefitTags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-benefit-tag.product-benefit-tag"
     }
   }
 }

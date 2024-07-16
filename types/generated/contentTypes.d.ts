@@ -869,40 +869,6 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
-export interface ApiIngredientIngredient
-  extends Schema.CollectionType {
-  collectionName: 'ingredients';
-  info: {
-    singularName: 'ingredient';
-    pluralName: 'ingredients';
-    displayName: 'Ingredients';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Unique;
-    description: Attribute.String;
-    image: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::ingredient.ingredient',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::ingredient.ingredient',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiLandingPageLandingPage extends Schema.SingleType {
   collectionName: 'landing_pages';
   info: {
@@ -993,6 +959,16 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
   attributes: {
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    promotionTag: Attribute.Relation<
+      'api::product.product',
+      'oneToOne',
+      'api::promotion-tag.promotion-tag'
+    >;
+    productBenefitTags: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-benefit-tag.product-benefit-tag'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1011,30 +987,30 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
-export interface ApiProductBenefitProductBenefit
+export interface ApiProductBenefitTagProductBenefitTag
   extends Schema.CollectionType {
-  collectionName: 'product_benefits';
+  collectionName: 'product_benefit_tags';
   info: {
-    singularName: 'product-benefit';
-    pluralName: 'product-benefits';
-    displayName: 'Product Benefits';
+    singularName: 'product-benefit-tag';
+    pluralName: 'product-benefit-tags';
+    displayName: 'Product Benefit Tags';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    tag: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::product-benefit.product-benefit',
+      'api::product-benefit-tag.product-benefit-tag',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::product-benefit.product-benefit',
+      'api::product-benefit-tag.product-benefit-tag',
       'oneToOne',
       'admin::user'
     > &
@@ -1042,30 +1018,30 @@ export interface ApiProductBenefitProductBenefit
   };
 }
 
-export interface ApiTagTag extends Schema.CollectionType {
-  collectionName: 'tags';
+export interface ApiPromotionTagPromotionTag
+  extends Schema.CollectionType {
+  collectionName: 'promotion_tags';
   info: {
-    singularName: 'tag';
-    pluralName: 'tags';
-    displayName: 'Tags';
-    description: '';
+    singularName: 'promotion-tag';
+    pluralName: 'promotion-tags';
+    displayName: 'Promotion Tags';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    tag: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::tag.tag',
+      'api::promotion-tag.promotion-tag',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::tag.tag',
+      'api::promotion-tag.promotion-tag',
       'oneToOne',
       'admin::user'
     > &
@@ -1092,12 +1068,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::footer.footer': ApiFooterFooter;
-      'api::ingredient.ingredient': ApiIngredientIngredient;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::product.product': ApiProductProduct;
-      'api::product-benefit.product-benefit': ApiProductBenefitProductBenefit;
-      'api::tag.tag': ApiTagTag;
+      'api::product-benefit-tag.product-benefit-tag': ApiProductBenefitTagProductBenefitTag;
+      'api::promotion-tag.promotion-tag': ApiPromotionTagPromotionTag;
     }
   }
 }

@@ -191,11 +191,6 @@ export interface CommonProductsByTags extends Schema.Component {
     description: '';
   };
   attributes: {
-    tags: Attribute.Relation<
-      'common.products-by-tags',
-      'oneToMany',
-      'api::tag.tag'
-    >;
     title: Attribute.String;
     button: Attribute.Component<'elements.button'>;
   };
