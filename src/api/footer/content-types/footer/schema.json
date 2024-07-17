@@ -45,7 +45,7 @@
     "otherLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "common.menu-link"
+      "component": "common.menu-slug"
     }
   }
 }

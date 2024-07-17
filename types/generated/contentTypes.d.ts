@@ -984,7 +984,7 @@ export interface ApiFooterFooter extends Schema.SingleType {
     copyrightText: Attribute.String;
     socialLinks: Attribute.Component<'elements.image-link', true>;
     menus: Attribute.Component<'common.menu-slug', true>;
-    otherLinks: Attribute.Component<'common.menu-link', true>;
+    otherLinks: Attribute.Component<'common.menu-slug', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
