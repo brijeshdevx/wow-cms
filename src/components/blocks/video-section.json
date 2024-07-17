@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_blocks_video_sections",
+  "info": {
+    "displayName": "Video Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "videoItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.video",
+      "required": true
+    },
+    "title": {
+      "type": "string"
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "White",
+        "Lime"
+      ],
+      "default": "White",
+      "required": true
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "Small",
+        "Medium",
+        "Large"
+      ],
+      "default": "Small",
+      "required": true,
+      "enumName": "shape"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button-link"
+    }
+  }
+}

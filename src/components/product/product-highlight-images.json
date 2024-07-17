@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_product_product_highlight_images",
+  "info": {
+    "displayName": "Product Highlight Images"
+  },
+  "options": {},
+  "attributes": {
+    "images": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.responsive-image",
+      "required": true
+    }
+  }
+}

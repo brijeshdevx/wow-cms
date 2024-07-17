@@ -41,9 +41,8 @@
     },
     "product": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::product.product",
-      "inversedBy": "testimonials"
+      "relation": "oneToOne",
+      "target": "api::product.product"
     },
     "concerns": {
       "type": "component",

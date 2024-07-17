@@ -1,11 +1,12 @@
 {
   "collectionName": "components_cards_extended_product_cards",
   "info": {
-    "displayName": "Extended Product Card"
+    "displayName": "Extended Product Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "slug": {
+    "product": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product.product"

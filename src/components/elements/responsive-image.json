@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_elements_responsive_images",
+  "info": {
+    "displayName": "Responsive Image"
+  },
+  "options": {},
+  "attributes": {
+    "webImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "mWebImage": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_blocks_breadcrumbs",
+  "info": {
+    "displayName": "Breadcrumb",
+    "icon": "hashtag"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

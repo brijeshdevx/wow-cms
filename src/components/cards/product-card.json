@@ -1,11 +1,12 @@
 {
   "collectionName": "components_cards_product_cards",
   "info": {
-    "displayName": "Product Card"
+    "displayName": "Product Card",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "slug": {
+    "product": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product.product"

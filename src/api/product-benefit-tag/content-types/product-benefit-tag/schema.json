@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product-benefit-tag",
     "pluralName": "product-benefit-tags",
-    "displayName": "Product Benefit Tags"
+    "displayName": "Product Benefit Tags",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,6 +15,12 @@
     "tag": {
       "type": "string",
       "required": true
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true,
+      "customField": "plugin::color-picker.color"
     }
   }
 }

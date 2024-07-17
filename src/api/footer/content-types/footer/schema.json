@@ -31,20 +31,21 @@
     "copyrightText": {
       "type": "string"
     },
-    "menus": {
-      "type": "component",
-      "repeatable": true,
-      "component": "common.menu"
-    },
     "socialLinks": {
       "type": "component",
       "repeatable": true,
       "component": "elements.image-link"
     },
+    "menus": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.menu-slug",
+      "required": false
+    },
     "otherLinks": {
       "type": "component",
       "repeatable": true,
-      "component": "common.menu"
+      "component": "common.menu-link"
     }
   }
 }

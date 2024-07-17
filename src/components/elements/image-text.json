@@ -15,20 +15,8 @@
       ]
     },
     "text": {
-      "type": "customField",
-      "options": {
-        "output": "HTML",
-        "preset": "light"
-      },
-      "customField": "plugin::ckeditor.CKEditor"
-    },
-    "subText": {
-      "type": "customField",
-      "options": {
-        "output": "HTML",
-        "preset": "light"
-      },
-      "customField": "plugin::ckeditor.CKEditor"
+      "type": "string",
+      "required": true
     }
   }
 }

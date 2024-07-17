@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_blocks_product_collection_by_tabs",
+  "info": {
+    "displayName": "Product Collection By Tab",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "productCollectionTabItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.products-by-tab",
+      "required": true
+    },
+    "verticalBlogCard": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cards.blog-card"
+    },
+    "horizontalBlogCards": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.blog-card"
+    }
+  }
+}

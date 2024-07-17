@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_featured_products_by_tabs",
+  "info": {
+    "displayName": "Featured Products By Tab",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "featuredProductsTabItems": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.products-by-tab",
+      "required": true
+    }
+  }
+}

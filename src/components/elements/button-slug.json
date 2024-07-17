@@ -1,16 +1,17 @@
 {
-  "collectionName": "components_accordion_faqs",
+  "collectionName": "components_elements_button_slugs",
   "info": {
-    "displayName": "FAQ"
+    "displayName": "Button Slug"
   },
   "options": {},
   "attributes": {
-    "question": {
+    "text": {
       "type": "string",
       "required": true
     },
-    "answer": {
+    "slug": {
       "type": "string",
+      "regex": "^[\\w\\s#-]+$",
       "required": true
     }
   }

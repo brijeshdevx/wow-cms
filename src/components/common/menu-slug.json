@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_common_menus",
+  "collectionName": "components_common_menu_slugs",
   "info": {
-    "displayName": "Menu",
-    "icon": "bulletList",
+    "displayName": "Menu Slug",
     "description": ""
   },
   "options": {},

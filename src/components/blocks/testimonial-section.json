@@ -1,14 +1,12 @@
 {
-  "collectionName": "components_common_testimonials",
+  "collectionName": "components_blocks_testimonial_sections",
   "info": {
-    "displayName": "Testimonials",
-    "icon": "emotionHappy"
+    "displayName": "Testimonial Section"
   },
   "options": {},
   "attributes": {
     "title": {
-      "type": "string",
-      "required": true
+      "type": "string"
     },
     "testimonials": {
       "type": "relation",

@@ -18,22 +18,37 @@ export interface AccordionFaQsSection extends Schema.Component {
   collectionName: 'components_accordion_fa_qs_sections';
   info: {
     displayName: 'FAQs Section';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     image: Attribute.Media;
-    FAQs: Attribute.Component<'accordion.faq', true>;
+    FAQs: Attribute.Component<'common.faq', true> &
+      Attribute.Required;
   };
 }
 
-export interface AccordionFaq extends Schema.Component {
-  collectionName: 'components_accordion_faqs';
+export interface AccordionInfoDropdownSection
+  extends Schema.Component {
+  collectionName: 'components_accordion_info_dropdown_sections';
   info: {
-    displayName: 'FAQ';
+    displayName: 'Info Dropdown Section';
+    description: '';
   };
   attributes: {
-    question: Attribute.String & Attribute.Required;
-    answer: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
+    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Blue'>;
+    information: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
   };
 }
 
@@ -60,10 +75,16 @@ export interface AccordionUsageInstructionsSection
   collectionName: 'components_accordion_usage_instructions_sections';
   info: {
     displayName: 'Usage Instructions Section';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
     image: Attribute.Media;
+    usageInstructionItems: Attribute.Component<
+      'elements.text',
+      true
+    > &
+      Attribute.Required;
   };
 }
 
@@ -74,7 +95,7 @@ export interface BannerBanners extends Schema.Component {
     description: '';
   };
   attributes: {
-    banners: Attribute.Component<
+    bannerItems: Attribute.Component<
       'elements.responsive-image-link',
       true
     > &
@@ -89,7 +110,7 @@ export interface BannerCarousal extends Schema.Component {
     description: '';
   };
   attributes: {
-    carousalBanners: Attribute.Component<
+    carousalItems: Attribute.Component<
       'elements.responsive-image-link',
       true
     > &
@@ -104,6 +125,7 @@ export interface BannerCarousal extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<true>;
     autoPlayInterval: Attribute.Integer &
+      Attribute.Required &
       Attribute.SetMinMax<
         {
           min: 0;
@@ -117,55 +139,225 @@ export interface BannerCarousal extends Schema.Component {
   };
 }
 
-export interface BlocksContentOverview extends Schema.Component {
-  collectionName: 'components_blocks_content_overviews';
+export interface BlocksAnnouncement extends Schema.Component {
+  collectionName: 'components_blocks_announcements';
   info: {
-    displayName: 'Content Overview';
+    displayName: 'Announcement';
   };
   attributes: {
-    descriptionSection: Attribute.Component<
-      'accordion.description-section',
-      true
-    >;
-    ingredientsSection: Attribute.Component<
-      'accordion.ingredients-section',
-      true
-    >;
-    usageInstructionsSection: Attribute.Component<
-      'accordion.usage-instructions-section',
-      true
-    >;
-    faqsSection: Attribute.Component<'accordion.fa-qs-section', true>;
+    leftText: Attribute.String;
+    centerText: Attribute.String;
+    rightText: Attribute.String;
+    timer: Attribute.Component<'common.countdown-timer'>;
   };
 }
 
-export interface BlocksProductRoutine extends Schema.Component {
-  collectionName: 'components_blocks_product_routines';
+export interface BlocksBlogSection extends Schema.Component {
+  collectionName: 'components_blocks_blog_sections';
   info: {
-    displayName: 'Product Routine';
+    displayName: 'Blog Section';
   };
   attributes: {
     title: Attribute.String;
-    productRoutineCard: Attribute.Component<
-      'cards.extended-product-card',
+  };
+}
+
+export interface BlocksBreadcrumb extends Schema.Component {
+  collectionName: 'components_blocks_breadcrumbs';
+  info: {
+    displayName: 'Breadcrumb';
+    icon: 'hashtag';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface BlocksCollectionLinks extends Schema.Component {
+  collectionName: 'components_blocks_collection_links';
+  info: {
+    displayName: 'Collection Links';
+  };
+  attributes: {
+    collectionLinkItems: Attribute.Component<
+      'elements.button-slug',
+      true
+    > &
+      Attribute.Required;
+    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lime'>;
+  };
+}
+
+export interface BlocksFeaturedList extends Schema.Component {
+  collectionName: 'components_blocks_featured_lists';
+  info: {
+    displayName: 'Featured List';
+    description: '';
+  };
+  attributes: {
+    isWebHorizontal: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    featuredListItems: Attribute.Component<
+      'elements.image-rich-text',
       true
     > &
       Attribute.Required;
   };
 }
 
-export interface BlocksWowBenefits extends Schema.Component {
-  collectionName: 'components_blocks_wow_benefits';
+export interface BlocksFeaturedProductsByTab
+  extends Schema.Component {
+  collectionName: 'components_blocks_featured_products_by_tabs';
   info: {
-    displayName: 'WOW Benefits';
+    displayName: 'Featured Products By Tab';
     description: '';
   };
   attributes: {
-    benefits: Attribute.Component<'elements.image-text', true> &
+    title: Attribute.String;
+    featuredProductsTabItems: Attribute.Component<'common.products-by-tab'> &
       Attribute.Required;
-    isWebHorizontal: Attribute.Boolean &
+  };
+}
+
+export interface BlocksFeaturedProducts extends Schema.Component {
+  collectionName: 'components_common_featured_products';
+  info: {
+    displayName: 'Featured Products';
+    icon: 'apps';
+    description: '';
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'blocks.featured-products',
+      'oneToMany',
+      'api::product.product'
+    >;
+    title: Attribute.String;
+    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
       Attribute.Required &
-      Attribute.DefaultTo<true>;
+      Attribute.DefaultTo<'White'>;
+    button: Attribute.Component<'elements.button-slug'>;
+  };
+}
+
+export interface BlocksInfoSection extends Schema.Component {
+  collectionName: 'components_blocks_info_sections';
+  info: {
+    displayName: 'Info Section';
+    description: '';
+  };
+  attributes: {
+    data: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+  };
+}
+
+export interface BlocksProductCollectionByTab
+  extends Schema.Component {
+  collectionName: 'components_blocks_product_collection_by_tabs';
+  info: {
+    displayName: 'Product Collection By Tab';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    productCollectionTabItems: Attribute.Component<
+      'common.products-by-tab',
+      true
+    > &
+      Attribute.Required;
+    verticalBlogCard: Attribute.Component<'cards.blog-card'>;
+    horizontalBlogCards: Attribute.Component<'cards.blog-card', true>;
+  };
+}
+
+export interface BlocksTestimonialSection extends Schema.Component {
+  collectionName: 'components_blocks_testimonial_sections';
+  info: {
+    displayName: 'Testimonial Section';
+  };
+  attributes: {
+    title: Attribute.String;
+    testimonials: Attribute.Relation<
+      'blocks.testimonial-section',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+  };
+}
+
+export interface BlocksUpsellProducts extends Schema.Component {
+  collectionName: 'components_blocks_upsell_products';
+  info: {
+    displayName: 'Upsell Products';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    upsellProductItems: Attribute.Component<
+      'cards.extended-product-card',
+      true
+    > &
+      Attribute.Required;
+    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lime'>;
+  };
+}
+
+export interface BlocksVideoSection extends Schema.Component {
+  collectionName: 'components_blocks_video_sections';
+  info: {
+    displayName: 'Video Section';
+    description: '';
+  };
+  attributes: {
+    videoItems: Attribute.Component<'elements.video', true> &
+      Attribute.Required;
+    title: Attribute.String;
+    bgColor: Attribute.Enumeration<['White', 'Lime']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'White'>;
+    size: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Small'>;
+    button: Attribute.Component<'elements.button-link'>;
+  };
+}
+
+export interface CardsBlogCard extends Schema.Component {
+  collectionName: 'components_cards_blog_cards';
+  info: {
+    displayName: 'Blog Card';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    button: Attribute.Component<'elements.button-link'> &
+      Attribute.Required;
+    bgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    row: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      > &
+      Attribute.DefaultTo<1>;
   };
 }
 
@@ -173,9 +365,10 @@ export interface CardsExtendedProductCard extends Schema.Component {
   collectionName: 'components_cards_extended_product_cards';
   info: {
     displayName: 'Extended Product Card';
+    description: '';
   };
   attributes: {
-    slug: Attribute.Relation<
+    product: Attribute.Relation<
       'cards.extended-product-card',
       'oneToOne',
       'api::product.product'
@@ -189,9 +382,10 @@ export interface CardsProductCard extends Schema.Component {
   collectionName: 'components_cards_product_cards';
   info: {
     displayName: 'Product Card';
+    description: '';
   };
   attributes: {
-    slug: Attribute.Relation<
+    product: Attribute.Relation<
       'cards.product-card',
       'oneToOne',
       'api::product.product'
@@ -208,10 +402,11 @@ export interface CategoriesFeaturedCategories
   };
   attributes: {
     title: Attribute.String;
-    type: Attribute.Enumeration<['SMALL', 'MEDIUM', 'LARGE']> &
-      Attribute.Required;
+    size: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Small'>;
     featuredCategoryItems: Attribute.Component<
-      'elements.image-slug',
+      'elements.image-slug-title',
       true
     > &
       Attribute.Required;
@@ -239,13 +434,13 @@ export interface CategoriesTrendingCategories
   collectionName: 'components_categories_trending_categories';
   info: {
     displayName: 'Trending Categories';
+    description: '';
   };
   attributes: {
     trendingCategoryItems: Attribute.Component<
-      'elements.image-slug',
+      'elements.image-slug-title',
       true
-    > &
-      Attribute.Required;
+    >;
   };
 }
 
@@ -260,55 +455,45 @@ export interface CommonCountdownTimer extends Schema.Component {
     TimerType: Attribute.Enumeration<['Daily', 'Custom']> &
       Attribute.Required &
       Attribute.DefaultTo<'Custom'>;
-    startTime: Attribute.DateTime;
-    endTime: Attribute.DateTime & Attribute.Required;
-    title: Attribute.Blocks;
-    titleColor: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
-    bgColor: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
+    startTime: Attribute.Time &
+      Attribute.Required &
+      Attribute.DefaultTo<'00:00'>;
+    endTime: Attribute.Time &
+      Attribute.Required &
+      Attribute.DefaultTo<'00:00'>;
+    startDate: Attribute.Date & Attribute.Required;
+    endDate: Attribute.Date & Attribute.Required;
   };
 }
 
-export interface CommonFeaturedProducts extends Schema.Component {
-  collectionName: 'components_common_featured_products';
+export interface CommonFaq extends Schema.Component {
+  collectionName: 'components_accordion_faqs';
   info: {
-    displayName: 'Featured Products';
-    icon: 'apps';
+    displayName: 'FAQ';
     description: '';
   };
   attributes: {
-    products: Attribute.Relation<
-      'common.featured-products',
-      'oneToMany',
-      'api::product.product'
-    >;
-    title: Attribute.String;
-    bgColor: Attribute.String &
-      Attribute.CustomField<'plugin::color-picker.color'>;
+    question: Attribute.String & Attribute.Required;
+    answer: Attribute.String & Attribute.Required;
   };
 }
 
-export interface CommonMainAnnouncement extends Schema.Component {
-  collectionName: 'components_head_main_announcements';
+export interface CommonMenuLink extends Schema.Component {
+  collectionName: 'components_common_menu_links';
   info: {
-    displayName: 'Announcement';
-    icon: 'television';
-    description: '';
+    displayName: 'Menu Link';
   };
   attributes: {
-    leftTitle: Attribute.String;
-    RightTitle: Attribute.String;
-    middleTitle: Attribute.String;
-    timer: Attribute.Component<'common.countdown-timer'>;
+    title: Attribute.String & Attribute.Required;
+    link: Attribute.String;
+    subMenu: Attribute.Component<'elements.text-link', true>;
   };
 }
 
-export interface CommonMenu extends Schema.Component {
-  collectionName: 'components_common_menus';
+export interface CommonMenuSlug extends Schema.Component {
+  collectionName: 'components_common_menu_slugs';
   info: {
-    displayName: 'Menu';
-    icon: 'bulletList';
+    displayName: 'Menu Slug';
     description: '';
   };
   attributes: {
@@ -318,32 +503,62 @@ export interface CommonMenu extends Schema.Component {
   };
 }
 
-export interface CommonProductsByTags extends Schema.Component {
-  collectionName: 'components_common_products_by_tags';
+export interface CommonProductOfferTag extends Schema.Component {
+  collectionName: 'components_product_product_offer_tags';
   info: {
-    displayName: 'Products By Tags';
-    icon: 'manyToMany';
+    displayName: 'Product Offer Tag';
     description: '';
   };
   attributes: {
-    title: Attribute.String;
-    button: Attribute.Component<'elements.button'>;
+    showOfferTag: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    bgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
   };
 }
 
-export interface CommonTestimonials extends Schema.Component {
-  collectionName: 'components_common_testimonials';
+export interface CommonProductsByTab extends Schema.Component {
+  collectionName: 'components_common_products_by_tabs';
   info: {
-    displayName: 'Testimonials';
-    icon: 'emotionHappy';
+    displayName: 'Products By Tab';
+    description: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    testimonials: Attribute.Relation<
-      'common.testimonials',
-      'oneToMany',
-      'api::testimonial.testimonial'
+    tab: Attribute.Relation<
+      'common.products-by-tab',
+      'oneToOne',
+      'api::collection-tag.collection-tag'
     >;
+    products: Attribute.Relation<
+      'common.products-by-tab',
+      'oneToMany',
+      'api::product.product'
+    >;
+  };
+}
+
+export interface ElementsButtonLink extends Schema.Component {
+  collectionName: 'components_elements_button_links';
+  info: {
+    displayName: 'Button Link';
+    description: '';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsButtonSlug extends Schema.Component {
+  collectionName: 'components_elements_button_slugs';
+  info: {
+    displayName: 'Button Slug';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    slug: Attribute.String & Attribute.Required;
   };
 }
 
@@ -355,8 +570,73 @@ export interface ElementsButton extends Schema.Component {
     description: '';
   };
   attributes: {
-    label: Attribute.String & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
     cta: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsExtendedText extends Schema.Component {
+  collectionName: 'components_elements_extended_texts';
+  info: {
+    displayName: 'Extended Text';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsImageExtendedRichText
+  extends Schema.Component {
+  collectionName: 'components_elements_image_extended_rich_texts';
+  info: {
+    displayName: 'Image Extended RichText';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    text: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    subText: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+  };
+}
+
+export interface ElementsImageExtendedText extends Schema.Component {
+  collectionName: 'components_elements_image_extended_texts';
+  info: {
+    displayName: 'Image Extended Text';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsImageLinkTitle extends Schema.Component {
+  collectionName: 'components_elements_image_link_titles';
+  info: {
+    displayName: 'Image Link Title';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -369,7 +649,38 @@ export interface ElementsImageLink extends Schema.Component {
   attributes: {
     link: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
-    title: Attribute.String;
+  };
+}
+
+export interface ElementsImageRichText extends Schema.Component {
+  collectionName: 'components_elements_image_rich_texts';
+  info: {
+    displayName: 'Image RichText';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    text: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+  };
+}
+
+export interface ElementsImageSlugTitle extends Schema.Component {
+  collectionName: 'components_elements_image_slug_titles';
+  info: {
+    displayName: 'Image Slug Title';
+    description: '';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    slug: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -382,7 +693,6 @@ export interface ElementsImageSlug extends Schema.Component {
   attributes: {
     slug: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
-    title: Attribute.String;
   };
 }
 
@@ -394,22 +704,44 @@ export interface ElementsImageText extends Schema.Component {
   };
   attributes: {
     image: Attribute.Media & Attribute.Required;
-    text: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'light';
-        }
-      >;
-    subText: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'light';
-        }
-      >;
+    text: Attribute.String & Attribute.Required;
+  };
+}
+
+export interface ElementsImageTitle extends Schema.Component {
+  collectionName: 'components_elements_image_titles';
+  info: {
+    displayName: 'Image Title';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface ElementsImage extends Schema.Component {
+  collectionName: 'components_elements_images';
+  info: {
+    displayName: 'Image';
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+  };
+}
+
+export interface ElementsResponsiveImageLinkTitle
+  extends Schema.Component {
+  collectionName: 'components_elements_responsive_image_link_titles';
+  info: {
+    displayName: 'Responsive Image Link Title';
+    description: '';
+  };
+  attributes: {
+    webImage: Attribute.Media & Attribute.Required;
+    mWebImage: Attribute.Media & Attribute.Required;
+    link: Attribute.String & Attribute.Required;
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -424,7 +756,17 @@ export interface ElementsResponsiveImageLink
     webImage: Attribute.Media & Attribute.Required;
     link: Attribute.String & Attribute.Required;
     mWebImage: Attribute.Media & Attribute.Required;
-    title: Attribute.String;
+  };
+}
+
+export interface ElementsResponsiveImage extends Schema.Component {
+  collectionName: 'components_elements_responsive_images';
+  info: {
+    displayName: 'Responsive Image';
+  };
+  attributes: {
+    webImage: Attribute.Media & Attribute.Required;
+    mWebImage: Attribute.Media;
   };
 }
 
@@ -452,18 +794,6 @@ export interface ElementsTextSlug extends Schema.Component {
   };
 }
 
-export interface ElementsTextSubText extends Schema.Component {
-  collectionName: 'components_elements_text_sub_texts';
-  info: {
-    displayName: 'Text SubText';
-    description: '';
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-    subText: Attribute.String;
-  };
-}
-
 export interface ElementsText extends Schema.Component {
   collectionName: 'components_elements_texts';
   info: {
@@ -474,39 +804,158 @@ export interface ElementsText extends Schema.Component {
   };
 }
 
+export interface ElementsVideo extends Schema.Component {
+  collectionName: 'components_elements_videos';
+  info: {
+    displayName: 'Video';
+  };
+  attributes: {
+    video: Attribute.Media & Attribute.Required;
+    thumbnail: Attribute.Media;
+  };
+}
+
+export interface ProductProductBenefits extends Schema.Component {
+  collectionName: 'components_product_product_benefits';
+  info: {
+    displayName: 'Product Benefits';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lime'>;
+    productBenefitItems: Attribute.Component<
+      'elements.image-extended-text',
+      true
+    > &
+      Attribute.Required;
+  };
+}
+
+export interface ProductProductEffectivenessImages
+  extends Schema.Component {
+  collectionName: 'components_product_product_effectiveness_images';
+  info: {
+    displayName: 'Product Effectiveness Images';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    images: Attribute.Component<'elements.image', true> &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          max: 2;
+        },
+        number
+      >;
+  };
+}
+
+export interface ProductProductHighlightImages
+  extends Schema.Component {
+  collectionName: 'components_product_product_highlight_images';
+  info: {
+    displayName: 'Product Highlight Images';
+  };
+  attributes: {
+    images: Attribute.Component<'elements.responsive-image', true> &
+      Attribute.Required;
+  };
+}
+
+export interface ProductProductKeyIngredients
+  extends Schema.Component {
+  collectionName: 'components_product_product_key_ingredients';
+  info: {
+    displayName: 'Product Key Ingredients';
+    description: '';
+  };
+  attributes: {
+    title: Attribute.String;
+    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'Lime'>;
+    primaryIngredient: Attribute.Media;
+    secondaryIngredients: Attribute.Component<
+      'elements.image-title',
+      true
+    >;
+  };
+}
+
+export interface ProductProductReviews extends Schema.Component {
+  collectionName: 'components_product_product_reviews';
+  info: {
+    displayName: 'Product Reviews';
+  };
+  attributes: {
+    title: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
       'accordion.description-section': AccordionDescriptionSection;
       'accordion.fa-qs-section': AccordionFaQsSection;
-      'accordion.faq': AccordionFaq;
+      'accordion.info-dropdown-section': AccordionInfoDropdownSection;
       'accordion.ingredients-section': AccordionIngredientsSection;
       'accordion.usage-instructions-section': AccordionUsageInstructionsSection;
       'banner.banners': BannerBanners;
       'banner.carousal': BannerCarousal;
-      'blocks.content-overview': BlocksContentOverview;
-      'blocks.product-routine': BlocksProductRoutine;
-      'blocks.wow-benefits': BlocksWowBenefits;
+      'blocks.announcement': BlocksAnnouncement;
+      'blocks.blog-section': BlocksBlogSection;
+      'blocks.breadcrumb': BlocksBreadcrumb;
+      'blocks.collection-links': BlocksCollectionLinks;
+      'blocks.featured-list': BlocksFeaturedList;
+      'blocks.featured-products-by-tab': BlocksFeaturedProductsByTab;
+      'blocks.featured-products': BlocksFeaturedProducts;
+      'blocks.info-section': BlocksInfoSection;
+      'blocks.product-collection-by-tab': BlocksProductCollectionByTab;
+      'blocks.testimonial-section': BlocksTestimonialSection;
+      'blocks.upsell-products': BlocksUpsellProducts;
+      'blocks.video-section': BlocksVideoSection;
+      'cards.blog-card': CardsBlogCard;
       'cards.extended-product-card': CardsExtendedProductCard;
       'cards.product-card': CardsProductCard;
       'categories.featured-categories': CategoriesFeaturedCategories;
       'categories.ingredient-categories': CategoriesIngredientCategories;
       'categories.trending-categories': CategoriesTrendingCategories;
       'common.countdown-timer': CommonCountdownTimer;
-      'common.featured-products': CommonFeaturedProducts;
-      'common.main-announcement': CommonMainAnnouncement;
-      'common.menu': CommonMenu;
-      'common.products-by-tags': CommonProductsByTags;
-      'common.testimonials': CommonTestimonials;
+      'common.faq': CommonFaq;
+      'common.menu-link': CommonMenuLink;
+      'common.menu-slug': CommonMenuSlug;
+      'common.product-offer-tag': CommonProductOfferTag;
+      'common.products-by-tab': CommonProductsByTab;
+      'elements.button-link': ElementsButtonLink;
+      'elements.button-slug': ElementsButtonSlug;
       'elements.button': ElementsButton;
+      'elements.extended-text': ElementsExtendedText;
+      'elements.image-extended-rich-text': ElementsImageExtendedRichText;
+      'elements.image-extended-text': ElementsImageExtendedText;
+      'elements.image-link-title': ElementsImageLinkTitle;
       'elements.image-link': ElementsImageLink;
+      'elements.image-rich-text': ElementsImageRichText;
+      'elements.image-slug-title': ElementsImageSlugTitle;
       'elements.image-slug': ElementsImageSlug;
       'elements.image-text': ElementsImageText;
+      'elements.image-title': ElementsImageTitle;
+      'elements.image': ElementsImage;
+      'elements.responsive-image-link-title': ElementsResponsiveImageLinkTitle;
       'elements.responsive-image-link': ElementsResponsiveImageLink;
+      'elements.responsive-image': ElementsResponsiveImage;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;
-      'elements.text-sub-text': ElementsTextSubText;
       'elements.text': ElementsText;
+      'elements.video': ElementsVideo;
+      'product.product-benefits': ProductProductBenefits;
+      'product.product-effectiveness-images': ProductProductEffectivenessImages;
+      'product.product-highlight-images': ProductProductHighlightImages;
+      'product.product-key-ingredients': ProductProductKeyIngredients;
+      'product.product-reviews': ProductProductReviews;
     }
   }
 }

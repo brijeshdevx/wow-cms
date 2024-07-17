@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "collection_pages",
+  "info": {
+    "singularName": "collection-page",
+    "pluralName": "collection-pages",
+    "displayName": "Collection Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "slugId": {
+      "type": "uid",
+      "targetField": "slug",
+      "required": true
+    },
+    "blocks": {
+      "type": "dynamiczone",
+      "components": [
+        "accordion.description-section",
+        "accordion.fa-qs-section",
+        "accordion.info-dropdown-section",
+        "accordion.ingredients-section",
+        "accordion.usage-instructions-section",
+        "banner.banners",
+        "banner.carousal",
+        "blocks.announcement",
+        "blocks.blog-section",
+        "blocks.breadcrumb",
+        "blocks.featured-list",
+        "blocks.featured-products-by-tab",
+        "blocks.featured-products",
+        "blocks.info-section",
+        "blocks.testimonial-section",
+        "blocks.upsell-products",
+        "blocks.video-section",
+        "product.product-benefits",
+        "product.product-effectiveness-images",
+        "product.product-key-ingredients",
+        "product.product-reviews",
+        "categories.featured-categories",
+        "categories.ingredient-categories",
+        "categories.trending-categories",
+        "blocks.collection-links",
+        "blocks.product-collection-by-tab",
+        "product.product-highlight-images"
+      ],
+      "required": false
+    }
+  }
+}

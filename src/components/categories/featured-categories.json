@@ -9,19 +9,20 @@
     "title": {
       "type": "string"
     },
-    "type": {
+    "size": {
       "type": "enumeration",
       "enum": [
-        "SMALL",
-        "MEDIUM",
-        "LARGE"
+        "Small",
+        "Medium",
+        "Large"
       ],
-      "required": true
+      "required": true,
+      "default": "Small"
     },
     "featuredCategoryItems": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.image-slug",
+      "component": "elements.image-slug-title",
       "required": true
     }
   }

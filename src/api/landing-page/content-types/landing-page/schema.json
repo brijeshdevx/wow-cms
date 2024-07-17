@@ -17,11 +17,31 @@
       "components": [
         "banner.banners",
         "banner.carousal",
-        "blocks.wow-benefits",
         "categories.featured-categories",
         "categories.ingredient-categories",
         "categories.trending-categories",
-        "common.testimonials"
+        "accordion.description-section",
+        "accordion.fa-qs-section",
+        "accordion.info-dropdown-section",
+        "accordion.ingredients-section",
+        "accordion.usage-instructions-section",
+        "blocks.announcement",
+        "blocks.blog-section",
+        "blocks.breadcrumb",
+        "blocks.featured-list",
+        "blocks.featured-products-by-tab",
+        "blocks.featured-products",
+        "blocks.info-section",
+        "blocks.testimonial-section",
+        "blocks.upsell-products",
+        "blocks.video-section",
+        "product.product-benefits",
+        "product.product-effectiveness-images",
+        "product.product-key-ingredients",
+        "product.product-reviews",
+        "blocks.collection-links",
+        "blocks.product-collection-by-tab",
+        "product.product-highlight-images"
       ],
       "required": true
     }

@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_elements_image_extended_texts",
+  "info": {
+    "displayName": "Image Extended Text"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "subText": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

@@ -826,6 +826,140 @@ export interface PluginUsersPermissionsUser
   };
 }
 
+export interface ApiAnnouncementBarAnnouncementBar
+  extends Schema.SingleType {
+  collectionName: 'announcement_bars';
+  info: {
+    singularName: 'announcement-bar';
+    pluralName: 'announcement-bars';
+    displayName: 'Announcement Bar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    timer: Attribute.Component<'common.countdown-timer'>;
+    leftText: Attribute.String;
+    centerText: Attribute.String;
+    rightText: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::announcement-bar.announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::announcement-bar.announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCollectionPageCollectionPage
+  extends Schema.CollectionType {
+  collectionName: 'collection_pages';
+  info: {
+    singularName: 'collection-page';
+    pluralName: 'collection-pages';
+    displayName: 'Collection Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    slugId: Attribute.UID<
+      'api::collection-page.collection-page',
+      'slug'
+    > &
+      Attribute.Required;
+    blocks: Attribute.DynamicZone<
+      [
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.info-dropdown-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'banner.banners',
+        'banner.carousal',
+        'blocks.announcement',
+        'blocks.blog-section',
+        'blocks.breadcrumb',
+        'blocks.featured-list',
+        'blocks.featured-products-by-tab',
+        'blocks.featured-products',
+        'blocks.info-section',
+        'blocks.testimonial-section',
+        'blocks.upsell-products',
+        'blocks.video-section',
+        'product.product-benefits',
+        'product.product-effectiveness-images',
+        'product.product-key-ingredients',
+        'product.product-reviews',
+        'categories.featured-categories',
+        'categories.ingredient-categories',
+        'categories.trending-categories',
+        'blocks.collection-links',
+        'blocks.product-collection-by-tab',
+        'product.product-highlight-images'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::collection-page.collection-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::collection-page.collection-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCollectionTagCollectionTag
+  extends Schema.CollectionType {
+  collectionName: 'collection_tags';
+  info: {
+    singularName: 'collection-tag';
+    pluralName: 'collection-tags';
+    displayName: 'Collection Tags';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    tag: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::collection-tag.collection-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::collection-tag.collection-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFooterFooter extends Schema.SingleType {
   collectionName: 'footers';
   info: {
@@ -848,9 +982,9 @@ export interface ApiFooterFooter extends Schema.SingleType {
         }
       >;
     copyrightText: Attribute.String;
-    menus: Attribute.Component<'common.menu', true>;
     socialLinks: Attribute.Component<'elements.image-link', true>;
-    otherLinks: Attribute.Component<'common.menu', true>;
+    menus: Attribute.Component<'common.menu-slug', true>;
+    otherLinks: Attribute.Component<'common.menu-link', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -918,11 +1052,31 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
       [
         'banner.banners',
         'banner.carousal',
-        'blocks.wow-benefits',
         'categories.featured-categories',
         'categories.ingredient-categories',
         'categories.trending-categories',
-        'common.testimonials'
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.info-dropdown-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'blocks.announcement',
+        'blocks.blog-section',
+        'blocks.breadcrumb',
+        'blocks.featured-list',
+        'blocks.featured-products-by-tab',
+        'blocks.featured-products',
+        'blocks.info-section',
+        'blocks.testimonial-section',
+        'blocks.upsell-products',
+        'blocks.video-section',
+        'product.product-benefits',
+        'product.product-effectiveness-images',
+        'product.product-key-ingredients',
+        'product.product-reviews',
+        'blocks.collection-links',
+        'blocks.product-collection-by-tab',
+        'product.product-highlight-images'
       ]
     > &
       Attribute.Required;
@@ -956,12 +1110,12 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    menus: Attribute.Component<'common.menu', true> &
-      Attribute.Required;
     logo: Attribute.Media & Attribute.Required;
     VIPMembershipLogo: Attribute.Media;
     mWebMenuLogo: Attribute.Media & Attribute.Required;
     otherLinks: Attribute.Component<'elements.text-link', true>;
+    menus: Attribute.Component<'common.menu-slug', true> &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -973,6 +1127,81 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::navbar.navbar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPdpPdp extends Schema.CollectionType {
+  collectionName: 'pdps';
+  info: {
+    singularName: 'pdp';
+    pluralName: 'pdps';
+    displayName: 'PDP';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    product: Attribute.Relation<
+      'api::pdp.pdp',
+      'oneToOne',
+      'api::product.product'
+    >;
+    productDetailView: Attribute.DynamicZone<
+      [
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'blocks.upsell-products'
+      ]
+    >;
+    blocks: Attribute.DynamicZone<
+      [
+        'banner.banners',
+        'banner.carousal',
+        'categories.featured-categories',
+        'categories.ingredient-categories',
+        'categories.trending-categories',
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.info-dropdown-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'blocks.announcement',
+        'blocks.blog-section',
+        'blocks.breadcrumb',
+        'blocks.featured-list',
+        'blocks.featured-products-by-tab',
+        'blocks.featured-products',
+        'blocks.info-section',
+        'blocks.testimonial-section',
+        'blocks.upsell-products',
+        'blocks.video-section',
+        'product.product-benefits',
+        'product.product-effectiveness-images',
+        'product.product-key-ingredients',
+        'product.product-reviews',
+        'blocks.collection-links',
+        'blocks.product-collection-by-tab',
+        'product.product-highlight-images'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::pdp.pdp',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::pdp.pdp',
       'oneToOne',
       'admin::user'
     > &
@@ -1003,11 +1232,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToMany',
       'api::product-benefit-tag.product-benefit-tag'
     >;
-    testimonials: Attribute.Relation<
-      'api::product.product',
-      'oneToMany',
-      'api::testimonial.testimonial'
-    >;
+    slugId: Attribute.UID<'api::product.product', 'slug'> &
+      Attribute.Required;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    offerTag: Attribute.Component<'common.product-offer-tag'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1033,12 +1262,16 @@ export interface ApiProductBenefitTagProductBenefitTag
     singularName: 'product-benefit-tag';
     pluralName: 'product-benefit-tags';
     displayName: 'Product Benefit Tags';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     tag: Attribute.String & Attribute.Required;
+    bgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1064,12 +1297,16 @@ export interface ApiPromotionTagPromotionTag
     singularName: 'promotion-tag';
     pluralName: 'promotion-tags';
     displayName: 'Promotion Tags';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     tag: Attribute.String;
+    bgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1108,7 +1345,7 @@ export interface ApiTestimonialTestimonial
     description: Attribute.String & Attribute.Required;
     product: Attribute.Relation<
       'api::testimonial.testimonial',
-      'manyToOne',
+      'oneToOne',
       'api::product.product'
     >;
     concerns: Attribute.Component<'elements.text', true>;
@@ -1148,10 +1385,14 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
+      'api::collection-page.collection-page': ApiCollectionPageCollectionPage;
+      'api::collection-tag.collection-tag': ApiCollectionTagCollectionTag;
       'api::footer.footer': ApiFooterFooter;
       'api::ingredient-type.ingredient-type': ApiIngredientTypeIngredientType;
       'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::navbar.navbar': ApiNavbarNavbar;
+      'api::pdp.pdp': ApiPdpPdp;
       'api::product.product': ApiProductProduct;
       'api::product-benefit-tag.product-benefit-tag': ApiProductBenefitTagProductBenefitTag;
       'api::promotion-tag.promotion-tag': ApiPromotionTagPromotionTag;

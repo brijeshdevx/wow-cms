@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_cards_blog_cards",
+  "info": {
+    "displayName": "Blog Card",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button-link",
+      "required": true
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true,
+      "customField": "plugin::color-picker.color"
+    },
+    "row": {
+      "type": "integer",
+      "default": 1,
+      "min": 1,
+      "required": true
+    }
+  }
+}

@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "carousalBanners": {
+    "carousalItems": {
       "type": "component",
       "repeatable": true,
       "component": "elements.responsive-image-link",
@@ -21,7 +21,8 @@
     "autoPlayInterval": {
       "type": "integer",
       "default": 2000,
-      "min": 0
+      "min": 0,
+      "required": true
     },
     "stopOnInteraction": {
       "type": "boolean",

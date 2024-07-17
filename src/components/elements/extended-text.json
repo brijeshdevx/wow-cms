@@ -1,8 +1,7 @@
 {
-  "collectionName": "components_elements_text_sub_texts",
+  "collectionName": "components_elements_extended_texts",
   "info": {
-    "displayName": "Text SubText",
-    "description": ""
+    "displayName": "Extended Text"
   },
   "options": {},
   "attributes": {
@@ -11,7 +10,8 @@
       "required": true
     },
     "subText": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   }
 }

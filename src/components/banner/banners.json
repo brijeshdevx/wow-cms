@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "banners": {
+    "bannerItems": {
       "type": "component",
       "repeatable": true,
       "component": "elements.responsive-image-link",

@@ -1,19 +1,17 @@
 {
-  "collectionName": "components_head_main_announcements",
+  "collectionName": "components_blocks_announcements",
   "info": {
-    "displayName": "Announcement",
-    "icon": "television",
-    "description": ""
+    "displayName": "Announcement"
   },
   "options": {},
   "attributes": {
-    "leftTitle": {
+    "leftText": {
       "type": "string"
     },
-    "RightTitle": {
+    "centerText": {
       "type": "string"
     },
-    "middleTitle": {
+    "rightText": {
       "type": "string"
     },
     "timer": {
