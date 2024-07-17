@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elements_text_sub_texts",
+  "info": {
+    "displayName": "Text SubText",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "subText": {
+      "type": "string"
+    }
+  }
+}

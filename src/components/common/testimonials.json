@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_common_testimonials",
+  "info": {
+    "displayName": "Testimonials",
+    "icon": "emotionHappy"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial"
+    }
+  }
+}

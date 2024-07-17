@@ -26,6 +26,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-benefit-tag.product-benefit-tag"
+    },
+    "testimonials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial.testimonial",
+      "mappedBy": "product"
     }
   }
 }

@@ -15,12 +15,6 @@
       ],
       "type": "media",
       "multiple": false
-    },
-    "instructions": {
-      "displayName": "Text",
-      "type": "component",
-      "repeatable": true,
-      "component": "elements.text"
     }
   }
 }

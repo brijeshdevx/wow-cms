@@ -64,7 +64,6 @@ export interface AccordionUsageInstructionsSection
   attributes: {
     title: Attribute.String & Attribute.Required;
     image: Attribute.Media;
-    instructions: Attribute.Component<'elements.text', true>;
   };
 }
 
@@ -209,7 +208,7 @@ export interface CategoriesFeaturedCategories
   };
   attributes: {
     title: Attribute.String;
-    type: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+    type: Attribute.Enumeration<['SMALL', 'MEDIUM', 'LARGE']> &
       Attribute.Required;
     featuredCategoryItems: Attribute.Component<
       'elements.image-slug',
@@ -332,6 +331,22 @@ export interface CommonProductsByTags extends Schema.Component {
   };
 }
 
+export interface CommonTestimonials extends Schema.Component {
+  collectionName: 'components_common_testimonials';
+  info: {
+    displayName: 'Testimonials';
+    icon: 'emotionHappy';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    testimonials: Attribute.Relation<
+      'common.testimonials',
+      'oneToMany',
+      'api::testimonial.testimonial'
+    >;
+  };
+}
+
 export interface ElementsButton extends Schema.Component {
   collectionName: 'components_elements_buttons';
   info: {
@@ -437,10 +452,10 @@ export interface ElementsTextSlug extends Schema.Component {
   };
 }
 
-export interface ElementsText extends Schema.Component {
-  collectionName: 'components_elements_texts';
+export interface ElementsTextSubText extends Schema.Component {
+  collectionName: 'components_elements_text_sub_texts';
   info: {
-    displayName: 'Text';
+    displayName: 'Text SubText';
     description: '';
   };
   attributes: {
@@ -449,53 +464,13 @@ export interface ElementsText extends Schema.Component {
   };
 }
 
-export interface TestimonialsConcern extends Schema.Component {
-  collectionName: 'components_common_concerns';
+export interface ElementsText extends Schema.Component {
+  collectionName: 'components_elements_texts';
   info: {
-    displayName: 'concern';
-    icon: 'lightbulb';
-    description: '';
+    displayName: 'Text';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-  };
-}
-
-export interface TestimonialsTestimonialList
-  extends Schema.Component {
-  collectionName: 'components_testimonials_testimonial_lists';
-  info: {
-    displayName: 'Testimonial List';
-    icon: 'stack';
-    description: '';
-  };
-  attributes: {
-    title: Attribute.String & Attribute.Required;
-    testimonialItem: Attribute.Component<
-      'testimonials.testimonial',
-      true
-    >;
-  };
-}
-
-export interface TestimonialsTestimonial extends Schema.Component {
-  collectionName: 'components_testimonials_testimonials';
-  info: {
-    displayName: 'Testimonial';
-    icon: 'emotionHappy';
-    description: '';
-  };
-  attributes: {
-    featuredImage: Attribute.Media & Attribute.Required;
-    name: Attribute.String & Attribute.Required;
-    age: Attribute.Integer;
-    description: Attribute.Text;
-    concern: Attribute.Component<'testimonials.concern', true>;
-    products: Attribute.Relation<
-      'testimonials.testimonial',
-      'oneToMany',
-      'api::product.product'
-    >;
+    text: Attribute.String & Attribute.Required;
   };
 }
 
@@ -522,6 +497,7 @@ declare module '@strapi/types' {
       'common.main-announcement': CommonMainAnnouncement;
       'common.menu': CommonMenu;
       'common.products-by-tags': CommonProductsByTags;
+      'common.testimonials': CommonTestimonials;
       'elements.button': ElementsButton;
       'elements.image-link': ElementsImageLink;
       'elements.image-slug': ElementsImageSlug;
@@ -529,10 +505,8 @@ declare module '@strapi/types' {
       'elements.responsive-image-link': ElementsResponsiveImageLink;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;
+      'elements.text-sub-text': ElementsTextSubText;
       'elements.text': ElementsText;
-      'testimonials.concern': TestimonialsConcern;
-      'testimonials.testimonial-list': TestimonialsTestimonialList;
-      'testimonials.testimonial': TestimonialsTestimonial;
     }
   }
 }

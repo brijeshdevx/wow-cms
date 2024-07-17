@@ -12,9 +12,9 @@
     "type": {
       "type": "enumeration",
       "enum": [
-        "Small",
-        "Medium",
-        "Large"
+        "SMALL",
+        "MEDIUM",
+        "LARGE"
       ],
       "required": true
     },

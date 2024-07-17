@@ -20,7 +20,8 @@
         "blocks.wow-benefits",
         "categories.featured-categories",
         "categories.ingredient-categories",
-        "categories.trending-categories"
+        "categories.trending-categories",
+        "common.testimonials"
       ],
       "required": true
     }

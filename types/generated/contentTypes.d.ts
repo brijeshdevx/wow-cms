@@ -921,7 +921,8 @@ export interface ApiLandingPageLandingPage extends Schema.SingleType {
         'blocks.wow-benefits',
         'categories.featured-categories',
         'categories.ingredient-categories',
-        'categories.trending-categories'
+        'categories.trending-categories',
+        'common.testimonials'
       ]
     > &
       Attribute.Required;
@@ -1001,6 +1002,11 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'api::product.product',
       'oneToMany',
       'api::product-benefit-tag.product-benefit-tag'
+    >;
+    testimonials: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::testimonial.testimonial'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1082,6 +1088,48 @@ export interface ApiPromotionTagPromotionTag
   };
 }
 
+export interface ApiTestimonialTestimonial
+  extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'Testimonials';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    age: Attribute.Integer;
+    webImage: Attribute.Media & Attribute.Required;
+    mWebImage: Attribute.Media & Attribute.Required;
+    description: Attribute.String & Attribute.Required;
+    product: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'manyToOne',
+      'api::product.product'
+    >;
+    concerns: Attribute.Component<'elements.text', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1107,6 +1155,7 @@ declare module '@strapi/types' {
       'api::product.product': ApiProductProduct;
       'api::product-benefit-tag.product-benefit-tag': ApiProductBenefitTagProductBenefitTag;
       'api::promotion-tag.promotion-tag': ApiPromotionTagPromotionTag;
+      'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }
 }
