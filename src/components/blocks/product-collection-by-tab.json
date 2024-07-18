@@ -9,6 +9,20 @@
     "title": {
       "type": "string"
     },
+    "defaultCollectionSorting": {
+      "type": "enumeration",
+      "enum": [
+        "RECOMMENDED",
+        "LATEST",
+        "BEST_SELLERS",
+        "HIGHEST_RATED",
+        "PRICE_HIGH_TO_LOW",
+        "PRICE_LOW_TO_HIGH",
+        "AVAILABILITY"
+      ],
+      "default": "RECOMMENDED",
+      "required": true
+    },
     "productCollectionTabItems": {
       "type": "component",
       "repeatable": true,

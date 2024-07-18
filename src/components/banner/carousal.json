@@ -23,11 +23,6 @@
       "default": 2000,
       "min": 0,
       "required": true
-    },
-    "stopOnInteraction": {
-      "type": "boolean",
-      "default": true,
-      "required": true
     }
   }
 }

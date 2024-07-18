@@ -1,17 +1,17 @@
 {
-  "collectionName": "components_blocks_announcements",
+  "collectionName": "components_blocks_announcement_bars",
   "info": {
-    "displayName": "Announcement"
+    "displayName": "Announcement Bar"
   },
   "options": {},
   "attributes": {
     "leftText": {
       "type": "string"
     },
-    "centerText": {
+    "rightText": {
       "type": "string"
     },
-    "rightText": {
+    "centerText": {
       "type": "string"
     },
     "timer": {

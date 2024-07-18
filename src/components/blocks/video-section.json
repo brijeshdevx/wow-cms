@@ -18,20 +18,19 @@
     "bgColor": {
       "type": "enumeration",
       "enum": [
-        "White",
-        "Lime"
+        "WHITE",
+        "LIME"
       ],
-      "default": "White",
+      "default": "WHITE",
       "required": true
     },
     "size": {
       "type": "enumeration",
       "enum": [
-        "Small",
-        "Medium",
-        "Large"
+        "SMALL",
+        "MEDIUM"
       ],
-      "default": "Small",
+      "default": "SMALL",
       "required": true,
       "enumName": "shape"
     },

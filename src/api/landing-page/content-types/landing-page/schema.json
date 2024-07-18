@@ -25,9 +25,7 @@
         "accordion.info-dropdown-section",
         "accordion.ingredients-section",
         "accordion.usage-instructions-section",
-        "blocks.announcement",
         "blocks.blog-section",
-        "blocks.breadcrumb",
         "blocks.featured-list",
         "blocks.featured-products-by-tab",
         "blocks.featured-products",
@@ -37,11 +35,12 @@
         "blocks.video-section",
         "product.product-benefits",
         "product.product-effectiveness-images",
-        "product.product-key-ingredients",
         "product.product-reviews",
         "blocks.collection-links",
         "blocks.product-collection-by-tab",
-        "product.product-highlight-images"
+        "product.product-highlight-images",
+        "blocks.announcement-bar",
+        "product.product-key-ingredient-images"
       ],
       "required": true
     }

@@ -37,9 +37,9 @@ export interface AccordionInfoDropdownSection
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
-    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Blue'>;
+      Attribute.DefaultTo<'BLUE'>;
     information: Attribute.RichText &
       Attribute.Required &
       Attribute.CustomField<
@@ -133,21 +133,18 @@ export interface BannerCarousal extends Schema.Component {
         number
       > &
       Attribute.DefaultTo<2000>;
-    stopOnInteraction: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<true>;
   };
 }
 
-export interface BlocksAnnouncement extends Schema.Component {
-  collectionName: 'components_blocks_announcements';
+export interface BlocksAnnouncementBar extends Schema.Component {
+  collectionName: 'components_blocks_announcement_bars';
   info: {
-    displayName: 'Announcement';
+    displayName: 'Announcement Bar';
   };
   attributes: {
     leftText: Attribute.String;
-    centerText: Attribute.String;
     rightText: Attribute.String;
+    centerText: Attribute.String;
     timer: Attribute.Component<'common.countdown-timer'>;
   };
 }
@@ -162,17 +159,6 @@ export interface BlocksBlogSection extends Schema.Component {
   };
 }
 
-export interface BlocksBreadcrumb extends Schema.Component {
-  collectionName: 'components_blocks_breadcrumbs';
-  info: {
-    displayName: 'Breadcrumb';
-    icon: 'hashtag';
-  };
-  attributes: {
-    text: Attribute.String & Attribute.Required;
-  };
-}
-
 export interface BlocksCollectionLinks extends Schema.Component {
   collectionName: 'components_blocks_collection_links';
   info: {
@@ -184,9 +170,9 @@ export interface BlocksCollectionLinks extends Schema.Component {
       true
     > &
       Attribute.Required;
-    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Lime'>;
+      Attribute.DefaultTo<'LIME'>;
   };
 }
 
@@ -217,7 +203,10 @@ export interface BlocksFeaturedProductsByTab
   };
   attributes: {
     title: Attribute.String;
-    featuredProductsTabItems: Attribute.Component<'common.products-by-tab'> &
+    featuredProductsTabItems: Attribute.Component<
+      'common.products-by-tab',
+      true
+    > &
       Attribute.Required;
   };
 }
@@ -236,9 +225,9 @@ export interface BlocksFeaturedProducts extends Schema.Component {
       'api::product.product'
     >;
     title: Attribute.String;
-    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
-      Attribute.DefaultTo<'White'>;
+      Attribute.DefaultTo<'WHITE'>;
     button: Attribute.Component<'elements.button-slug'>;
   };
 }
@@ -271,6 +260,19 @@ export interface BlocksProductCollectionByTab
   };
   attributes: {
     title: Attribute.String;
+    defaultCollectionSorting: Attribute.Enumeration<
+      [
+        'RECOMMENDED',
+        'LATEST',
+        'BEST_SELLERS',
+        'HIGHEST_RATED',
+        'PRICE_HIGH_TO_LOW',
+        'PRICE_LOW_TO_HIGH',
+        'AVAILABILITY'
+      ]
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'RECOMMENDED'>;
     productCollectionTabItems: Attribute.Component<
       'common.products-by-tab',
       true
@@ -309,9 +311,9 @@ export interface BlocksUpsellProducts extends Schema.Component {
       true
     > &
       Attribute.Required;
-    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Lime'>;
+      Attribute.DefaultTo<'LIME'>;
   };
 }
 
@@ -325,12 +327,12 @@ export interface BlocksVideoSection extends Schema.Component {
     videoItems: Attribute.Component<'elements.video', true> &
       Attribute.Required;
     title: Attribute.String;
-    bgColor: Attribute.Enumeration<['White', 'Lime']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME']> &
       Attribute.Required &
-      Attribute.DefaultTo<'White'>;
-    size: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+      Attribute.DefaultTo<'WHITE'>;
+    size: Attribute.Enumeration<['SMALL', 'MEDIUM']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Small'>;
+      Attribute.DefaultTo<'SMALL'>;
     button: Attribute.Component<'elements.button-link'>;
   };
 }
@@ -402,9 +404,9 @@ export interface CategoriesFeaturedCategories
   };
   attributes: {
     title: Attribute.String;
-    size: Attribute.Enumeration<['Small', 'Medium', 'Large']> &
+    size: Attribute.Enumeration<['SMALL', 'MEDIUM']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Small'>;
+      Attribute.DefaultTo<'SMALL'>;
     featuredCategoryItems: Attribute.Component<
       'elements.image-slug-title',
       true
@@ -452,9 +454,9 @@ export interface CommonCountdownTimer extends Schema.Component {
     description: '';
   };
   attributes: {
-    TimerType: Attribute.Enumeration<['Daily', 'Custom']> &
+    TimerType: Attribute.Enumeration<['DAILY', 'CUSTOM']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Custom'>;
+      Attribute.DefaultTo<'CUSTOM'>;
     startTime: Attribute.Time &
       Attribute.Required &
       Attribute.DefaultTo<'00:00'>;
@@ -526,15 +528,15 @@ export interface CommonProductsByTab extends Schema.Component {
     description: '';
   };
   attributes: {
-    tab: Attribute.Relation<
-      'common.products-by-tab',
-      'oneToOne',
-      'api::collection-tag.collection-tag'
-    >;
     products: Attribute.Relation<
       'common.products-by-tab',
       'oneToMany',
       'api::product.product'
+    >;
+    tab: Attribute.Relation<
+      'common.products-by-tab',
+      'oneToOne',
+      'api::collection-tab.collection-tab'
     >;
   };
 }
@@ -823,9 +825,9 @@ export interface ProductProductBenefits extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
-    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Lime'>;
+      Attribute.DefaultTo<'LIME'>;
     productBenefitItems: Attribute.Component<
       'elements.image-extended-text',
       true
@@ -866,18 +868,18 @@ export interface ProductProductHighlightImages
   };
 }
 
-export interface ProductProductKeyIngredients
+export interface ProductProductKeyIngredientImages
   extends Schema.Component {
-  collectionName: 'components_product_product_key_ingredients';
+  collectionName: 'components_product_product_key_ingredient_images';
   info: {
-    displayName: 'Product Key Ingredients';
+    displayName: 'Product Key Ingredient Images';
     description: '';
   };
   attributes: {
     title: Attribute.String;
-    bgColor: Attribute.Enumeration<['White', 'Lime', 'Blue']> &
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
-      Attribute.DefaultTo<'Lime'>;
+      Attribute.DefaultTo<'LIME'>;
     primaryIngredient: Attribute.Media;
     secondaryIngredients: Attribute.Component<
       'elements.image-title',
@@ -906,9 +908,8 @@ declare module '@strapi/types' {
       'accordion.usage-instructions-section': AccordionUsageInstructionsSection;
       'banner.banners': BannerBanners;
       'banner.carousal': BannerCarousal;
-      'blocks.announcement': BlocksAnnouncement;
+      'blocks.announcement-bar': BlocksAnnouncementBar;
       'blocks.blog-section': BlocksBlogSection;
-      'blocks.breadcrumb': BlocksBreadcrumb;
       'blocks.collection-links': BlocksCollectionLinks;
       'blocks.featured-list': BlocksFeaturedList;
       'blocks.featured-products-by-tab': BlocksFeaturedProductsByTab;
@@ -954,7 +955,7 @@ declare module '@strapi/types' {
       'product.product-benefits': ProductProductBenefits;
       'product.product-effectiveness-images': ProductProductEffectivenessImages;
       'product.product-highlight-images': ProductProductHighlightImages;
-      'product.product-key-ingredients': ProductProductKeyIngredients;
+      'product.product-key-ingredient-images': ProductProductKeyIngredientImages;
       'product.product-reviews': ProductProductReviews;
     }
   }

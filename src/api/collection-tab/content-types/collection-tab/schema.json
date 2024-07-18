@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "collection_tabs",
+  "info": {
+    "singularName": "collection-tab",
+    "pluralName": "collection-tabs",
+    "displayName": "Collection Tabs"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    }
+  }
+}

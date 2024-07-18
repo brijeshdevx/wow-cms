@@ -11,7 +11,7 @@
     },
     "featuredProductsTabItems": {
       "type": "component",
-      "repeatable": false,
+      "repeatable": true,
       "component": "common.products-by-tab",
       "required": true
     }

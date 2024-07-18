@@ -9,11 +9,8 @@
   "attributes": {
     "TimerType": {
       "type": "enumeration",
-      "enum": [
-        "Daily",
-        "Custom"
-      ],
-      "default": "Custom",
+      "enum": ["DAILY", "CUSTOM"],
+      "default": "CUSTOM",
       "required": true
     },
     "startTime": {

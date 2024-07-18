@@ -12,12 +12,8 @@
     },
     "bgColor": {
       "type": "enumeration",
-      "enum": [
-        "White",
-        "Lime",
-        "Blue"
-      ],
-      "default": "Blue",
+      "enum": ["WHITE", "LIME", "BLUE"],
+      "default": "BLUE",
       "required": true
     },
     "information": {
