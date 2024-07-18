@@ -26,6 +26,9 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "moeText": {
+      "type": "string"
     }
   }
 }

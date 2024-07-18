@@ -420,6 +420,7 @@ export interface CategoriesIngredientCategories
   collectionName: 'components_categories_ingredient_categories';
   info: {
     displayName: 'Ingredient Categories';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
@@ -695,6 +696,7 @@ export interface ElementsImageSlug extends Schema.Component {
   attributes: {
     slug: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
+    moeText: Attribute.String;
   };
 }
 
@@ -758,6 +760,7 @@ export interface ElementsResponsiveImageLink
     webImage: Attribute.Media & Attribute.Required;
     link: Attribute.String & Attribute.Required;
     mWebImage: Attribute.Media & Attribute.Required;
+    moeText: Attribute.String;
   };
 }
 

@@ -1,7 +1,8 @@
 {
   "collectionName": "components_categories_ingredient_categories",
   "info": {
-    "displayName": "Ingredient Categories"
+    "displayName": "Ingredient Categories",
+    "description": ""
   },
   "options": {},
   "attributes": {
