@@ -14,6 +14,20 @@
       "repeatable": true,
       "component": "common.products-by-tab",
       "required": true
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button-slug"
     }
   }
 }

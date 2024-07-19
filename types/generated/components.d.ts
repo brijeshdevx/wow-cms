@@ -208,6 +208,9 @@ export interface BlocksFeaturedProductsByTab
       true
     > &
       Attribute.Required;
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
+      Attribute.Required;
+    button: Attribute.Component<'elements.button-slug'>;
   };
 }
 
@@ -248,6 +251,17 @@ export interface BlocksInfoSection extends Schema.Component {
           preset: 'standard';
         }
       >;
+  };
+}
+
+export interface BlocksPdp extends Schema.Component {
+  collectionName: 'components_blocks_pdps';
+  info: {
+    displayName: 'PDP';
+  };
+  attributes: {
+    product: Attribute.Component<'cards.product-card', true> &
+      Attribute.Required;
   };
 }
 
@@ -918,6 +932,7 @@ declare module '@strapi/types' {
       'blocks.featured-products-by-tab': BlocksFeaturedProductsByTab;
       'blocks.featured-products': BlocksFeaturedProducts;
       'blocks.info-section': BlocksInfoSection;
+      'blocks.pdp': BlocksPdp;
       'blocks.product-collection-by-tab': BlocksProductCollectionByTab;
       'blocks.testimonial-section': BlocksTestimonialSection;
       'blocks.upsell-products': BlocksUpsellProducts;

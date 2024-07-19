@@ -1,10 +1,11 @@
 {
   "kind": "collectionType",
-  "collectionName": "landing_pages",
+  "collectionName": "pages",
   "info": {
-    "singularName": "landing-page",
-    "pluralName": "landing-pages",
-    "displayName": "Landing Pages"
+    "singularName": "page",
+    "pluralName": "pages",
+    "displayName": "Pages",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -49,8 +50,19 @@
         "product.product-effectiveness-images",
         "product.product-highlight-images",
         "product.product-key-ingredient-images",
-        "product.product-reviews"
+        "product.product-reviews",
+        "blocks.pdp"
       ]
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "PRODUCT",
+        "COLLECTION",
+        "LANDING",
+        "OTHER"
+      ],
+      "required": true
     }
   }
 }

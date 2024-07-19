@@ -1,37 +1,37 @@
 module.exports = [
-  "strapi::errors",
+  'strapi::errors',
   {
-    name: "strapi::security",
+    name: 'strapi::security',
     config: {
       contentSecurityPolicy: {
         useDefaults: true,
         directives: {
-          "connect-src": ["'self'", "https:"],
-          "img-src": [
+          'connect-src': ["'self'", 'https:'],
+          'img-src': [
             "'self'",
-            "data:",
-            "blob:",
-            "wow-uat-media-bucket.s3.ap-south-1.amazonaws.com",
-            "media-uat.buywow.in",
+            'data:',
+            'blob:',
+            'wow-dev-media-bucket.s3.ap-south-1.amazonaws.com',
+            'media-dev.buywow.in',
           ],
-          "media-src": [
+          'media-src': [
             "'self'",
-            "data:",
-            "blob:",
-            "wow-uat-media-bucket.s3.ap-south-1.amazonaws.com",
-            "media-uat.buywow.in",
+            'data:',
+            'blob:',
+            'wow-dev-media-bucket.s3.ap-south-1.amazonaws.com',
+            'media-dev.buywow.in',
           ],
           upgradeInsecureRequests: null,
         },
       },
     },
   },
-  "strapi::cors",
-  "strapi::poweredBy",
-  "strapi::logger",
-  "strapi::query",
-  "strapi::body",
-  "strapi::session",
-  "strapi::favicon",
-  "strapi::public",
+  'strapi::cors',
+  'strapi::poweredBy',
+  'strapi::logger',
+  'strapi::query',
+  'strapi::body',
+  'strapi::session',
+  'strapi::favicon',
+  'strapi::public',
 ];

@@ -861,73 +861,6 @@ export interface ApiAnnouncementBarAnnouncementBar
   };
 }
 
-export interface ApiCollectionPageCollectionPage
-  extends Schema.CollectionType {
-  collectionName: 'collection_pages';
-  info: {
-    singularName: 'collection-page';
-    pluralName: 'collection-pages';
-    displayName: 'Collection Pages';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    slugId: Attribute.UID<
-      'api::collection-page.collection-page',
-      'slug'
-    > &
-      Attribute.Required;
-    breadcrumb: Attribute.Component<'elements.text'>;
-    blocks: Attribute.DynamicZone<
-      [
-        'accordion.description-section',
-        'accordion.fa-qs-section',
-        'accordion.info-dropdown-section',
-        'accordion.ingredients-section',
-        'accordion.usage-instructions-section',
-        'banner.banners',
-        'banner.carousal',
-        'blocks.announcement-bar',
-        'blocks.blog-section',
-        'blocks.collection-links',
-        'blocks.featured-list',
-        'blocks.featured-products-by-tab',
-        'blocks.featured-products',
-        'blocks.info-section',
-        'blocks.product-collection-by-tab',
-        'blocks.testimonial-section',
-        'blocks.upsell-products',
-        'blocks.video-section',
-        'categories.featured-categories',
-        'categories.ingredient-categories',
-        'categories.trending-categories',
-        'product.product-benefits',
-        'product.product-effectiveness-images',
-        'product.product-highlight-images',
-        'product.product-key-ingredient-images',
-        'product.product-reviews'
-      ]
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::collection-page.collection-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::collection-page.collection-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiCollectionTabCollectionTab
   extends Schema.CollectionType {
   collectionName: 'collection_tabs';
@@ -1035,69 +968,6 @@ export interface ApiIngredientTypeIngredientType
   };
 }
 
-export interface ApiLandingPageLandingPage
-  extends Schema.CollectionType {
-  collectionName: 'landing_pages';
-  info: {
-    singularName: 'landing-page';
-    pluralName: 'landing-pages';
-    displayName: 'Landing Pages';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    slugId: Attribute.UID<'api::landing-page.landing-page', 'slug'> &
-      Attribute.Required;
-    blocks: Attribute.DynamicZone<
-      [
-        'accordion.description-section',
-        'accordion.fa-qs-section',
-        'accordion.info-dropdown-section',
-        'accordion.ingredients-section',
-        'accordion.usage-instructions-section',
-        'banner.banners',
-        'banner.carousal',
-        'blocks.announcement-bar',
-        'blocks.blog-section',
-        'blocks.collection-links',
-        'blocks.featured-list',
-        'blocks.featured-products-by-tab',
-        'blocks.featured-products',
-        'blocks.info-section',
-        'blocks.product-collection-by-tab',
-        'blocks.testimonial-section',
-        'blocks.upsell-products',
-        'blocks.video-section',
-        'categories.featured-categories',
-        'categories.ingredient-categories',
-        'categories.trending-categories',
-        'product.product-benefits',
-        'product.product-effectiveness-images',
-        'product.product-highlight-images',
-        'product.product-key-ingredient-images',
-        'product.product-reviews'
-      ]
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::landing-page.landing-page',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiNavbarNavbar extends Schema.SingleType {
   collectionName: 'navbars';
   info: {
@@ -1127,6 +997,74 @@ export interface ApiNavbarNavbar extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::navbar.navbar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPagePage extends Schema.CollectionType {
+  collectionName: 'pages';
+  info: {
+    singularName: 'page';
+    pluralName: 'pages';
+    displayName: 'Pages';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    slugId: Attribute.UID<'api::page.page', 'slug'> &
+      Attribute.Required;
+    blocks: Attribute.DynamicZone<
+      [
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.info-dropdown-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'banner.banners',
+        'banner.carousal',
+        'blocks.announcement-bar',
+        'blocks.blog-section',
+        'blocks.collection-links',
+        'blocks.featured-list',
+        'blocks.featured-products-by-tab',
+        'blocks.featured-products',
+        'blocks.info-section',
+        'blocks.product-collection-by-tab',
+        'blocks.testimonial-section',
+        'blocks.upsell-products',
+        'blocks.video-section',
+        'categories.featured-categories',
+        'categories.ingredient-categories',
+        'categories.trending-categories',
+        'product.product-benefits',
+        'product.product-effectiveness-images',
+        'product.product-highlight-images',
+        'product.product-key-ingredient-images',
+        'product.product-reviews',
+        'blocks.pdp'
+      ]
+    >;
+    type: Attribute.Enumeration<
+      ['PRODUCT', 'COLLECTION', 'LANDING', 'OTHER']
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::page.page',
       'oneToOne',
       'admin::user'
     > &
@@ -1172,37 +1110,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'blocks.upsell-products'
       ]
     >;
-    blocks: Attribute.DynamicZone<
-      [
-        'accordion.description-section',
-        'accordion.fa-qs-section',
-        'accordion.info-dropdown-section',
-        'accordion.ingredients-section',
-        'accordion.usage-instructions-section',
-        'banner.banners',
-        'banner.carousal',
-        'blocks.blog-section',
-        'blocks.collection-links',
-        'blocks.featured-list',
-        'blocks.featured-products-by-tab',
-        'blocks.featured-products',
-        'blocks.info-section',
-        'blocks.product-collection-by-tab',
-        'blocks.testimonial-section',
-        'blocks.upsell-products',
-        'blocks.video-section',
-        'categories.featured-categories',
-        'categories.ingredient-categories',
-        'categories.trending-categories',
-        'product.product-benefits',
-        'product.product-effectiveness-images',
-        'product.product-highlight-images',
-        'product.product-reviews',
-        'blocks.announcement-bar',
-        'product.product-key-ingredient-images'
-      ]
-    >;
-    breadcrumb: Attribute.Component<'elements.text'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1352,12 +1259,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
-      'api::collection-page.collection-page': ApiCollectionPageCollectionPage;
       'api::collection-tab.collection-tab': ApiCollectionTabCollectionTab;
       'api::footer.footer': ApiFooterFooter;
       'api::ingredient-type.ingredient-type': ApiIngredientTypeIngredientType;
-      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::navbar.navbar': ApiNavbarNavbar;
+      'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
       'api::product-benefit-tag.product-benefit-tag': ApiProductBenefitTagProductBenefitTag;
       'api::promotion-tag.promotion-tag': ApiPromotionTagPromotionTag;

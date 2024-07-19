@@ -1,19 +1,28 @@
 module.exports = ({ env }) => ({
-  // ...
+  graphql: {
+    enabled: true,
+    config: {
+      defaultLimit: -1,
+      maxLimit: -1,
+    },
+  },
   upload: {
     config: {
-      provider: "aws-s3",
+      provider: 'aws-s3',
       providerOptions: {
-        baseUrl: "https://media-uat.buywow.in",
-        rootPath: "public/wow-cms/",
+        baseUrl: 'https://media-dev.buywow.in',
+        rootPath: 'public/wow-cms/',
         s3Options: {
-          accessKeyId: env("AWS_ACCESS_KEY_ID"),
-          secretAccessKey: env("AWS_ACCESS_SECRET"),
-          region: env("AWS_REGION"),
+          accessKeyId: env('AWS_ACCESS_KEY_ID'),
+          secretAccessKey: env('AWS_ACCESS_SECRET'),
+          region: env('AWS_REGION'),
           params: {
-            ACL: env("AWS_ACL", "private"),
-            signedUrlExpires: env("AWS_SIGNED_URL_EXPIRES", 6 * 24 * 60 * 60),
-            Bucket: env("S3_BUCKET_NAME"),
+            ACL: env('AWS_ACL', 'private'),
+            signedUrlExpires: env(
+              'AWS_SIGNED_URL_EXPIRES',
+              6 * 24 * 60 * 60
+            ),
+            Bucket: env('S3_BUCKET_NAME'),
           },
         },
       },
@@ -32,10 +41,10 @@ module.exports = ({ env }) => ({
       error: console.error,
     },
     config: {
-      provider: "sendmail",
+      provider: 'sendmail',
       settings: {
-        defaultFrom: "piyush@devxconsultancy.com",
-        defaultReplyTo: "piyush@devxconsultancy.com",
+        defaultFrom: 'piyush@devxconsultancy.com',
+        defaultReplyTo: 'piyush@devxconsultancy.com',
       },
     },
   },

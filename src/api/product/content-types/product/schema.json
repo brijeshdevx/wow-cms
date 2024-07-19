@@ -52,42 +52,6 @@
         "blocks.featured-list",
         "blocks.upsell-products"
       ]
-    },
-    "blocks": {
-      "type": "dynamiczone",
-      "components": [
-        "accordion.description-section",
-        "accordion.fa-qs-section",
-        "accordion.info-dropdown-section",
-        "accordion.ingredients-section",
-        "accordion.usage-instructions-section",
-        "banner.banners",
-        "banner.carousal",
-        "blocks.blog-section",
-        "blocks.collection-links",
-        "blocks.featured-list",
-        "blocks.featured-products-by-tab",
-        "blocks.featured-products",
-        "blocks.info-section",
-        "blocks.product-collection-by-tab",
-        "blocks.testimonial-section",
-        "blocks.upsell-products",
-        "blocks.video-section",
-        "categories.featured-categories",
-        "categories.ingredient-categories",
-        "categories.trending-categories",
-        "product.product-benefits",
-        "product.product-effectiveness-images",
-        "product.product-highlight-images",
-        "product.product-reviews",
-        "blocks.announcement-bar",
-        "product.product-key-ingredient-images"
-      ]
-    },
-    "breadcrumb": {
-      "type": "component",
-      "repeatable": false,
-      "component": "elements.text"
     }
   }
 }
