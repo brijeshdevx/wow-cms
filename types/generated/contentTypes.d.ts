@@ -867,8 +867,7 @@ export interface ApiCollectionPageCollectionPage
   info: {
     singularName: 'collection-page';
     pluralName: 'collection-pages';
-    displayName: 'Collection Page';
-    description: '';
+    displayName: 'Collection Pages';
   };
   options: {
     draftAndPublish: true;
@@ -880,6 +879,7 @@ export interface ApiCollectionPageCollectionPage
       'slug'
     > &
       Attribute.Required;
+    breadcrumb: Attribute.Component<'elements.text'>;
     blocks: Attribute.DynamicZone<
       [
         'accordion.description-section',
@@ -889,28 +889,27 @@ export interface ApiCollectionPageCollectionPage
         'accordion.usage-instructions-section',
         'banner.banners',
         'banner.carousal',
+        'blocks.announcement-bar',
         'blocks.blog-section',
+        'blocks.collection-links',
         'blocks.featured-list',
         'blocks.featured-products-by-tab',
         'blocks.featured-products',
         'blocks.info-section',
+        'blocks.product-collection-by-tab',
         'blocks.testimonial-section',
         'blocks.upsell-products',
         'blocks.video-section',
-        'product.product-benefits',
-        'product.product-effectiveness-images',
-        'product.product-reviews',
         'categories.featured-categories',
         'categories.ingredient-categories',
         'categories.trending-categories',
-        'blocks.collection-links',
-        'blocks.product-collection-by-tab',
+        'product.product-benefits',
+        'product.product-effectiveness-images',
         'product.product-highlight-images',
-        'blocks.announcement-bar',
-        'product.product-key-ingredient-images'
+        'product.product-key-ingredient-images',
+        'product.product-reviews'
       ]
     >;
-    breadcrumb: Attribute.Component<'elements.text'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1036,49 +1035,51 @@ export interface ApiIngredientTypeIngredientType
   };
 }
 
-export interface ApiLandingPageLandingPage extends Schema.SingleType {
+export interface ApiLandingPageLandingPage
+  extends Schema.CollectionType {
   collectionName: 'landing_pages';
   info: {
     singularName: 'landing-page';
     pluralName: 'landing-pages';
-    displayName: 'Landing Page';
-    description: '';
+    displayName: 'Landing Pages';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    slugId: Attribute.UID<'api::landing-page.landing-page', 'slug'> &
+      Attribute.Required;
     blocks: Attribute.DynamicZone<
       [
-        'banner.banners',
-        'banner.carousal',
-        'categories.featured-categories',
-        'categories.ingredient-categories',
-        'categories.trending-categories',
         'accordion.description-section',
         'accordion.fa-qs-section',
         'accordion.info-dropdown-section',
         'accordion.ingredients-section',
         'accordion.usage-instructions-section',
+        'banner.banners',
+        'banner.carousal',
+        'blocks.announcement-bar',
         'blocks.blog-section',
+        'blocks.collection-links',
         'blocks.featured-list',
         'blocks.featured-products-by-tab',
         'blocks.featured-products',
         'blocks.info-section',
+        'blocks.product-collection-by-tab',
         'blocks.testimonial-section',
         'blocks.upsell-products',
         'blocks.video-section',
+        'categories.featured-categories',
+        'categories.ingredient-categories',
+        'categories.trending-categories',
         'product.product-benefits',
         'product.product-effectiveness-images',
-        'product.product-reviews',
-        'blocks.collection-links',
-        'blocks.product-collection-by-tab',
         'product.product-highlight-images',
-        'blocks.announcement-bar',
-        'product.product-key-ingredient-images'
+        'product.product-key-ingredient-images',
+        'product.product-reviews'
       ]
-    > &
-      Attribute.Required;
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1158,7 +1159,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     >;
     slugId: Attribute.UID<'api::product.product', 'slug'> &
       Attribute.Required;
-    cardBgColor: Attribute.String &
+    imageBgColor: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
     offerTag: Attribute.Component<'common.product-offer-tag'>;
     productDetailView: Attribute.DynamicZone<
