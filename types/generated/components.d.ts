@@ -140,6 +140,7 @@ export interface BlocksAnnouncementBar extends Schema.Component {
   collectionName: 'components_blocks_announcement_bars';
   info: {
     displayName: 'Announcement Bar';
+    description: '';
   };
   attributes: {
     leftText: Attribute.String;
@@ -163,6 +164,7 @@ export interface BlocksCollectionLinks extends Schema.Component {
   collectionName: 'components_blocks_collection_links';
   info: {
     displayName: 'Collection Links';
+    description: '';
   };
   attributes: {
     collectionLinkItems: Attribute.Component<
@@ -242,7 +244,7 @@ export interface BlocksInfoSection extends Schema.Component {
     description: '';
   };
   attributes: {
-    data: Attribute.RichText &
+    information: Attribute.RichText &
       Attribute.Required &
       Attribute.CustomField<
         'plugin::ckeditor.CKEditor',
@@ -258,9 +260,10 @@ export interface BlocksPdp extends Schema.Component {
   collectionName: 'components_blocks_pdps';
   info: {
     displayName: 'PDP';
+    description: '';
   };
   attributes: {
-    product: Attribute.Component<'cards.product-card', true> &
+    product: Attribute.Component<'cards.product-card'> &
       Attribute.Required;
   };
 }
@@ -469,7 +472,7 @@ export interface CommonCountdownTimer extends Schema.Component {
     description: '';
   };
   attributes: {
-    TimerType: Attribute.Enumeration<['DAILY', 'CUSTOM']> &
+    type: Attribute.Enumeration<['DAILY', 'CUSTOM']> &
       Attribute.Required &
       Attribute.DefaultTo<'CUSTOM'>;
     startTime: Attribute.Time &

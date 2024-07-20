@@ -1,7 +1,8 @@
 {
   "collectionName": "components_blocks_collection_links",
   "info": {
-    "displayName": "Collection Links"
+    "displayName": "Collection Links",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -13,7 +14,11 @@
     },
     "bgColor": {
       "type": "enumeration",
-      "enum": ["WHITE", "LIME", "BLUE"],
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
       "default": "LIME",
       "required": true
     }

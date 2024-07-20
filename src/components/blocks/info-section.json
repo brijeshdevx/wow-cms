@@ -6,7 +6,7 @@
   },
   "options": {},
   "attributes": {
-    "data": {
+    "information": {
       "type": "customField",
       "options": {
         "output": "HTML",

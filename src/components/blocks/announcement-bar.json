@@ -1,7 +1,8 @@
 {
   "collectionName": "components_blocks_announcement_bars",
   "info": {
-    "displayName": "Announcement Bar"
+    "displayName": "Announcement Bar",
+    "description": ""
   },
   "options": {},
   "attributes": {

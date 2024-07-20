@@ -1098,6 +1098,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
     slugId: Attribute.UID<'api::product.product', 'slug'> &
       Attribute.Required;
     imageBgColor: Attribute.String &
+      Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'>;
     offerTag: Attribute.Component<'common.product-offer-tag'>;
     productDetailView: Attribute.DynamicZone<
