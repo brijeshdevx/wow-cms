@@ -15,12 +15,8 @@
     "slug": {
       "type": "string",
       "required": true,
-      "unique": true
-    },
-    "slugId": {
-      "type": "uid",
-      "targetField": "slug",
-      "required": true
+      "unique": true,
+      "regex": "^[a-zA-Z0-9-]+$"
     },
     "blocks": {
       "type": "dynamiczone",
@@ -30,7 +26,6 @@
         "accordion.info-dropdown-section",
         "accordion.ingredients-section",
         "accordion.usage-instructions-section",
-        "banner.banners",
         "banner.carousal",
         "blocks.announcement-bar",
         "blocks.blog-section",
@@ -51,7 +46,9 @@
         "product.product-highlight-images",
         "product.product-key-ingredient-images",
         "product.product-reviews",
-        "blocks.pdp"
+        "blocks.pdp",
+        "banner.mini-banners",
+        "banner.single-banner"
       ]
     },
     "type": {
@@ -60,7 +57,7 @@
         "PRODUCT",
         "COLLECTION",
         "LANDING",
-        "OTHER"
+        "HOME"
       ],
       "required": true
     }

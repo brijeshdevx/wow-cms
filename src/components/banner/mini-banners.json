@@ -1,12 +1,11 @@
 {
-  "collectionName": "components_banner_banners",
+  "collectionName": "components_banner_mini_banners",
   "info": {
-    "displayName": "Banners",
-    "description": ""
+    "displayName": "Mini Banners"
   },
   "options": {},
   "attributes": {
-    "bannerItems": {
+    "miniBannerItems": {
       "type": "component",
       "repeatable": true,
       "component": "elements.responsive-image-link",

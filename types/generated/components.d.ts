@@ -88,21 +88,6 @@ export interface AccordionUsageInstructionsSection
   };
 }
 
-export interface BannerBanners extends Schema.Component {
-  collectionName: 'components_banner_banners';
-  info: {
-    displayName: 'Banners';
-    description: '';
-  };
-  attributes: {
-    bannerItems: Attribute.Component<
-      'elements.responsive-image-link',
-      true
-    > &
-      Attribute.Required;
-  };
-}
-
 export interface BannerCarousal extends Schema.Component {
   collectionName: 'components_banner_carousals';
   info: {
@@ -133,6 +118,31 @@ export interface BannerCarousal extends Schema.Component {
         number
       > &
       Attribute.DefaultTo<2000>;
+  };
+}
+
+export interface BannerMiniBanners extends Schema.Component {
+  collectionName: 'components_banner_mini_banners';
+  info: {
+    displayName: 'Mini Banners';
+  };
+  attributes: {
+    miniBannerItems: Attribute.Component<
+      'elements.responsive-image-link',
+      true
+    > &
+      Attribute.Required;
+  };
+}
+
+export interface BannerSingleBanner extends Schema.Component {
+  collectionName: 'components_banner_single_banners';
+  info: {
+    displayName: 'Single Banner';
+  };
+  attributes: {
+    banner: Attribute.Component<'elements.responsive-image-link'> &
+      Attribute.Required;
   };
 }
 
@@ -460,7 +470,8 @@ export interface CategoriesTrendingCategories
     trendingCategoryItems: Attribute.Component<
       'elements.image-slug-title',
       true
-    >;
+    > &
+      Attribute.Required;
   };
 }
 
@@ -912,9 +923,15 @@ export interface ProductProductReviews extends Schema.Component {
   collectionName: 'components_product_product_reviews';
   info: {
     displayName: 'Product Reviews';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
+    product: Attribute.Relation<
+      'product.product-reviews',
+      'oneToOne',
+      'api::product.product'
+    >;
   };
 }
 
@@ -926,8 +943,9 @@ declare module '@strapi/types' {
       'accordion.info-dropdown-section': AccordionInfoDropdownSection;
       'accordion.ingredients-section': AccordionIngredientsSection;
       'accordion.usage-instructions-section': AccordionUsageInstructionsSection;
-      'banner.banners': BannerBanners;
       'banner.carousal': BannerCarousal;
+      'banner.mini-banners': BannerMiniBanners;
+      'banner.single-banner': BannerSingleBanner;
       'blocks.announcement-bar': BlocksAnnouncementBar;
       'blocks.blog-section': BlocksBlogSection;
       'blocks.collection-links': BlocksCollectionLinks;

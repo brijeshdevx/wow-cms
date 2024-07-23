@@ -1017,8 +1017,6 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
   attributes: {
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    slugId: Attribute.UID<'api::page.page', 'slug'> &
-      Attribute.Required;
     blocks: Attribute.DynamicZone<
       [
         'accordion.description-section',
@@ -1026,7 +1024,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'accordion.info-dropdown-section',
         'accordion.ingredients-section',
         'accordion.usage-instructions-section',
-        'banner.banners',
         'banner.carousal',
         'blocks.announcement-bar',
         'blocks.blog-section',
@@ -1047,11 +1044,13 @@ export interface ApiPagePage extends Schema.CollectionType {
         'product.product-highlight-images',
         'product.product-key-ingredient-images',
         'product.product-reviews',
-        'blocks.pdp'
+        'blocks.pdp',
+        'banner.mini-banners',
+        'banner.single-banner'
       ]
     >;
     type: Attribute.Enumeration<
-      ['PRODUCT', 'COLLECTION', 'LANDING', 'OTHER']
+      ['PRODUCT', 'COLLECTION', 'LANDING', 'HOME']
     > &
       Attribute.Required;
     createdAt: Attribute.DateTime;
@@ -1095,8 +1094,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       'oneToMany',
       'api::product-benefit-tag.product-benefit-tag'
     >;
-    slugId: Attribute.UID<'api::product.product', 'slug'> &
-      Attribute.Required;
     imageBgColor: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'>;

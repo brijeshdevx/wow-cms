@@ -9,7 +9,8 @@
     "trendingCategoryItems": {
       "type": "component",
       "repeatable": true,
-      "component": "elements.image-slug-title"
+      "component": "elements.image-slug-title",
+      "required": true
     }
   }
 }

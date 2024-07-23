@@ -15,7 +15,8 @@
     "slug": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "regex": "^[a-zA-Z0-9-]+$"
     },
     "promotionTag": {
       "type": "relation",
@@ -26,11 +27,6 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::product-benefit-tag.product-benefit-tag"
-    },
-    "slugId": {
-      "type": "uid",
-      "targetField": "slug",
-      "required": true
     },
     "imageBgColor": {
       "type": "customField",
