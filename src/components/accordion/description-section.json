@@ -10,6 +10,15 @@
       "type": "string",
       "required": true
     },
+    "description": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor",
+      "required": true
+    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -17,10 +26,6 @@
       "allowedTypes": [
         "images"
       ]
-    },
-    "description": {
-      "type": "text",
-      "required": true
     }
   }
 }

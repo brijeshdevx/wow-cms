@@ -37,7 +37,8 @@
     "offerTag": {
       "type": "component",
       "repeatable": false,
-      "component": "common.product-offer-tag"
+      "component": "common.product-offer-tag",
+      "required": true
     },
     "productDetailView": {
       "type": "dynamiczone",

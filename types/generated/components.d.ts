@@ -9,8 +9,16 @@ export interface AccordionDescriptionSection
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
+    description: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
     image: Attribute.Media;
-    description: Attribute.Text & Attribute.Required;
   };
 }
 
@@ -46,7 +54,7 @@ export interface AccordionInfoDropdownSection
         'plugin::ckeditor.CKEditor',
         {
           output: 'HTML';
-          preset: 'light';
+          preset: 'rich';
         }
       >;
   };
@@ -305,8 +313,11 @@ export interface BlocksProductCollectionByTab
       true
     > &
       Attribute.Required;
-    verticalBlogCard: Attribute.Component<'cards.blog-card'>;
-    horizontalBlogCards: Attribute.Component<'cards.blog-card', true>;
+    verticalBlogSection: Attribute.Component<'common.vertical-blog-section'>;
+    horizontalBlogSection: Attribute.Component<
+      'common.horizontal-blog-section',
+      true
+    >;
   };
 }
 
@@ -378,15 +389,6 @@ export interface CardsBlogCard extends Schema.Component {
     bgColor: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'>;
-    row: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      > &
-      Attribute.DefaultTo<1>;
   };
 }
 
@@ -509,6 +511,29 @@ export interface CommonFaq extends Schema.Component {
   };
 }
 
+export interface CommonHorizontalBlogSection
+  extends Schema.Component {
+  collectionName: 'components_common_horizontal_blog_sections';
+  info: {
+    displayName: 'Horizontal Blog Section';
+  };
+  attributes: {
+    row: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    horizontalBlogItems: Attribute.Component<
+      'cards.blog-card',
+      true
+    > &
+      Attribute.Required;
+  };
+}
+
 export interface CommonMenuLink extends Schema.Component {
   collectionName: 'components_common_menu_links';
   info: {
@@ -543,7 +568,7 @@ export interface CommonProductOfferTag extends Schema.Component {
   attributes: {
     showOfferTag: Attribute.Boolean &
       Attribute.Required &
-      Attribute.DefaultTo<false>;
+      Attribute.DefaultTo<true>;
     bgColor: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'>;
@@ -567,6 +592,25 @@ export interface CommonProductsByTab extends Schema.Component {
       'oneToOne',
       'api::collection-tab.collection-tab'
     >;
+  };
+}
+
+export interface CommonVerticalBlogSection extends Schema.Component {
+  collectionName: 'components_common_vertical_blog_sections';
+  info: {
+    displayName: 'Vertical Blog Section';
+  };
+  attributes: {
+    row: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    verticalBlogItem: Attribute.Component<'cards.blog-card'> &
+      Attribute.Required;
   };
 }
 
@@ -796,10 +840,11 @@ export interface ElementsResponsiveImage extends Schema.Component {
   collectionName: 'components_elements_responsive_images';
   info: {
     displayName: 'Responsive Image';
+    description: '';
   };
   attributes: {
     webImage: Attribute.Media & Attribute.Required;
-    mWebImage: Attribute.Media;
+    mWebImage: Attribute.Media & Attribute.Required;
   };
 }
 
@@ -892,10 +937,12 @@ export interface ProductProductHighlightImages
   collectionName: 'components_product_product_highlight_images';
   info: {
     displayName: 'Product Highlight Images';
+    description: '';
   };
   attributes: {
     images: Attribute.Component<'elements.responsive-image', true> &
       Attribute.Required;
+    title: Attribute.String;
   };
 }
 
@@ -911,11 +958,11 @@ export interface ProductProductKeyIngredientImages
     bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
       Attribute.DefaultTo<'LIME'>;
-    primaryIngredient: Attribute.Media;
     secondaryIngredients: Attribute.Component<
       'elements.image-title',
       true
     >;
+    primaryIngredient: Attribute.Component<'elements.responsive-image'>;
   };
 }
 
@@ -966,10 +1013,12 @@ declare module '@strapi/types' {
       'categories.trending-categories': CategoriesTrendingCategories;
       'common.countdown-timer': CommonCountdownTimer;
       'common.faq': CommonFaq;
+      'common.horizontal-blog-section': CommonHorizontalBlogSection;
       'common.menu-link': CommonMenuLink;
       'common.menu-slug': CommonMenuSlug;
       'common.product-offer-tag': CommonProductOfferTag;
       'common.products-by-tab': CommonProductsByTab;
+      'common.vertical-blog-section': CommonVerticalBlogSection;
       'elements.button-link': ElementsButtonLink;
       'elements.button-slug': ElementsButtonSlug;
       'elements.button': ElementsButton;

@@ -29,12 +29,6 @@
       "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
       "required": true,
       "customField": "plugin::color-picker.color"
-    },
-    "row": {
-      "type": "integer",
-      "default": 1,
-      "min": 1,
-      "required": true
     }
   }
 }

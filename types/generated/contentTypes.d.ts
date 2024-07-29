@@ -843,6 +843,11 @@ export interface ApiAnnouncementBarAnnouncementBar
     leftText: Attribute.String;
     centerText: Attribute.String;
     rightText: Attribute.String;
+    showTimer: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1097,7 +1102,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
     imageBgColor: Attribute.String &
       Attribute.Required &
       Attribute.CustomField<'plugin::color-picker.color'>;
-    offerTag: Attribute.Component<'common.product-offer-tag'>;
+    offerTag: Attribute.Component<'common.product-offer-tag'> &
+      Attribute.Required;
     productDetailView: Attribute.DynamicZone<
       [
         'accordion.description-section',

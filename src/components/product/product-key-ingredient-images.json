@@ -19,18 +19,15 @@
       "default": "LIME",
       "required": true
     },
-    "primaryIngredient": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "secondaryIngredients": {
       "type": "component",
       "repeatable": true,
       "component": "elements.image-title"
+    },
+    "primaryIngredient": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.responsive-image"
     }
   }
 }

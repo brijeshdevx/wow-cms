@@ -29,15 +29,15 @@
       "component": "common.products-by-tab",
       "required": true
     },
-    "verticalBlogCard": {
+    "verticalBlogSection": {
       "type": "component",
       "repeatable": false,
-      "component": "cards.blog-card"
+      "component": "common.vertical-blog-section"
     },
-    "horizontalBlogCards": {
+    "horizontalBlogSection": {
       "type": "component",
       "repeatable": true,
-      "component": "cards.blog-card"
+      "component": "common.horizontal-blog-section"
     }
   }
 }

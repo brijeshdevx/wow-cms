@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_common_vertical_blog_sections",
+  "info": {
+    "displayName": "Vertical Blog Section"
+  },
+  "options": {},
+  "attributes": {
+    "row": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "verticalBlogItem": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cards.blog-card",
+      "required": true
+    }
+  }
+}
