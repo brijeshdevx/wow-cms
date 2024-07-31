@@ -1051,7 +1051,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'product.product-reviews',
         'blocks.pdp',
         'banner.mini-banners',
-        'banner.single-banner'
+        'banner.single-banner',
+        'blocks.breadcrumb'
       ]
     >;
     type: Attribute.Enumeration<

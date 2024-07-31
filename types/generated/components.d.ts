@@ -165,6 +165,11 @@ export interface BlocksAnnouncementBar extends Schema.Component {
     rightText: Attribute.String;
     centerText: Attribute.String;
     timer: Attribute.Component<'common.countdown-timer'>;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    showTimer: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -175,6 +180,16 @@ export interface BlocksBlogSection extends Schema.Component {
   };
   attributes: {
     title: Attribute.String;
+  };
+}
+
+export interface BlocksBreadcrumb extends Schema.Component {
+  collectionName: 'components_blocks_breadcrumbs';
+  info: {
+    displayName: 'Breadcrumb';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
   };
 }
 
@@ -268,7 +283,7 @@ export interface BlocksInfoSection extends Schema.Component {
         'plugin::ckeditor.CKEditor',
         {
           output: 'HTML';
-          preset: 'standard';
+          preset: 'rich';
         }
       >;
   };
@@ -406,6 +421,7 @@ export interface CardsExtendedProductCard extends Schema.Component {
     >;
     text: Attribute.String & Attribute.Required;
     subText: Attribute.String;
+    image: Attribute.Media;
   };
 }
 
@@ -995,6 +1011,7 @@ declare module '@strapi/types' {
       'banner.single-banner': BannerSingleBanner;
       'blocks.announcement-bar': BlocksAnnouncementBar;
       'blocks.blog-section': BlocksBlogSection;
+      'blocks.breadcrumb': BlocksBreadcrumb;
       'blocks.collection-links': BlocksCollectionLinks;
       'blocks.featured-list': BlocksFeaturedList;
       'blocks.featured-products-by-tab': BlocksFeaturedProductsByTab;
