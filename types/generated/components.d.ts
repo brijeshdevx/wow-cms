@@ -170,6 +170,7 @@ export interface BlocksAnnouncementBar extends Schema.Component {
     showTimer: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
+    link: Attribute.String;
   };
 }
 
