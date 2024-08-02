@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_banner_carousals",
+  "info": {
+    "displayName": "Carousal",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "carousalItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.responsive-image-link",
+      "required": true,
+      "min": 2
+    },
+    "autoPlay": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "autoPlayInterval": {
+      "type": "integer",
+      "default": 2000,
+      "min": 0,
+      "required": true
+    }
+  }
+}

@@ -4,7 +4,7 @@
   "info": {
     "singularName": "testimonial",
     "pluralName": "testimonials",
-    "displayName": "Testimonial",
+    "displayName": "Testimonials",
     "description": ""
   },
   "options": {
@@ -12,30 +12,42 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "featuredImage": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "age": {
+      "type": "integer"
+    },
+    "webImage": {
       "type": "media",
       "multiple": false,
       "required": true,
       "allowedTypes": [
-        "images",
-        "videos"
+        "images"
+      ]
+    },
+    "mWebImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
       ]
     },
     "description": {
-      "type": "customField",
-      "options": {
-        "output": "HTML",
-        "preset": "standard"
-      },
-      "required": false,
-      "customField": "plugin::ckeditor.CKEditor"
-    },
-    "concern": {
-      "type": "string"
-    },
-    "productSlug": {
       "type": "string",
       "required": true
+    },
+    "product": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
+    },
+    "concerns": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text"
     }
   }
 }

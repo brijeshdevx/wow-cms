@@ -4,7 +4,8 @@
   "info": {
     "singularName": "product",
     "pluralName": "products",
-    "displayName": "Products"
+    "displayName": "Products",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -14,13 +15,41 @@
     "slug": {
       "type": "string",
       "required": true,
-      "unique": true
+      "unique": true,
+      "regex": "^[a-zA-Z0-9-]+$"
     },
-    "tags": {
+    "promotionTag": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::tag.tag",
-      "inversedBy": "products"
+      "relation": "oneToOne",
+      "target": "api::promotion-tag.promotion-tag"
+    },
+    "productBenefitTags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product-benefit-tag.product-benefit-tag"
+    },
+    "imageBgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color",
+      "required": true
+    },
+    "offerTag": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.product-offer-tag",
+      "required": true
+    },
+    "productDetailView": {
+      "type": "dynamiczone",
+      "components": [
+        "accordion.description-section",
+        "accordion.fa-qs-section",
+        "accordion.ingredients-section",
+        "accordion.usage-instructions-section",
+        "blocks.featured-list",
+        "blocks.upsell-products"
+      ]
     }
   }
 }

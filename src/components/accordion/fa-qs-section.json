@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_accordion_fa_qs_sections",
+  "info": {
+    "displayName": "FAQs Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "FAQs": {
+      "displayName": "FAQ",
+      "type": "component",
+      "repeatable": true,
+      "component": "common.faq",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_head_countdown_timers",
+  "info": {
+    "displayName": "Countdown Timer",
+    "icon": "clock",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "DAILY",
+        "CUSTOM"
+      ],
+      "default": "CUSTOM",
+      "required": true
+    },
+    "startTime": {
+      "type": "time",
+      "required": true,
+      "default": "00:00"
+    },
+    "endTime": {
+      "type": "time",
+      "required": true,
+      "default": "00:00"
+    },
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

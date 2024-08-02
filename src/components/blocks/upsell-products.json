@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_blocks_upsell_products",
+  "info": {
+    "displayName": "Upsell Products",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "upsellProductItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.extended-product-card",
+      "required": true
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": ["WHITE", "LIME", "BLUE"],
+      "default": "LIME",
+      "required": true
+    }
+  }
+}

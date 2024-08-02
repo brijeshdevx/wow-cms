@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_elements_image_slugs",
+  "info": {
+    "displayName": "Image Slug",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "slug": {
+      "type": "string",
+      "required": true,
+      "regex": "^[\\w\\s#-]+$"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "moeText": {
+      "type": "string"
+    }
+  }
+}

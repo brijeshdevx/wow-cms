@@ -1,0 +1,37 @@
+{
+  "collectionName": "components_blocks_announcement_bars",
+  "info": {
+    "displayName": "Announcement Bar",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "leftText": {
+      "type": "string"
+    },
+    "rightText": {
+      "type": "string"
+    },
+    "centerText": {
+      "type": "string"
+    },
+    "timer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.countdown-timer"
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    },
+    "showTimer": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "link": {
+      "type": "string"
+    }
+  }
+}

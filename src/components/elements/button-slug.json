@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_elements_button_slugs",
+  "info": {
+    "displayName": "Button Slug"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "regex": "^[\\w\\s#-]+$",
+      "required": true
+    }
+  }
+}

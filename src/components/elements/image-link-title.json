@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_elements_image_link_titles",
+  "info": {
+    "displayName": "Image Link Title",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "link": {
+      "type": "string",
+      "required": true,
+      "regex": "^https?:\\/\\/.*$"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

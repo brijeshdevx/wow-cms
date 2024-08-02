@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_product_product_offer_tags",
+  "info": {
+    "displayName": "Product Offer Tag",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "showOfferTag": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "required": true,
+      "customField": "plugin::color-picker.color"
+    }
+  }
+}

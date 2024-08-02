@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_accordion_info_dropdown_sections",
+  "info": {
+    "displayName": "Info Dropdown Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "default": "BLUE",
+      "required": true
+    },
+    "information": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor",
+      "required": true
+    }
+  }
+}

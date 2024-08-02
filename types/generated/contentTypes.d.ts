@@ -30,7 +30,11 @@ export interface AdminPermission extends Schema.CollectionType {
       }>;
     properties: Attribute.JSON & Attribute.DefaultTo<{}>;
     conditions: Attribute.JSON & Attribute.DefaultTo<[]>;
-    role: Attribute.Relation<'admin::permission', 'manyToOne', 'admin::role'>;
+    role: Attribute.Relation<
+      'admin::permission',
+      'manyToOne',
+      'admin::role'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -92,15 +96,29 @@ export interface AdminUser extends Schema.CollectionType {
     isActive: Attribute.Boolean &
       Attribute.Private &
       Attribute.DefaultTo<false>;
-    roles: Attribute.Relation<'admin::user', 'manyToMany', 'admin::role'> &
+    roles: Attribute.Relation<
+      'admin::user',
+      'manyToMany',
+      'admin::role'
+    > &
       Attribute.Private;
-    blocked: Attribute.Boolean & Attribute.Private & Attribute.DefaultTo<false>;
+    blocked: Attribute.Boolean &
+      Attribute.Private &
+      Attribute.DefaultTo<false>;
     preferedLanguage: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'admin::user',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'admin::user', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'admin::user',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -136,7 +154,11 @@ export interface AdminRole extends Schema.CollectionType {
         minLength: 1;
       }>;
     description: Attribute.String;
-    users: Attribute.Relation<'admin::role', 'manyToMany', 'admin::user'>;
+    users: Attribute.Relation<
+      'admin::role',
+      'manyToMany',
+      'admin::user'
+    >;
     permissions: Attribute.Relation<
       'admin::role',
       'oneToMany',
@@ -144,9 +166,17 @@ export interface AdminRole extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'admin::role', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'admin::role',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'admin::role', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'admin::role',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -180,7 +210,9 @@ export interface AdminApiToken extends Schema.CollectionType {
         minLength: 1;
       }> &
       Attribute.DefaultTo<''>;
-    type: Attribute.Enumeration<['read-only', 'full-access', 'custom']> &
+    type: Attribute.Enumeration<
+      ['read-only', 'full-access', 'custom']
+    > &
       Attribute.Required &
       Attribute.DefaultTo<'read-only'>;
     accessKey: Attribute.String &
@@ -213,7 +245,8 @@ export interface AdminApiToken extends Schema.CollectionType {
   };
 }
 
-export interface AdminApiTokenPermission extends Schema.CollectionType {
+export interface AdminApiTokenPermission
+  extends Schema.CollectionType {
   collectionName: 'strapi_api_token_permissions';
   info: {
     name: 'API Token Permission';
@@ -317,7 +350,8 @@ export interface AdminTransferToken extends Schema.CollectionType {
   };
 }
 
-export interface AdminTransferTokenPermission extends Schema.CollectionType {
+export interface AdminTransferTokenPermission
+  extends Schema.CollectionType {
   collectionName: 'strapi_transfer_token_permissions';
   info: {
     name: 'Transfer Token Permission';
@@ -491,7 +525,8 @@ export interface PluginUploadFolder extends Schema.CollectionType {
   };
 }
 
-export interface PluginContentReleasesRelease extends Schema.CollectionType {
+export interface PluginContentReleasesRelease
+  extends Schema.CollectionType {
   collectionName: 'strapi_releases';
   info: {
     singularName: 'release';
@@ -560,7 +595,8 @@ export interface PluginContentReleasesReleaseAction
     };
   };
   attributes: {
-    type: Attribute.Enumeration<['publish', 'unpublish']> & Attribute.Required;
+    type: Attribute.Enumeration<['publish', 'unpublish']> &
+      Attribute.Required;
     entry: Attribute.Relation<
       'plugin::content-releases.release-action',
       'morphToOne'
@@ -679,7 +715,8 @@ export interface PluginUsersPermissionsPermission
   };
 }
 
-export interface PluginUsersPermissionsRole extends Schema.CollectionType {
+export interface PluginUsersPermissionsRole
+  extends Schema.CollectionType {
   collectionName: 'up_roles';
   info: {
     name: 'role';
@@ -731,7 +768,8 @@ export interface PluginUsersPermissionsRole extends Schema.CollectionType {
   };
 }
 
-export interface PluginUsersPermissionsUser extends Schema.CollectionType {
+export interface PluginUsersPermissionsUser
+  extends Schema.CollectionType {
   collectionName: 'up_users';
   info: {
     name: 'user';
@@ -788,6 +826,189 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiAnnouncementBarAnnouncementBar
+  extends Schema.SingleType {
+  collectionName: 'announcement_bars';
+  info: {
+    singularName: 'announcement-bar';
+    pluralName: 'announcement-bars';
+    displayName: 'Announcement Bar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    timer: Attribute.Component<'common.countdown-timer'>;
+    leftText: Attribute.String;
+    centerText: Attribute.String;
+    rightText: Attribute.String;
+    showTimer: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    bgColor: Attribute.String &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::announcement-bar.announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::announcement-bar.announcement-bar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiCollectionTabCollectionTab
+  extends Schema.CollectionType {
+  collectionName: 'collection_tabs';
+  info: {
+    singularName: 'collection-tab';
+    pluralName: 'collection-tabs';
+    displayName: 'Collection Tabs';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::collection-tab.collection-tab',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::collection-tab.collection-tab',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFooterFooter extends Schema.SingleType {
+  collectionName: 'footers';
+  info: {
+    singularName: 'footer';
+    pluralName: 'footers';
+    displayName: 'Footer';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media & Attribute.Required;
+    description: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    copyrightText: Attribute.String;
+    socialLinks: Attribute.Component<'elements.image-link', true>;
+    menus: Attribute.Component<'common.menu-slug', true>;
+    otherLinks: Attribute.Component<'common.menu-slug', true>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::footer.footer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiIngredientTypeIngredientType
+  extends Schema.CollectionType {
+  collectionName: 'ingredient_types';
+  info: {
+    singularName: 'ingredient-type';
+    pluralName: 'ingredient-types';
+    displayName: 'Ingredient Types';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    image: Attribute.Media & Attribute.Required;
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ingredient-type.ingredient-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ingredient-type.ingredient-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavbarNavbar extends Schema.SingleType {
+  collectionName: 'navbars';
+  info: {
+    singularName: 'navbar';
+    pluralName: 'navbars';
+    displayName: 'Navbar';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    logo: Attribute.Media & Attribute.Required;
+    VIPMembershipLogo: Attribute.Media;
+    mWebMenuLogo: Attribute.Media & Attribute.Required;
+    otherLinks: Attribute.Component<'elements.text-link', true>;
+    menus: Attribute.Component<'common.menu-slug', true> &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navbar.navbar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navbar.navbar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiPagePage extends Schema.CollectionType {
   collectionName: 'pages';
   info: {
@@ -800,23 +1021,58 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    pageType: Attribute.Enumeration<['Landing', 'Collection', 'Product']>;
+    slug: Attribute.String & Attribute.Required & Attribute.Unique;
     blocks: Attribute.DynamicZone<
       [
-        'carousel.hero-section',
-        'common.wow-benefits',
-        'common.featured-products',
-        'common.products-by-tags',
-        'common.banner'
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.info-dropdown-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'banner.carousal',
+        'blocks.announcement-bar',
+        'blocks.blog-section',
+        'blocks.collection-links',
+        'blocks.featured-list',
+        'blocks.featured-products-by-tab',
+        'blocks.featured-products',
+        'blocks.info-section',
+        'blocks.product-collection-by-tab',
+        'blocks.testimonial-section',
+        'blocks.upsell-products',
+        'blocks.video-section',
+        'categories.featured-categories',
+        'categories.ingredient-categories',
+        'categories.trending-categories',
+        'product.product-benefits',
+        'product.product-effectiveness-images',
+        'product.product-highlight-images',
+        'product.product-key-ingredient-images',
+        'product.product-reviews',
+        'blocks.pdp',
+        'banner.mini-banners',
+        'banner.single-banner',
+        'blocks.breadcrumb'
       ]
     >;
-    slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    type: Attribute.Enumeration<
+      ['PRODUCT', 'COLLECTION', 'LANDING', 'HOME']
+    > &
+      Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::page.page', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -827,16 +1083,37 @@ export interface ApiProductProduct extends Schema.CollectionType {
     singularName: 'product';
     pluralName: 'products';
     displayName: 'Products';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    tags: Attribute.Relation<
+    promotionTag: Attribute.Relation<
       'api::product.product',
-      'manyToMany',
-      'api::tag.tag'
+      'oneToOne',
+      'api::promotion-tag.promotion-tag'
+    >;
+    productBenefitTags: Attribute.Relation<
+      'api::product.product',
+      'oneToMany',
+      'api::product-benefit-tag.product-benefit-tag'
+    >;
+    imageBgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    offerTag: Attribute.Component<'common.product-offer-tag'> &
+      Attribute.Required;
+    productDetailView: Attribute.DynamicZone<
+      [
+        'accordion.description-section',
+        'accordion.fa-qs-section',
+        'accordion.ingredients-section',
+        'accordion.usage-instructions-section',
+        'blocks.featured-list',
+        'blocks.upsell-products'
+      ]
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -856,57 +1133,100 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
-export interface ApiTagTag extends Schema.CollectionType {
-  collectionName: 'tags';
+export interface ApiProductBenefitTagProductBenefitTag
+  extends Schema.CollectionType {
+  collectionName: 'product_benefit_tags';
   info: {
-    singularName: 'tag';
-    pluralName: 'tags';
-    displayName: 'Tags';
+    singularName: 'product-benefit-tag';
+    pluralName: 'product-benefit-tags';
+    displayName: 'Product Benefit Tags';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String & Attribute.Required & Attribute.Unique;
-    products: Attribute.Relation<
-      'api::tag.tag',
-      'manyToMany',
-      'api::product.product'
-    >;
+    tag: Attribute.String & Attribute.Required;
+    bgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::product-benefit-tag.product-benefit-tag',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::product-benefit-tag.product-benefit-tag',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
 
-export interface ApiTestimonialTestimonial extends Schema.CollectionType {
-  collectionName: 'testimonials';
+export interface ApiPromotionTagPromotionTag
+  extends Schema.CollectionType {
+  collectionName: 'promotion_tags';
   info: {
-    singularName: 'testimonial';
-    pluralName: 'testimonials';
-    displayName: 'Testimonial';
+    singularName: 'promotion-tag';
+    pluralName: 'promotion-tags';
+    displayName: 'Promotion Tags';
     description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    featuredImage: Attribute.Media & Attribute.Required;
-    description: Attribute.RichText &
-      Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
-    concern: Attribute.String;
-    productSlug: Attribute.String & Attribute.Required;
+    tag: Attribute.String;
+    bgColor: Attribute.String &
+      Attribute.Required &
+      Attribute.CustomField<'plugin::color-picker.color'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::promotion-tag.promotion-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::promotion-tag.promotion-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTestimonialTestimonial
+  extends Schema.CollectionType {
+  collectionName: 'testimonials';
+  info: {
+    singularName: 'testimonial';
+    pluralName: 'testimonials';
+    displayName: 'Testimonials';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    age: Attribute.Integer;
+    webImage: Attribute.Media & Attribute.Required;
+    mWebImage: Attribute.Media & Attribute.Required;
+    description: Attribute.String & Attribute.Required;
+    product: Attribute.Relation<
+      'api::testimonial.testimonial',
+      'oneToOne',
+      'api::product.product'
+    >;
+    concerns: Attribute.Component<'elements.text', true>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -943,9 +1263,15 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
+      'api::collection-tab.collection-tab': ApiCollectionTabCollectionTab;
+      'api::footer.footer': ApiFooterFooter;
+      'api::ingredient-type.ingredient-type': ApiIngredientTypeIngredientType;
+      'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
-      'api::tag.tag': ApiTagTag;
+      'api::product-benefit-tag.product-benefit-tag': ApiProductBenefitTagProductBenefitTag;
+      'api::promotion-tag.promotion-tag': ApiPromotionTagPromotionTag;
       'api::testimonial.testimonial': ApiTestimonialTestimonial;
     }
   }

@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_blocks_featured_lists",
+  "info": {
+    "displayName": "Featured List",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "isWebHorizontal": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "featuredListItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.image-rich-text",
+      "required": true
+    }
+  }
+}

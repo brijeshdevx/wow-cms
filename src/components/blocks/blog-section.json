@@ -1,0 +1,12 @@
+{
+  "collectionName": "components_blocks_blog_sections",
+  "info": {
+    "displayName": "Blog Section"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

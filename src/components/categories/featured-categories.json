@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_categories_featured_categories",
+  "info": {
+    "displayName": "Featured Categories",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "SMALL",
+        "MEDIUM"
+      ],
+      "required": true,
+      "default": "SMALL"
+    },
+    "featuredCategoryItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.image-slug-title",
+      "required": true
+    }
+  }
+}

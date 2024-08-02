@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_common_featured_products",
+  "info": {
+    "displayName": "Featured Products",
+    "icon": "apps",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "title": {
+      "type": "string"
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "default": "WHITE",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.button-slug"
+    }
+  }
+}

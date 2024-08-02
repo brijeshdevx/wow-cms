@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_accordion_usage_instructions_sections",
+  "info": {
+    "displayName": "Usage Instructions Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "usageInstructionItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text",
+      "required": true
+    }
+  }
+}

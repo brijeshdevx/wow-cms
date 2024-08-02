@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_elements_extended_texts",
+  "info": {
+    "displayName": "Extended Text"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "subText": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

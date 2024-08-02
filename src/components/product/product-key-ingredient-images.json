@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_product_product_key_ingredient_images",
+  "info": {
+    "displayName": "Product Key Ingredient Images",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "default": "LIME",
+      "required": true
+    },
+    "secondaryIngredients": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.image-title"
+    },
+    "primaryIngredient": {
+      "type": "component",
+      "repeatable": false,
+      "component": "elements.responsive-image"
+    }
+  }
+}

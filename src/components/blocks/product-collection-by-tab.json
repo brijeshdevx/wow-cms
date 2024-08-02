@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_blocks_product_collection_by_tabs",
+  "info": {
+    "displayName": "Product Collection By Tab",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "defaultCollectionSorting": {
+      "type": "enumeration",
+      "enum": [
+        "RECOMMENDED",
+        "LATEST",
+        "BEST_SELLERS",
+        "HIGHEST_RATED",
+        "PRICE_HIGH_TO_LOW",
+        "PRICE_LOW_TO_HIGH",
+        "AVAILABILITY"
+      ],
+      "default": "RECOMMENDED",
+      "required": true
+    },
+    "productCollectionTabItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.products-by-tab",
+      "required": true
+    },
+    "verticalBlogSection": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.vertical-blog-section"
+    },
+    "horizontalBlogSection": {
+      "type": "component",
+      "repeatable": true,
+      "component": "common.horizontal-blog-section"
+    }
+  }
+}

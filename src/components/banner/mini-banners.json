@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_banner_mini_banners",
+  "info": {
+    "displayName": "Mini Banners"
+  },
+  "options": {},
+  "attributes": {
+    "miniBannerItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.responsive-image-link",
+      "required": true
+    }
+  }
+}

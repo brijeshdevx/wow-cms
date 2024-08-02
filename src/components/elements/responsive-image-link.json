@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_elements_responsive_image_links",
+  "info": {
+    "displayName": "Responsive Image Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "webImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "link": {
+      "type": "string",
+      "required": true,
+      "regex": "^https?:\\/\\/.*$"
+    },
+    "mWebImage": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "moeText": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_elements_image_slug_titles",
+  "info": {
+    "displayName": "Image Slug Title",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "regex": "^[\\w\\s#-]+$"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

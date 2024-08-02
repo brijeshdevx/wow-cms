@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_common_menu_slugs",
+  "info": {
+    "displayName": "Menu Slug",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "regex": "^[\\w\\s#-]+$"
+    },
+    "subMenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text-slug"
+    }
+  }
+}

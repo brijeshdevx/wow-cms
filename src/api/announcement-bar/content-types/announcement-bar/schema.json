@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "announcement_bars",
+  "info": {
+    "singularName": "announcement-bar",
+    "pluralName": "announcement-bars",
+    "displayName": "Announcement Bar",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "timer": {
+      "type": "component",
+      "repeatable": false,
+      "component": "common.countdown-timer"
+    },
+    "leftText": {
+      "type": "string",
+      "required": false
+    },
+    "centerText": {
+      "type": "string"
+    },
+    "rightText": {
+      "type": "string"
+    },
+    "showTimer": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "bgColor": {
+      "type": "customField",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$",
+      "customField": "plugin::color-picker.color"
+    }
+  }
+}

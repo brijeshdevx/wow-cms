@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_blocks_pdps",
+  "info": {
+    "displayName": "PDP",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "product": {
+      "type": "component",
+      "repeatable": false,
+      "component": "cards.product-card",
+      "required": true
+    }
+  }
+}

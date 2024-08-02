@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_accordion_ingredients_sections",
+  "info": {
+    "displayName": "Ingredients Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "ingredientItems": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::ingredient-type.ingredient-type"
+    }
+  }
+}

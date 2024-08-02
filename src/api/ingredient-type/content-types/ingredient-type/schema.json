@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ingredient_types",
+  "info": {
+    "singularName": "ingredient-type",
+    "pluralName": "ingredient-types",
+    "displayName": "Ingredient Types"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "image": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "text": {
+      "type": "string",
+      "required": true
+    },
+    "subText": {
+      "type": "string",
+      "required": false
+    }
+  }
+}

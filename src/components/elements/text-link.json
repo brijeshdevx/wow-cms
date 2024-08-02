@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_text_links",
+  "info": {
+    "displayName": "Text Link",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "link": {
+      "type": "string",
+      "required": true,
+      "regex": "^https?:\\/\\/.*$"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

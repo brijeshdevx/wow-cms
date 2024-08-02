@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_blocks_collection_links",
+  "info": {
+    "displayName": "Collection Links",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "collectionLinkItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.button-slug",
+      "required": true
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "default": "LIME",
+      "required": true
+    }
+  }
+}

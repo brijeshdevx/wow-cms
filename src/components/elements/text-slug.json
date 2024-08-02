@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_elements_text_slugs",
+  "info": {
+    "displayName": "Text Slug",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "string",
+      "required": true,
+      "regex": "^[\\w\\s#-]+$"
+    }
+  }
+}

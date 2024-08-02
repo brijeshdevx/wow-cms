@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_blocks_info_sections",
+  "info": {
+    "displayName": "Info Section",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "information": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich"
+      },
+      "customField": "plugin::ckeditor.CKEditor",
+      "required": true
+    }
+  }
+}
