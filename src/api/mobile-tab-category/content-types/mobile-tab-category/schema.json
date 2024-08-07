@@ -1,0 +1,22 @@
+{
+  "kind": "singleType",
+  "collectionName": "mobile_tab_categories",
+  "info": {
+    "singularName": "mobile-tab-category",
+    "pluralName": "mobile-tab-categories",
+    "displayName": "Mobile Tab Categories",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mobileTabCategories": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.image-slug-title",
+      "required": true
+    }
+  }
+}

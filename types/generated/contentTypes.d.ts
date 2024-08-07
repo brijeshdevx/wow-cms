@@ -848,6 +848,7 @@ export interface ApiAnnouncementBarAnnouncementBar
       Attribute.DefaultTo<true>;
     bgColor: Attribute.String &
       Attribute.CustomField<'plugin::color-picker.color'>;
+    link: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -973,6 +974,42 @@ export interface ApiIngredientTypeIngredientType
   };
 }
 
+export interface ApiMobileTabCategoryMobileTabCategory
+  extends Schema.SingleType {
+  collectionName: 'mobile_tab_categories';
+  info: {
+    singularName: 'mobile-tab-category';
+    pluralName: 'mobile-tab-categories';
+    displayName: 'Mobile Tab Categories';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    mobileTabCategories: Attribute.Component<
+      'elements.image-slug-title',
+      true
+    > &
+      Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::mobile-tab-category.mobile-tab-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::mobile-tab-category.mobile-tab-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiNavbarNavbar extends Schema.SingleType {
   collectionName: 'navbars';
   info: {
@@ -1052,7 +1089,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.pdp',
         'banner.mini-banners',
         'banner.single-banner',
-        'blocks.breadcrumb'
+        'blocks.breadcrumb',
+        'blocks.recently-viewed'
       ]
     >;
     type: Attribute.Enumeration<
@@ -1267,6 +1305,7 @@ declare module '@strapi/types' {
       'api::collection-tab.collection-tab': ApiCollectionTabCollectionTab;
       'api::footer.footer': ApiFooterFooter;
       'api::ingredient-type.ingredient-type': ApiIngredientTypeIngredientType;
+      'api::mobile-tab-category.mobile-tab-category': ApiMobileTabCategoryMobileTabCategory;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;
       'api::product.product': ApiProductProduct;
