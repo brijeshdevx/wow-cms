@@ -45,7 +45,6 @@
       "components": [
         "accordion.description-section",
         "accordion.fa-qs-section",
-        "accordion.ingredients-section",
         "accordion.usage-instructions-section",
         "blocks.featured-list",
         "blocks.upsell-products"
