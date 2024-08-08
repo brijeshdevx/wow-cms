@@ -49,12 +49,18 @@
         "banner.single-banner",
         "blocks.breadcrumb",
         "blocks.recently-viewed",
-        "blocks.pdp"
+        "blocks.pdp",
+        "accordion.ingredients-section"
       ]
     },
     "type": {
       "type": "enumeration",
-      "enum": ["PRODUCT", "COLLECTION", "LANDING", "HOME"],
+      "enum": [
+        "PRODUCT",
+        "COLLECTION",
+        "LANDING",
+        "HOME"
+      ],
       "required": true
     }
   }
