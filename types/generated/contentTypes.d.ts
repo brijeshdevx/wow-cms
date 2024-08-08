@@ -1089,8 +1089,7 @@ export interface ApiPagePage extends Schema.CollectionType {
         'banner.single-banner',
         'blocks.breadcrumb',
         'blocks.recently-viewed',
-        'blocks.pdp',
-        'accordion.ingredients-section'
+        'blocks.pdp'
       ]
     >;
     type: Attribute.Enumeration<
@@ -1149,8 +1148,7 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'accordion.fa-qs-section',
         'accordion.usage-instructions-section',
         'blocks.featured-list',
-        'blocks.upsell-products',
-        'accordion.ingredients-section'
+        'blocks.upsell-products'
       ]
     >;
     createdAt: Attribute.DateTime;

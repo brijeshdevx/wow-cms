@@ -49,8 +49,7 @@
         "banner.single-banner",
         "blocks.breadcrumb",
         "blocks.recently-viewed",
-        "blocks.pdp",
-        "accordion.ingredients-section"
+        "blocks.pdp"
       ]
     },
     "type": {
