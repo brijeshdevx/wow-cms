@@ -75,6 +75,7 @@ export interface AccordionIngredientsSection
       'api::ingredient.ingredient'
     >;
     title: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
   };
 }
 
