@@ -956,7 +956,7 @@ export interface ApiIngredientIngredient
   attributes: {
     text: Attribute.String & Attribute.Required;
     subText: Attribute.String;
-    image: Attribute.Media;
+    image: Attribute.Media & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
