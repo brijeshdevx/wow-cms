@@ -1086,11 +1086,11 @@ export interface ApiPagePage extends Schema.CollectionType {
         'product.product-highlight-images',
         'product.product-key-ingredient-images',
         'product.product-reviews',
-        'blocks.pdp',
         'banner.mini-banners',
         'banner.single-banner',
         'blocks.breadcrumb',
-        'blocks.recently-viewed'
+        'blocks.recently-viewed',
+        'blocks.pdp'
       ]
     >;
     type: Attribute.Enumeration<

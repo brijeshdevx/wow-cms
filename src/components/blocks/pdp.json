@@ -7,10 +7,9 @@
   "options": {},
   "attributes": {
     "product": {
-      "type": "component",
-      "repeatable": false,
-      "component": "cards.product-card",
-      "required": true
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::product.product"
     }
   }
 }

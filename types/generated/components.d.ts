@@ -297,8 +297,11 @@ export interface BlocksPdp extends Schema.Component {
     description: '';
   };
   attributes: {
-    product: Attribute.Component<'cards.product-card'> &
-      Attribute.Required;
+    product: Attribute.Relation<
+      'blocks.pdp',
+      'oneToOne',
+      'api::product.product'
+    >;
   };
 }
 
