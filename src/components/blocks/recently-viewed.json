@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_blocks_recently_vieweds",
+  "info": {
+    "displayName": "Recently Viewed",
+    "icon": "hashtag"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

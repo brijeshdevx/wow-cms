@@ -319,6 +319,17 @@ export interface BlocksProductCollectionByTab
   };
 }
 
+export interface BlocksRecentlyViewed extends Schema.Component {
+  collectionName: 'components_blocks_recently_vieweds';
+  info: {
+    displayName: 'Recently Viewed';
+    icon: 'hashtag';
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface BlocksTestimonialSection extends Schema.Component {
   collectionName: 'components_blocks_testimonial_sections';
   info: {
@@ -1001,6 +1012,7 @@ declare module '@strapi/types' {
       'blocks.info-section': BlocksInfoSection;
       'blocks.pdp': BlocksPdp;
       'blocks.product-collection-by-tab': BlocksProductCollectionByTab;
+      'blocks.recently-viewed': BlocksRecentlyViewed;
       'blocks.testimonial-section': BlocksTestimonialSection;
       'blocks.upsell-products': BlocksUpsellProducts;
       'blocks.video-section': BlocksVideoSection;

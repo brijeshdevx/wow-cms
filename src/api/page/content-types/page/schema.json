@@ -48,7 +48,8 @@
         "blocks.pdp",
         "banner.mini-banners",
         "banner.single-banner",
-        "blocks.breadcrumb"
+        "blocks.breadcrumb",
+        "blocks.recently-viewed"
       ]
     },
     "type": {
