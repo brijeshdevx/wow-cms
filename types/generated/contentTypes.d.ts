@@ -941,32 +941,33 @@ export interface ApiFooterFooter extends Schema.SingleType {
   };
 }
 
-export interface ApiIngredientTypeIngredientType
+export interface ApiIngredientIngredient
   extends Schema.CollectionType {
-  collectionName: 'ingredient_types';
+  collectionName: 'ingredients';
   info: {
-    singularName: 'ingredient-type';
-    pluralName: 'ingredient-types';
-    displayName: 'Ingredient Types';
+    singularName: 'ingredient';
+    pluralName: 'ingredients';
+    displayName: 'Ingredients';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    image: Attribute.Media & Attribute.Required;
     text: Attribute.String & Attribute.Required;
     subText: Attribute.String;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::ingredient-type.ingredient-type',
+      'api::ingredient.ingredient',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::ingredient-type.ingredient-type',
+      'api::ingredient.ingredient',
       'oneToOne',
       'admin::user'
     > &
@@ -1089,7 +1090,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'banner.single-banner',
         'blocks.breadcrumb',
         'blocks.recently-viewed',
-        'blocks.pdp'
+        'blocks.pdp',
+        'accordion.ingredients-section'
       ]
     >;
     type: Attribute.Enumeration<
@@ -1302,7 +1304,7 @@ declare module '@strapi/types' {
       'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
       'api::collection-tab.collection-tab': ApiCollectionTabCollectionTab;
       'api::footer.footer': ApiFooterFooter;
-      'api::ingredient-type.ingredient-type': ApiIngredientTypeIngredientType;
+      'api::ingredient.ingredient': ApiIngredientIngredient;
       'api::mobile-tab-category.mobile-tab-category': ApiMobileTabCategoryMobileTabCategory;
       'api::navbar.navbar': ApiNavbarNavbar;
       'api::page.page': ApiPagePage;

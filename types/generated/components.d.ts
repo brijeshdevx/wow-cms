@@ -60,6 +60,24 @@ export interface AccordionInfoDropdownSection
   };
 }
 
+export interface AccordionIngredientsSection
+  extends Schema.Component {
+  collectionName: 'components_accordion_ingredients_sections';
+  info: {
+    displayName: 'Ingredients Section';
+    icon: 'alien';
+    description: '';
+  };
+  attributes: {
+    ingredients: Attribute.Relation<
+      'accordion.ingredients-section',
+      'oneToMany',
+      'api::ingredient.ingredient'
+    >;
+    title: Attribute.String & Attribute.Required;
+  };
+}
+
 export interface AccordionUsageInstructionsSection
   extends Schema.Component {
   collectionName: 'components_accordion_usage_instructions_sections';
@@ -1001,6 +1019,7 @@ declare module '@strapi/types' {
       'accordion.description-section': AccordionDescriptionSection;
       'accordion.fa-qs-section': AccordionFaQsSection;
       'accordion.info-dropdown-section': AccordionInfoDropdownSection;
+      'accordion.ingredients-section': AccordionIngredientsSection;
       'accordion.usage-instructions-section': AccordionUsageInstructionsSection;
       'banner.carousal': BannerCarousal;
       'banner.mini-banners': BannerMiniBanners;
