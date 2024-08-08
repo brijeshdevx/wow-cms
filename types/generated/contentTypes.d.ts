@@ -1064,7 +1064,6 @@ export interface ApiPagePage extends Schema.CollectionType {
         'accordion.description-section',
         'accordion.fa-qs-section',
         'accordion.info-dropdown-section',
-        'accordion.ingredients-section',
         'accordion.usage-instructions-section',
         'banner.carousal',
         'blocks.announcement-bar',
@@ -1147,7 +1146,6 @@ export interface ApiProductProduct extends Schema.CollectionType {
       [
         'accordion.description-section',
         'accordion.fa-qs-section',
-        'accordion.ingredients-section',
         'accordion.usage-instructions-section',
         'blocks.featured-list',
         'blocks.upsell-products'

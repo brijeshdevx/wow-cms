@@ -24,7 +24,6 @@
         "accordion.description-section",
         "accordion.fa-qs-section",
         "accordion.info-dropdown-section",
-        "accordion.ingredients-section",
         "accordion.usage-instructions-section",
         "banner.carousal",
         "blocks.announcement-bar",
@@ -55,12 +54,7 @@
     },
     "type": {
       "type": "enumeration",
-      "enum": [
-        "PRODUCT",
-        "COLLECTION",
-        "LANDING",
-        "HOME"
-      ],
+      "enum": ["PRODUCT", "COLLECTION", "LANDING", "HOME"],
       "required": true
     }
   }
