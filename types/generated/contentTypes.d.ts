@@ -1150,7 +1150,8 @@ export interface ApiProductProduct extends Schema.CollectionType {
         'accordion.fa-qs-section',
         'accordion.usage-instructions-section',
         'blocks.featured-list',
-        'blocks.upsell-products'
+        'blocks.upsell-products',
+        'accordion.ingredients-section'
       ]
     >;
     createdAt: Attribute.DateTime;
