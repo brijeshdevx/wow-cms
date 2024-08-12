@@ -2,13 +2,24 @@
   "collectionName": "components_blocks_recently_vieweds",
   "info": {
     "displayName": "Recently Viewed",
-    "icon": "hashtag"
+    "icon": "hashtag",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
       "required": true
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "required": true,
+      "default": "WHITE"
     }
   }
 }

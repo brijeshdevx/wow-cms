@@ -1,0 +1,35 @@
+{
+  "kind": "singleType",
+  "collectionName": "cart_upsells",
+  "info": {
+    "singularName": "cart-upsell",
+    "pluralName": "cart-upsells",
+    "displayName": "Cart Upsell",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cartUpsellProducts": {
+      "type": "component",
+      "repeatable": true,
+      "component": "cards.extended-product-card"
+    },
+    "title": {
+      "type": "string",
+      "required": false
+    },
+    "bgColor": {
+      "type": "enumeration",
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
+      "required": true,
+      "default": "LIME"
+    }
+  }
+}

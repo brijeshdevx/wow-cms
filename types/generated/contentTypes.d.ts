@@ -867,6 +867,44 @@ export interface ApiAnnouncementBarAnnouncementBar
   };
 }
 
+export interface ApiCartUpsellCartUpsell extends Schema.SingleType {
+  collectionName: 'cart_upsells';
+  info: {
+    singularName: 'cart-upsell';
+    pluralName: 'cart-upsells';
+    displayName: 'Cart Upsell';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cartUpsellProducts: Attribute.Component<
+      'cards.extended-product-card',
+      true
+    >;
+    title: Attribute.String;
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'LIME'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::cart-upsell.cart-upsell',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::cart-upsell.cart-upsell',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCollectionTabCollectionTab
   extends Schema.CollectionType {
   collectionName: 'collection_tabs';
@@ -1303,6 +1341,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::announcement-bar.announcement-bar': ApiAnnouncementBarAnnouncementBar;
+      'api::cart-upsell.cart-upsell': ApiCartUpsellCartUpsell;
       'api::collection-tab.collection-tab': ApiCollectionTabCollectionTab;
       'api::footer.footer': ApiFooterFooter;
       'api::ingredient.ingredient': ApiIngredientIngredient;

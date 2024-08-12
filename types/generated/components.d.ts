@@ -346,9 +346,13 @@ export interface BlocksRecentlyViewed extends Schema.Component {
   info: {
     displayName: 'Recently Viewed';
     icon: 'hashtag';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'WHITE'>;
   };
 }
 
