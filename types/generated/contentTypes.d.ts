@@ -887,6 +887,9 @@ export interface ApiCartUpsellCartUpsell extends Schema.SingleType {
     bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
       Attribute.DefaultTo<'LIME'>;
+    endTime: Attribute.Time &
+      Attribute.Required &
+      Attribute.DefaultTo<'00:00'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

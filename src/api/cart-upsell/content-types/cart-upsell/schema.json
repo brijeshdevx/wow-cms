@@ -30,6 +30,11 @@
       ],
       "required": true,
       "default": "LIME"
+    },
+    "endTime": {
+      "type": "time",
+      "required": true,
+      "default": "00:00"
     }
   }
 }
