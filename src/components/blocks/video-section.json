@@ -38,6 +38,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.button-link"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

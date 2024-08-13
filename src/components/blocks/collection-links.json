@@ -21,6 +21,11 @@
       ],
       "default": "LIME",
       "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

@@ -24,6 +24,11 @@
       "repeatable": true,
       "component": "common.faq",
       "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

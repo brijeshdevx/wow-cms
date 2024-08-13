@@ -11,6 +11,11 @@
       "repeatable": true,
       "component": "elements.image-slug-title",
       "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

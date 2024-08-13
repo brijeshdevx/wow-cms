@@ -9,11 +9,24 @@
     "title": {
       "type": "string"
     },
-    "images": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "EffectivenessChart": {
+      "displayName": "RichText Number",
       "type": "component",
       "repeatable": true,
-      "component": "elements.image",
-      "max": 2,
+      "component": "elements.rich-text-number",
+      "max": 2
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }

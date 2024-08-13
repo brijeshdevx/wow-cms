@@ -17,11 +17,16 @@
       "required": true
     },
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }

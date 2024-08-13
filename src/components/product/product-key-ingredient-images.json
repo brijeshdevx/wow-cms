@@ -28,6 +28,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.responsive-image"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

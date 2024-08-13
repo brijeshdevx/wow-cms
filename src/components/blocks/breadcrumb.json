@@ -1,12 +1,18 @@
 {
   "collectionName": "components_blocks_breadcrumbs",
   "info": {
-    "displayName": "Breadcrumb"
+    "displayName": "Breadcrumb",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string",
+      "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }

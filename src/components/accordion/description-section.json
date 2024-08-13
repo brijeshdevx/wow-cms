@@ -26,6 +26,11 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

@@ -23,6 +23,11 @@
       "default": 2000,
       "min": 0,
       "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

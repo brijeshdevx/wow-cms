@@ -28,6 +28,11 @@
       },
       "customField": "plugin::ckeditor.CKEditor",
       "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

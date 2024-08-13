@@ -19,6 +19,9 @@ export interface AccordionDescriptionSection
         }
       >;
     image: Attribute.Media;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -33,6 +36,9 @@ export interface AccordionFaQsSection extends Schema.Component {
     image: Attribute.Media;
     FAQs: Attribute.Component<'common.faq', true> &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -57,6 +63,9 @@ export interface AccordionInfoDropdownSection
           preset: 'rich';
         }
       >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -76,6 +85,9 @@ export interface AccordionIngredientsSection
     >;
     title: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -94,6 +106,9 @@ export interface AccordionUsageInstructionsSection
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -127,6 +142,9 @@ export interface BannerCarousal extends Schema.Component {
         number
       > &
       Attribute.DefaultTo<2000>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -134,6 +152,7 @@ export interface BannerMiniBanners extends Schema.Component {
   collectionName: 'components_banner_mini_banners';
   info: {
     displayName: 'Mini Banners';
+    description: '';
   };
   attributes: {
     miniBannerItems: Attribute.Component<
@@ -141,6 +160,9 @@ export interface BannerMiniBanners extends Schema.Component {
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -148,10 +170,14 @@ export interface BannerSingleBanner extends Schema.Component {
   collectionName: 'components_banner_single_banners';
   info: {
     displayName: 'Single Banner';
+    description: '';
   };
   attributes: {
     banner: Attribute.Component<'elements.responsive-image-link'> &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -172,6 +198,9 @@ export interface BlocksAnnouncementBar extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<true>;
     link: Attribute.String;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -179,9 +208,13 @@ export interface BlocksBlogSection extends Schema.Component {
   collectionName: 'components_blocks_blog_sections';
   info: {
     displayName: 'Blog Section';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -189,9 +222,13 @@ export interface BlocksBreadcrumb extends Schema.Component {
   collectionName: 'components_blocks_breadcrumbs';
   info: {
     displayName: 'Breadcrumb';
+    description: '';
   };
   attributes: {
     title: Attribute.String & Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -210,6 +247,9 @@ export interface BlocksCollectionLinks extends Schema.Component {
     bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
       Attribute.DefaultTo<'LIME'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -228,6 +268,9 @@ export interface BlocksFeaturedList extends Schema.Component {
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -248,6 +291,9 @@ export interface BlocksFeaturedProductsByTab
     bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required;
     button: Attribute.Component<'elements.button-slug'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -269,6 +315,9 @@ export interface BlocksFeaturedProducts extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'WHITE'>;
     button: Attribute.Component<'elements.button-slug'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -288,6 +337,9 @@ export interface BlocksInfoSection extends Schema.Component {
           preset: 'rich';
         }
       >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -303,6 +355,9 @@ export interface BlocksPdp extends Schema.Component {
       'oneToOne',
       'api::product.product'
     >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -315,6 +370,9 @@ export interface BlocksProductCollectionByTab
   };
   attributes: {
     title: Attribute.String;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
     defaultCollectionSorting: Attribute.Enumeration<
       [
         'RECOMMENDED',
@@ -353,6 +411,9 @@ export interface BlocksRecentlyViewed extends Schema.Component {
     bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
       Attribute.DefaultTo<'WHITE'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -360,6 +421,7 @@ export interface BlocksTestimonialSection extends Schema.Component {
   collectionName: 'components_blocks_testimonial_sections';
   info: {
     displayName: 'Testimonial Section';
+    description: '';
   };
   attributes: {
     title: Attribute.String;
@@ -368,6 +430,9 @@ export interface BlocksTestimonialSection extends Schema.Component {
       'oneToMany',
       'api::testimonial.testimonial'
     >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -387,6 +452,9 @@ export interface BlocksUpsellProducts extends Schema.Component {
     bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
       Attribute.Required &
       Attribute.DefaultTo<'LIME'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -407,6 +475,9 @@ export interface BlocksVideoSection extends Schema.Component {
       Attribute.Required &
       Attribute.DefaultTo<'SMALL'>;
     button: Attribute.Component<'elements.button-link'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -477,6 +548,9 @@ export interface CategoriesFeaturedCategories
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -494,6 +568,9 @@ export interface CategoriesIngredientCategories
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -510,6 +587,9 @@ export interface CategoriesTrendingCategories
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -884,6 +964,33 @@ export interface ElementsResponsiveImage extends Schema.Component {
   };
 }
 
+export interface ElementsRichTextNumber extends Schema.Component {
+  collectionName: 'components_elements_rich_text_numbers';
+  info: {
+    displayName: 'RichText Number';
+  };
+  attributes: {
+    text: Attribute.RichText &
+      Attribute.Required &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'light';
+        }
+      >;
+    number: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+          max: 100;
+        },
+        number
+      >;
+  };
+}
+
 export interface ElementsTextLink extends Schema.Component {
   collectionName: 'components_elements_text_links';
   info: {
@@ -945,6 +1052,9 @@ export interface ProductProductBenefits extends Schema.Component {
       true
     > &
       Attribute.Required;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -957,14 +1067,20 @@ export interface ProductProductEffectivenessImages
   };
   attributes: {
     title: Attribute.String;
-    images: Attribute.Component<'elements.image', true> &
-      Attribute.Required &
+    image: Attribute.Media;
+    EffectivenessChart: Attribute.Component<
+      'elements.rich-text-number',
+      true
+    > &
       Attribute.SetMinMax<
         {
           max: 2;
         },
         number
       >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -979,6 +1095,9 @@ export interface ProductProductHighlightImages
     images: Attribute.Component<'elements.responsive-image', true> &
       Attribute.Required;
     title: Attribute.String;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -999,6 +1118,9 @@ export interface ProductProductKeyIngredientImages
       true
     >;
     primaryIngredient: Attribute.Component<'elements.responsive-image'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -1015,6 +1137,9 @@ export interface ProductProductReviews extends Schema.Component {
       'oneToOne',
       'api::product.product'
     >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
@@ -1074,6 +1199,7 @@ declare module '@strapi/types' {
       'elements.responsive-image-link-title': ElementsResponsiveImageLinkTitle;
       'elements.responsive-image-link': ElementsResponsiveImageLink;
       'elements.responsive-image': ElementsResponsiveImage;
+      'elements.rich-text-number': ElementsRichTextNumber;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;
       'elements.text': ElementsText;

@@ -11,7 +11,11 @@
     },
     "bgColor": {
       "type": "enumeration",
-      "enum": ["WHITE", "LIME", "BLUE"],
+      "enum": [
+        "WHITE",
+        "LIME",
+        "BLUE"
+      ],
       "default": "LIME",
       "required": true
     },
@@ -20,6 +24,11 @@
       "type": "component",
       "repeatable": true,
       "component": "elements.image-extended-text",
+      "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }

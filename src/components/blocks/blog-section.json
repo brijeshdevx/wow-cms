@@ -1,12 +1,18 @@
 {
   "collectionName": "components_blocks_blog_sections",
   "info": {
-    "displayName": "Blog Section"
+    "displayName": "Blog Section",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "title": {
       "type": "string"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

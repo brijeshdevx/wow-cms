@@ -16,6 +16,11 @@
       "repeatable": true,
       "component": "elements.image-rich-text",
       "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

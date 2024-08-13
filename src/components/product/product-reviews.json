@@ -13,6 +13,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::product.product"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

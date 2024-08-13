@@ -29,6 +29,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.button-slug"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

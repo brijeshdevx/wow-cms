@@ -20,6 +20,11 @@
       ],
       "required": true,
       "default": "WHITE"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
     }
   }
 }

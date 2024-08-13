@@ -1,7 +1,8 @@
 {
   "collectionName": "components_banner_single_banners",
   "info": {
-    "displayName": "Single Banner"
+    "displayName": "Single Banner",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -9,6 +10,11 @@
       "type": "component",
       "repeatable": false,
       "component": "elements.responsive-image-link",
+      "required": true
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
       "required": true
     }
   }
