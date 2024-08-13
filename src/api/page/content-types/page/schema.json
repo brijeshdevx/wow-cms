@@ -50,7 +50,8 @@
         "blocks.breadcrumb",
         "blocks.recently-viewed",
         "blocks.pdp",
-        "accordion.ingredients-section"
+        "accordion.ingredients-section",
+        "common.seo"
       ]
     },
     "type": {

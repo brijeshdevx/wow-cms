@@ -711,6 +711,22 @@ export interface CommonProductsByTab extends Schema.Component {
   };
 }
 
+export interface CommonSeo extends Schema.Component {
+  collectionName: 'components_common_seos';
+  info: {
+    displayName: 'SEO';
+    icon: 'sun';
+  };
+  attributes: {
+    url: Attribute.String;
+    title: Attribute.String;
+    subTitle: Attribute.String;
+    metaTitle: Attribute.String;
+    description: Attribute.String;
+    canonical: Attribute.String;
+  };
+}
+
 export interface CommonVerticalBlogSection extends Schema.Component {
   collectionName: 'components_common_vertical_blog_sections';
   info: {
@@ -1181,6 +1197,7 @@ declare module '@strapi/types' {
       'common.menu-slug': CommonMenuSlug;
       'common.product-offer-tag': CommonProductOfferTag;
       'common.products-by-tab': CommonProductsByTab;
+      'common.seo': CommonSeo;
       'common.vertical-blog-section': CommonVerticalBlogSection;
       'elements.button-link': ElementsButtonLink;
       'elements.button-slug': ElementsButtonSlug;

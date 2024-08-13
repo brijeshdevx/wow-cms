@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_common_seos",
+  "info": {
+    "displayName": "SEO",
+    "icon": "sun"
+  },
+  "options": {},
+  "attributes": {
+    "url": {
+      "type": "string",
+      "required": false
+    },
+    "title": {
+      "type": "string"
+    },
+    "subTitle": {
+      "type": "string"
+    },
+    "metaTitle": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "canonical": {
+      "type": "string"
+    }
+  }
+}
