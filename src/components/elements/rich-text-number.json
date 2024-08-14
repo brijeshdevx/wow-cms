@@ -1,7 +1,8 @@
 {
   "collectionName": "components_elements_rich_text_numbers",
   "info": {
-    "displayName": "RichText Number"
+    "displayName": "RichText Number",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -15,7 +16,7 @@
       "customField": "plugin::ckeditor.CKEditor"
     },
     "number": {
-      "type": "integer",
+      "type": "float",
       "min": 0,
       "required": true,
       "max": 100

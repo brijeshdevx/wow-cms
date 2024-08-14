@@ -984,6 +984,7 @@ export interface ElementsRichTextNumber extends Schema.Component {
   collectionName: 'components_elements_rich_text_numbers';
   info: {
     displayName: 'RichText Number';
+    description: '';
   };
   attributes: {
     text: Attribute.RichText &
@@ -995,7 +996,7 @@ export interface ElementsRichTextNumber extends Schema.Component {
           preset: 'light';
         }
       >;
-    number: Attribute.Integer &
+    number: Attribute.Float &
       Attribute.Required &
       Attribute.SetMinMax<
         {
