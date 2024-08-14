@@ -10,7 +10,7 @@ module.exports = ({ env }) => ({
     config: {
       provider: 'aws-s3',
       providerOptions: {
-        baseUrl: 'https://media-prod.buywow.in',
+        baseUrl: 'https://media.buywow.in',
         rootPath: 'public/wow-cms/',
         s3Options: {
           accessKeyId: env('AWS_ACCESS_KEY_ID'),
