@@ -1,17 +1,18 @@
 {
   "collectionName": "components_elements_image_extended_texts",
   "info": {
-    "displayName": "Image Extended Text"
+    "displayName": "Image Extended Text",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "image": {
-      "allowedTypes": [
-        "images"
-      ],
       "type": "media",
       "multiple": false,
-      "required": true
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
     },
     "text": {
       "type": "string",

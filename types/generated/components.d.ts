@@ -826,9 +826,10 @@ export interface ElementsImageExtendedText extends Schema.Component {
   collectionName: 'components_elements_image_extended_texts';
   info: {
     displayName: 'Image Extended Text';
+    description: '';
   };
   attributes: {
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media;
     text: Attribute.String & Attribute.Required;
     subText: Attribute.String & Attribute.Required;
   };
