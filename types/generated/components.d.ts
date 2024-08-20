@@ -84,7 +84,7 @@ export interface AccordionIngredientsSection
       'api::ingredient.ingredient'
     >;
     title: Attribute.String & Attribute.Required;
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media;
     showComponent: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
