@@ -995,9 +995,8 @@ export interface ApiIngredientIngredient
     draftAndPublish: true;
   };
   attributes: {
-    text: Attribute.String & Attribute.Required;
-    subText: Attribute.String;
     image: Attribute.Media & Attribute.Required;
+    text: Attribute.Blocks & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
