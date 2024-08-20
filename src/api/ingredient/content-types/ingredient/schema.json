@@ -21,8 +21,12 @@
       ]
     },
     "text": {
-      "type": "blocks",
-      "required": true
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

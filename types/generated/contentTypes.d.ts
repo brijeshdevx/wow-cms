@@ -996,7 +996,14 @@ export interface ApiIngredientIngredient
   };
   attributes: {
     image: Attribute.Media;
-    text: Attribute.Blocks & Attribute.Required;
+    text: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
