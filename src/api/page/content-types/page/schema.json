@@ -51,7 +51,8 @@
         "blocks.recently-viewed",
         "blocks.pdp",
         "accordion.ingredients-section",
-        "common.seo"
+        "common.seo",
+        "product.product-legal-info"
       ]
     },
     "type": {

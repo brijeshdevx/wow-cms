@@ -12,20 +12,24 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "text": {
-      "type": "string",
-      "required": true
-    },
-    "subText": {
-      "type": "string"
-    },
     "image": {
       "type": "media",
       "multiple": false,
-      "required": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ]
+    },
+    "text": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "standard"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
+    },
+    "title": {
+      "type": "string"
     }
   }
 }

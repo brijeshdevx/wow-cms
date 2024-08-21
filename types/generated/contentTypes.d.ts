@@ -995,9 +995,16 @@ export interface ApiIngredientIngredient
     draftAndPublish: true;
   };
   attributes: {
-    text: Attribute.String & Attribute.Required;
-    subText: Attribute.String;
-    image: Attribute.Media & Attribute.Required;
+    image: Attribute.Media;
+    text: Attribute.RichText &
+      Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          output: 'HTML';
+          preset: 'standard';
+        }
+      >;
+    title: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1133,7 +1140,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.recently-viewed',
         'blocks.pdp',
         'accordion.ingredients-section',
-        'common.seo'
+        'common.seo',
+        'product.product-legal-info'
       ]
     >;
     type: Attribute.Enumeration<
