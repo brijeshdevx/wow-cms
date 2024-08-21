@@ -1140,7 +1140,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.recently-viewed',
         'blocks.pdp',
         'accordion.ingredients-section',
-        'common.seo'
+        'common.seo',
+        'product.product-legal-info'
       ]
     >;
     type: Attribute.Enumeration<

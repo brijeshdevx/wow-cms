@@ -1033,6 +1033,18 @@ export interface ElementsTextSlug extends Schema.Component {
   };
 }
 
+export interface ElementsTextSubText extends Schema.Component {
+  collectionName: 'components_elements_text_sub_texts';
+  info: {
+    displayName: 'Text SubText';
+    icon: 'strikeThrough';
+  };
+  attributes: {
+    text: Attribute.String & Attribute.Required;
+    subText: Attribute.Text & Attribute.Required;
+  };
+}
+
 export interface ElementsText extends Schema.Component {
   collectionName: 'components_elements_texts';
   info: {
@@ -1142,6 +1154,21 @@ export interface ProductProductKeyIngredientImages
   };
 }
 
+export interface ProductProductLegalInfo extends Schema.Component {
+  collectionName: 'components_product_product_legal_infos';
+  info: {
+    displayName: 'Product Legal Info';
+    icon: 'shield';
+  };
+  attributes: {
+    legalInfoItems: Attribute.Component<
+      'elements.text-sub-text',
+      true
+    > &
+      Attribute.Required;
+  };
+}
+
 export interface ProductProductReviews extends Schema.Component {
   collectionName: 'components_product_product_reviews';
   info: {
@@ -1221,12 +1248,14 @@ declare module '@strapi/types' {
       'elements.rich-text-number': ElementsRichTextNumber;
       'elements.text-link': ElementsTextLink;
       'elements.text-slug': ElementsTextSlug;
+      'elements.text-sub-text': ElementsTextSubText;
       'elements.text': ElementsText;
       'elements.video': ElementsVideo;
       'product.product-benefits': ProductProductBenefits;
       'product.product-effectiveness-images': ProductProductEffectivenessImages;
       'product.product-highlight-images': ProductProductHighlightImages;
       'product.product-key-ingredient-images': ProductProductKeyIngredientImages;
+      'product.product-legal-info': ProductProductLegalInfo;
       'product.product-reviews': ProductProductReviews;
     }
   }

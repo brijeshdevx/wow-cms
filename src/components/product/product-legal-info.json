@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_product_product_legal_infos",
+  "info": {
+    "displayName": "Product Legal Info",
+    "icon": "shield"
+  },
+  "options": {},
+  "attributes": {
+    "legalInfoItems": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.text-sub-text",
+      "required": true
+    }
+  }
+}
