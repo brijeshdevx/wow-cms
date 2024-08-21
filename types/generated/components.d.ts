@@ -1159,6 +1159,7 @@ export interface ProductProductLegalInfo extends Schema.Component {
   info: {
     displayName: 'Product Legal Info';
     icon: 'shield';
+    description: '';
   };
   attributes: {
     legalInfoItems: Attribute.Component<
@@ -1166,6 +1167,11 @@ export interface ProductProductLegalInfo extends Schema.Component {
       true
     > &
       Attribute.Required;
+    bgColor: Attribute.Enumeration<['WHITE', 'LIME', 'BLUE']> &
+      Attribute.DefaultTo<'WHITE'>;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
   };
 }
 
