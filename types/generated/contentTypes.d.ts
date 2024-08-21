@@ -1004,6 +1004,7 @@ export interface ApiIngredientIngredient
           preset: 'standard';
         }
       >;
+    title: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
