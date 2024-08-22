@@ -2,14 +2,11 @@
   "collectionName": "components_common_seos",
   "info": {
     "displayName": "SEO",
-    "icon": "sun"
+    "icon": "sun",
+    "description": ""
   },
   "options": {},
   "attributes": {
-    "url": {
-      "type": "string",
-      "required": false
-    },
     "title": {
       "type": "string"
     },
@@ -20,9 +17,16 @@
       "type": "string"
     },
     "description": {
-      "type": "string"
+      "type": "text"
     },
     "canonical": {
+      "type": "string"
+    },
+    "noIndex": {
+      "type": "boolean",
+      "default": false
+    },
+    "schemaDefaultCollection": {
       "type": "string"
     }
   }

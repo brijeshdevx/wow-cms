@@ -716,14 +716,16 @@ export interface CommonSeo extends Schema.Component {
   info: {
     displayName: 'SEO';
     icon: 'sun';
+    description: '';
   };
   attributes: {
-    url: Attribute.String;
     title: Attribute.String;
     subTitle: Attribute.String;
     metaTitle: Attribute.String;
-    description: Attribute.String;
+    description: Attribute.Text;
     canonical: Attribute.String;
+    noIndex: Attribute.Boolean & Attribute.DefaultTo<false>;
+    schemaDefaultCollection: Attribute.String;
   };
 }
 
