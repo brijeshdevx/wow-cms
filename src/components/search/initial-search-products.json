@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_search_initial_search_products",
+  "info": {
+    "displayName": "Initial Search Products",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "showComponent": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}

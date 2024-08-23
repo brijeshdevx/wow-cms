@@ -1141,7 +1141,8 @@ export interface ApiPagePage extends Schema.CollectionType {
         'blocks.pdp',
         'accordion.ingredients-section',
         'common.seo',
-        'product.product-legal-info'
+        'product.product-legal-info',
+        'search.initial-search-products'
       ]
     >;
     type: Attribute.Enumeration<
