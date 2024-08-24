@@ -1196,6 +1196,25 @@ export interface ProductProductReviews extends Schema.Component {
   };
 }
 
+export interface SearchInitialSearchProducts
+  extends Schema.Component {
+  collectionName: 'components_search_initial_search_products';
+  info: {
+    displayName: 'Initial Search Products';
+    icon: 'search';
+  };
+  attributes: {
+    products: Attribute.Relation<
+      'search.initial-search-products',
+      'oneToMany',
+      'api::product.product'
+    >;
+    showComponent: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
@@ -1265,6 +1284,7 @@ declare module '@strapi/types' {
       'product.product-key-ingredient-images': ProductProductKeyIngredientImages;
       'product.product-legal-info': ProductProductLegalInfo;
       'product.product-reviews': ProductProductReviews;
+      'search.initial-search-products': SearchInitialSearchProducts;
     }
   }
 }
