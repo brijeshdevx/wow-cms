@@ -294,6 +294,9 @@ export interface BlocksFeaturedProductsByTab
     showComponent: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
+    showOutOfStockProducts: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
   };
 }
 
@@ -318,6 +321,9 @@ export interface BlocksFeaturedProducts extends Schema.Component {
     showComponent: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
+    showOutOfStockProducts: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
   };
 }
 
@@ -373,6 +379,9 @@ export interface BlocksProductCollectionByTab
     showComponent: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<true>;
+    showOutOfStockProducts: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
     defaultCollectionSorting: Attribute.Enumeration<
       [
         'RECOMMENDED',
