@@ -17,7 +17,7 @@
     "showOutOfStockProducts": {
       "type": "boolean",
       "default": false,
-      "required": true
+      "required": false
     },
     "defaultCollectionSorting": {
       "type": "enumeration",
