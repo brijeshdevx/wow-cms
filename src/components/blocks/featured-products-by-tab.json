@@ -33,6 +33,11 @@
       "type": "boolean",
       "default": true,
       "required": true
+    },
+    "showOutOfStockProducts": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }
