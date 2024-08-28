@@ -1,12 +1,13 @@
 {
   "collectionName": "components_elements_texts",
   "info": {
-    "displayName": "Text"
+    "displayName": "Text",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "text": {
-      "type": "string",
+      "type": "text",
       "required": true
     }
   }

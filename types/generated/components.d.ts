@@ -1057,9 +1057,10 @@ export interface ElementsText extends Schema.Component {
   collectionName: 'components_elements_texts';
   info: {
     displayName: 'Text';
+    description: '';
   };
   attributes: {
-    text: Attribute.String & Attribute.Required;
+    text: Attribute.Text & Attribute.Required;
   };
 }
 
