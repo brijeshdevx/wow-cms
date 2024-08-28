@@ -628,8 +628,8 @@ export interface CommonFaq extends Schema.Component {
     description: '';
   };
   attributes: {
-    question: Attribute.String & Attribute.Required;
-    answer: Attribute.String & Attribute.Required;
+    question: Attribute.Text & Attribute.Required;
+    answer: Attribute.Text & Attribute.Required;
   };
 }
 
