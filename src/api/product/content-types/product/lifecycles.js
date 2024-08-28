@@ -91,10 +91,8 @@ const handleLifecycleEvent = async (event, eventType) => {
     const processedData = await processEntity(event.result.id);
     console.log(`Processed data after ${eventType}:`, processedData);
 
-    if (eventType === 'update') {
-      const updateResponse = await updateProduct(processedData);
-      console.log('Update product response:', updateResponse);
-    }
+    const updateResponse = await updateProduct(processedData);
+    console.log('Update product response:', updateResponse);
   } catch (error) {
     console.error(`Error in after${eventType}:`, error);
   }
