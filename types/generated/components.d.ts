@@ -839,7 +839,7 @@ export interface ElementsImageExtendedText extends Schema.Component {
   attributes: {
     image: Attribute.Media;
     text: Attribute.String & Attribute.Required;
-    subText: Attribute.String & Attribute.Required;
+    subText: Attribute.Text & Attribute.Required;
   };
 }
 
